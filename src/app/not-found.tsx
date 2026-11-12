@@ -82,7 +82,7 @@ export default function NotFound() {
 
       <footer className="relative z-10 border-t border-border/70 px-5 py-4 sm:px-8">
         <p className="mx-auto max-w-3xl font-mono text-[9px] uppercase tracking-[0.1em] text-muted-foreground/60">
-          Folio · Frontend demonstration · All scholarship shown is mock data
+          Folio · Academic research workspace
         </p>
       </footer>
     </div>

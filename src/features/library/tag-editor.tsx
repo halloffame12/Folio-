@@ -67,7 +67,7 @@ export function TagEditor({
             ))}
           </div>
           <p className="mt-1.5 border-t border-border px-1 pt-1.5 text-[9.5px] leading-relaxed text-muted-foreground">
-            Tag changes save to this demonstration library.
+            Tag changes are saved to your library.
           </p>
         </PopoverContent>
       </Popover>

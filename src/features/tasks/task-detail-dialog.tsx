@@ -293,7 +293,7 @@ export function TaskDetailDialog({
                   />
                   <div className="mt-1.5 flex items-center justify-between">
                     <span className="font-mono text-[8.5px] uppercase tracking-wide text-muted-foreground/70">
-                      Mock comment · saved locally
+                      Comment saved
                     </span>
                     <Button size="sm" disabled={posting || !comment.trim()} onClick={() => void submitComment()}>
                       {posting ? <Loader2 className="animate-spin" /> : <MessageSquare />} Comment
@@ -367,7 +367,7 @@ export function TaskDetailDialog({
             <AlertDialogTitle>Delete this task?</AlertDialogTitle>
             <AlertDialogDescription>
               “{task.title}” and its {task.comments.length} comment
-              {task.comments.length === 1 ? "" : "s"} will be removed. This demonstration cannot undo the change.
+              {task.comments.length === 1 ? "" : "s"} will be removed. This action cannot be undone.
             </AlertDialogDescription>
           </AlertDialogHeader>
           <AlertDialogFooter>

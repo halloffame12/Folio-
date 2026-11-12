@@ -104,7 +104,7 @@ export function InviteMemberDialog({
         <DialogHeader>
           <DialogTitle>Invite a collaborator</DialogTitle>
           <DialogDescription>
-            Invitations are simulated in this demo. The invited person appears in the project roster as pending.
+            Invitations send an email to the invited person. They appear in the project roster as pending until accepted.
           </DialogDescription>
         </DialogHeader>
 
@@ -191,8 +191,8 @@ export function InviteMemberDialog({
 
           <div className="rounded border border-dashed border-border bg-surface/40 px-3 py-2 text-[10.5px] leading-relaxed text-muted-foreground">
             <p>
-              <span className="font-medium text-foreground/80">Demo behaviour:</span> no email is sent. The invitation
-              is stored in this browser and can be accepted from the notifications screen.
+              <span className="font-medium text-foreground/80">Note:</span> an invitation email is sent. The invitation
+              can be accepted by the invited user.
             </p>
           </div>
 

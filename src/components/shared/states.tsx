@@ -76,7 +76,7 @@ export function InlineLoading({ label = "Loading…" }: { label?: string }) {
 
 export function ErrorState({
   title = "Something went wrong",
-  description = "The data could not be loaded. This is a demonstration workspace, so no data was lost.",
+  description = "The data could not be loaded. Please try again.",
   onRetry,
 }: {
   title?: string;

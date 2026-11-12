@@ -78,7 +78,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             <span className="font-mono uppercase tracking-[0.12em]">
               Folio · Academic research workspace
             </span>
-            <span>Frontend demonstration · All scholarship shown is mock data</span>
+            <span>Connected to live data</span>
           </div>
         </footer>
       </div>
