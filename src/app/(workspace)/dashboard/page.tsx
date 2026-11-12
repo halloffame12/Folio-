@@ -20,7 +20,7 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
 import { AvatarGroup } from "@/components/shared/member-avatar";
-import { ActivityChart } from "@/features/dashboard/activity-chart";
+import { ActivityChart, type ActivityWeek } from "@/features/dashboard/activity-chart";
 import { useWorkspaceStore } from "@/stores/workspace-store";
 import { papersById, usersById } from "@/lib/client-registry";
 import { formatDate, initials, relativeTime, daysUntil, pluralize } from "@/lib/utils";
@@ -147,6 +147,31 @@ export default function DashboardPage() {
     return acc + (text ? text.split(/\s+/).length : 0);
   }, 0);
 
+  // Build last 8 weeks of real activity.
+  const now = new Date();
+  const weekLabels: string[] = [];
+  for (let i = 7; i >= 0; i--) {
+    const d = new Date(now);
+    d.setDate(now.getDate() - i * 7);
+    weekLabels.push(d.toLocaleDateString("en-US", { month: "short", day: "numeric" }));
+  }
+  const chartData: ActivityWeek[] = weekLabels.map((week) => ({ week, notes: 0, completed: 0 }));
+  const weekIndex = (dateStr: string) => {
+    const d = new Date(dateStr);
+    const diffDays = Math.floor((now.getTime() - d.getTime()) / (1000 * 60 * 60 * 24));
+    if (diffDays < 0 || diffDays > 55) return -1;
+    return 7 - Math.floor(diffDays / 7);
+  };
+  data.notes.forEach((n) => {
+    const idx = weekIndex(n.createdAt);
+    if (idx >= 0 && idx < chartData.length) chartData[idx].notes += 1;
+  });
+  data.library
+    .filter((e) => e.status === "completed")
+    .forEach((e) => {
+      const idx = weekIndex(e.lastOpenedAt ?? e.addedAt);
+      if (idx >= 0 && idx < chartData.length) chartData[idx].completed += 1;
+    });
   return (
     <div>
       <PageHeader
@@ -268,7 +293,7 @@ export default function DashboardPage() {
               </div>
             </div>
             <div className="px-3 pb-3 pt-4 sm:px-4">
-              <ActivityChart />
+              <ActivityChart data={chartData} />
             </div>
             <div className="flex flex-wrap items-center justify-between gap-2 border-t border-border bg-surface/30 px-5 py-2.5 text-[10px] text-muted-foreground">
               <span>

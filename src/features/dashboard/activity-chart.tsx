@@ -12,18 +12,13 @@ import {
 } from "recharts";
 import { cn } from "@/lib/utils";
 
-const data = [
-  { week: "Sep 22", notes: 2, completed: 1 },
-  { week: "Sep 29", notes: 3, completed: 2 },
-  { week: "Oct 6", notes: 5, completed: 2 },
-  { week: "Oct 13", notes: 4, completed: 3 },
-  { week: "Oct 20", notes: 7, completed: 4 },
-  { week: "Oct 27", notes: 5, completed: 3 },
-  { week: "Nov 3", notes: 8, completed: 5 },
-  { week: "Nov 10", notes: 6, completed: 4 },
-];
+export interface ActivityWeek {
+  week: string;
+  notes: number;
+  completed: number;
+}
 
-export function ActivityChart({ className }: { className?: string }) {
+export function ActivityChart({ data, className }: { data: ActivityWeek[]; className?: string }) {
   return (
     <div className={cn("h-[190px] w-full", className)}>
       <ResponsiveContainer width="100%" height="100%">
