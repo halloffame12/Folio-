@@ -257,7 +257,7 @@ export default function SettingsPage() {
   const exportJson = () => {
     const payload = {
       exportedAt: new Date().toISOString(),
-      note: "Folio frontend demonstration — all records are mock data.",
+      note: "Folio workspace settings.",
       profile,
       settings,
       data,
@@ -289,7 +289,7 @@ export default function SettingsPage() {
       <PageHeader
         eyebrow="Personal"
         title="Settings"
-        description="Your profile, reading preferences, and interface defaults. Everything here is local to this browser demonstration."
+        description="Your profile, reading preferences, and interface defaults."
         actions={
           <Badge variant="outline" className="h-7 gap-1.5 px-2.5">
             <Fingerprint className="size-3" /> Local demo identity
@@ -779,7 +779,7 @@ export default function SettingsPage() {
             <SectionCard
               eyebrow="03 · Notifications"
               title="What reaches you"
-              description="These preferences only affect the simulated notification feed in this demonstration."
+              description="These preferences affect your notification feed."
               footer={
                 <>
                   {savedAuto("Saved automatically")}
@@ -874,7 +874,7 @@ export default function SettingsPage() {
 
               <section className="rounded border border-dashed border-border bg-surface/30 p-4">
                 <p className="font-mono text-[8.5px] uppercase tracking-[0.1em] text-muted-foreground">
-                  Demonstration note
+                  Note
                 </p>
                 <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">
                   Turning email notifications off disables the dependent reminder switches. No
@@ -1004,7 +1004,7 @@ export default function SettingsPage() {
               <SectionCard
                 eyebrow="05 · Data"
                 title="Demo workspace"
-                description="Folio is a frontend demonstration. Every paper, person, and project in this workspace is fictional seed data."
+                description="Your workspace data is stored securely and tied to your account."
               >
                 <div className="grid grid-cols-2 gap-px bg-border sm:grid-cols-4">
                   {counts.map((item) => (
@@ -1104,7 +1104,7 @@ export default function SettingsPage() {
       </Tabs>
 
       <p className="mt-5 font-mono text-[9px] uppercase tracking-[0.08em] text-muted-foreground/60">
-        Folio frontend demonstration · settings persist in this browser only
+        Settings are saved to your account
       </p>
     </div>
   );

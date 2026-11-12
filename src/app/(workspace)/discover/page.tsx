@@ -132,23 +132,14 @@ export default function DiscoverPage() {
       <PageHeader
         eyebrow="Scholarly discovery"
         title="Discover papers"
-        description="Search across titles, authors, abstracts, keywords, and DOIs. Results come from a curated demonstration index, not a live scholarly database."
+        description="Search across titles, authors, abstracts, keywords, and DOIs. Results come from Crossref and OpenAlex."
         actions={
           <Badge variant="outline" className="h-7 px-2.5">
             <FlaskConical className="size-3 text-accent" />
-            Mock index · 20 records
+            Live scholarly search
           </Badge>
         }
       />
-
-      <div className="mb-4 flex items-start gap-2.5 rounded-md border border-dashed border-warning/30 bg-warning/[0.045] px-4 py-2.5">
-        <FlaskConical className="mt-0.5 size-3.5 shrink-0 text-warning" aria-hidden />
-        <p className="text-[11px] leading-relaxed text-muted-foreground">
-          <strong className="font-medium text-foreground/80">Demonstration data.</strong>{" "}
-          These records use realistic academic metadata but are fictional. Search and filters operate locally
-          on the mock index; no external API is contacted.
-        </p>
-      </div>
 
       {/* Search composition */}
       <section

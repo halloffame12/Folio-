@@ -266,7 +266,7 @@ export default function CollectionDetailPage() {
           <EmptyState
             icon={FolderPlus}
             title="This collection is empty"
-            description="Add papers from your library or the demonstration index. Papers can belong to more than one collection."
+            description="Add papers from your library or search results. Papers can belong to more than one collection."
             action={
               <Button onClick={() => setAddOpen(true)}>
                 <Plus /> Add papers

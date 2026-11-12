@@ -12,7 +12,7 @@ import {
 } from "lucide-react";
 import { toast } from "sonner";
 import { cn } from "@/lib/utils";
-import { navigation, workspace, alternateWorkspace } from "@/lib/navigation";
+import { navigation } from "@/lib/navigation";
 import { useWorkspaceStore } from "@/stores/workspace-store";
 import { Logo } from "@/components/brand/logo";
 import { Button } from "@/components/ui/button";
@@ -46,84 +46,29 @@ function isActive(pathname: string, href: string) {
 }
 
 export function WorkspaceSwitcher({ collapsed = false }: { collapsed?: boolean }) {
-  const [active, setActive] = useState<"northbridge" | "dh">("northbridge");
-  const current = active === "northbridge" ? workspace : alternateWorkspace;
+  const profile = useWorkspaceStore((s) => s.profile);
+  const name = profile?.name || "Researcher";
+  const unit = profile?.affiliation || profile?.title || "Workspace";
+  const initials = profile?.initials || name.slice(0, 2).toUpperCase();
 
   return (
-    <DropdownMenu>
-      <DropdownMenuTrigger asChild>
-        <button
-          className={cn(
-            "group flex w-full items-center gap-2.5 rounded border border-border/80 bg-card/60 p-2 text-left transition-colors hover:border-border hover:bg-card focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
-            collapsed && "justify-center p-1.5"
-          )}
-          aria-label={`Workspace: ${current.name}, ${current.unit}. Change workspace`}
-        >
-          <span className="flex size-7 shrink-0 items-center justify-center rounded-[3px] border border-border bg-secondary font-mono text-[9px] font-medium tracking-wider text-secondary-foreground">
-            {current.initials}
-          </span>
-          {!collapsed && (
-            <>
-              <span className="min-w-0 flex-1">
-                <span className="block truncate text-[11.5px] font-semibold leading-tight">
-                  {current.name}
-                </span>
-                <span className="mt-0.5 block truncate text-[10px] text-muted-foreground">
-                  {current.unit}
-                </span>
-              </span>
-              <ChevronsUpDown className="size-3.5 shrink-0 text-muted-foreground" />
-            </>
-          )}
-        </button>
-      </DropdownMenuTrigger>
-      <DropdownMenuContent align="start" className="w-[264px]">
-        <DropdownMenuLabel>Research workspace</DropdownMenuLabel>
-        <DropdownMenuItem
-          onSelect={() => {
-            setActive("northbridge");
-            toast("Workspace switched", {
-              description: "Northbridge · Information Science",
-            });
-          }}
-          className="items-start py-2"
-        >
-          <span className="mt-0.5 flex size-6 items-center justify-center rounded-[3px] bg-secondary font-mono text-[9px]">
-            NB
-          </span>
-          <span className="flex-1">
-            <span className="block text-[12px] font-medium">Northbridge University</span>
-            <span className="text-[11px] text-muted-foreground">Information Science</span>
-          </span>
-          {active === "northbridge" && <Check className="mt-0.5 size-3.5 text-primary" />}
-        </DropdownMenuItem>
-        <DropdownMenuItem
-          onSelect={() => {
-            setActive("dh");
-            toast("Workspace switched", {
-              description: "Northbridge · Digital Humanities Lab",
-            });
-          }}
-          className="items-start py-2"
-        >
-          <span className="mt-0.5 flex size-6 items-center justify-center rounded-[3px] bg-secondary font-mono text-[9px]">
-            DH
-          </span>
-          <span className="flex-1">
-            <span className="block text-[12px] font-medium">Northbridge University</span>
-            <span className="text-[11px] text-muted-foreground">Digital Humanities Lab</span>
-          </span>
-          {active === "dh" && <Check className="mt-0.5 size-3.5 text-primary" />}
-        </DropdownMenuItem>
-        <DropdownMenuSeparator />
-        <DropdownMenuItem asChild>
-          <Link href="/settings">
-            <Plus className="size-3.5" />
-            Workspace settings
-          </Link>
-        </DropdownMenuItem>
-      </DropdownMenuContent>
-    </DropdownMenu>
+    <div
+      className={cn(
+        "group flex w-full items-center gap-2.5 rounded border border-border/80 bg-card/60 p-2 text-left",
+        collapsed && "justify-center p-1.5"
+      )}
+      aria-label={`Workspace: ${name}`}
+    >
+      <span className="flex size-7 shrink-0 items-center justify-center rounded-[3px] border border-border bg-secondary font-mono text-[9px] font-medium tracking-wider text-secondary-foreground">
+        {initials}
+      </span>
+      {!collapsed && (
+        <span className="min-w-0 flex-1">
+          <span className="block truncate text-[11.5px] font-semibold leading-tight">{name}</span>
+          <span className="mt-0.5 block truncate text-[10px] text-muted-foreground">{unit}</span>
+        </span>
+      )}
+    </div>
   );
 }
 

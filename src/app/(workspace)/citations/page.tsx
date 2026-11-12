@@ -191,7 +191,7 @@ export default function CitationsPage() {
       <div className="mb-4 flex items-start gap-2.5 rounded border border-dashed border-border bg-surface/40 px-4 py-2.5">
         <FileText className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" aria-hidden />
         <p className="text-[11px] leading-relaxed text-muted-foreground">
-          <strong className="font-medium text-foreground/80">Demonstration metadata.</strong> Citations are generated
+          <strong className="font-medium text-foreground/80">Metadata.</strong> Citations are generated
           from fictional but realistic records. Fields marked incomplete should be checked against the source before
           use in a real submission.
         </p>

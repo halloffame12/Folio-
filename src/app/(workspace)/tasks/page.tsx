@@ -59,7 +59,7 @@ export default function TasksPage() {
       <TaskBoard projectId={projectId} initialTaskId={taskId} />
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-2 font-mono text-[9px] uppercase tracking-[0.08em] text-muted-foreground/60">
-        <span>Board changes persist in this browser · demonstration workspace</span>
+        <span>Board changes are saved to your workspace</span>
         <Link href="/milestones" className="flex items-center gap-1 hover:text-primary">
           <ArrowLeft className="size-2.5 rotate-180" /> View milestones
         </Link>

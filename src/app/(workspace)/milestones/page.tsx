@@ -61,7 +61,7 @@ export default function MilestonesPage() {
       <MilestonePanel projectId={projectId} initialMilestoneId={milestoneId} />
 
       <div className="mt-4 flex flex-wrap items-center justify-between gap-2 font-mono text-[9px] uppercase tracking-[0.08em] text-muted-foreground/60">
-        <span>Timeline derives from milestone dates · all data is fictional</span>
+        <span>Timeline derives from milestone dates</span>
         <Link href="/tasks" className="hover:text-primary">
           Open task board →
         </Link>

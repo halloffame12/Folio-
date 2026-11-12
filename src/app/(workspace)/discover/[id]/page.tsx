@@ -97,7 +97,7 @@ export default function PaperDetailPage() {
         <EmptyState
           icon={ScrollText}
           title="We could not find that paper"
-          description="The identifier may be incorrect, or the mock record may have been removed."
+          description="The identifier may be incorrect, or the record may not exist."
           action={<Button asChild><Link href="/discover">Browse the index</Link></Button>}
         />
       </div>

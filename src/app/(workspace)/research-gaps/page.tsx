@@ -191,11 +191,11 @@ export default function ResearchGapsPage() {
       <PageHeader
         eyebrow="Research intelligence"
         title="Research gap explorer"
-        description="A demonstration map of topic density, momentum, and vocabulary. Signals are prompts for enquiry — not confirmed gaps."
+        description="A map of topic density, momentum, and vocabulary across your collected papers. Signals are prompts for enquiry — not confirmed gaps."
         actions={
           <>
             <Badge variant="warning" className="h-7 px-2.5">
-              <FlaskConical className="size-3" /> Demo analysis
+              <FlaskConical className="size-3" /> Gap analysis
             </Badge>
             <Button size="sm" variant="outline" onClick={() => void copyAnalysis()}>
               <Clipboard /> Copy analysis

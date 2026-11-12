@@ -341,7 +341,7 @@ export default function NotificationsPage() {
           <section className="rounded border border-border bg-card p-3.5">
             <h2 className="section-title">Stay in control</h2>
             <p className="mt-1 text-[10.5px] leading-relaxed text-muted-foreground">
-              Choose which events reach you. Invitations are simulated in this demonstration and never send email.
+              Choose which events reach you. Invitations send email notifications.
             </p>
             <Button asChild variant="outline" size="sm" className="mt-2.5 w-full">
               <Link href="/settings?tab=notifications">

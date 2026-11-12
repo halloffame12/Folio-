@@ -542,16 +542,7 @@ export default function DashboardPage() {
             </ol>
           </section>
 
-          {/* Demonstration note */}
-          <div className="rounded-md border border-dashed border-border bg-surface/40 px-4 py-3">
-            <p className="flex items-start gap-2 text-[10px] leading-relaxed text-muted-foreground">
-              <Sparkles className="mt-0.5 size-3 shrink-0 text-accent" aria-hidden />
-              <span>
-                <strong className="font-medium text-foreground/80">Demonstration workspace.</strong>{" "}
-                Metrics and activity are generated from mock research data and update as you interact with the workspace.
-              </span>
-            </p>
-          </div>
+
         </div>
       </div>
 
