@@ -315,6 +315,7 @@ export function buildSearchIndex(input: {
   projects: Project[];
   notes: Note[];
   collections: Collection[];
+  papers?: Paper[];
 }): SearchResult[] {
   const pages: SearchResult[] = [
     { id: "page-overview", title: "Overview", subtitle: "Workspace dashboard", group: "Pages", href: "/dashboard" },
@@ -335,7 +336,7 @@ export function buildSearchIndex(input: {
 
   return [
     ...pages,
-    ...papers.map((p) => ({
+    ...(input.papers ?? []).map((p) => ({
       id: `paper-${p.id}`,
       title: p.title,
       subtitle: `${p.authors[0]?.name ?? "Unknown"} · ${p.year} · ${p.venueShort}`,

@@ -522,7 +522,7 @@ export default function ResearchGapsPage() {
                   </li>
                 </ul>
                 <Link
-                  href="/discover/p4"
+                  href="/discover"
                   className="mt-3 flex items-center gap-1 text-[10px] font-medium text-primary hover:underline"
                 >
                   Read Nwosu &amp; Banerjee on research silences <ArrowUpRight className="size-3" />

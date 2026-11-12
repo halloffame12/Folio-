@@ -6,6 +6,7 @@ import { BookMarked, Compass, FileText, FolderKanban, NotebookPen, Plus, Search 
 import { Command } from "cmdk";
 import { useWorkspaceStore } from "@/stores/workspace-store";
 import { buildSearchIndex, type SearchResult } from "@/lib/mock-services";
+import { papers } from "@/lib/client-registry";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
 import { cn } from "@/lib/utils";
 
@@ -50,8 +51,9 @@ export function CommandPalette({
         projects,
         notes,
         collections,
+        papers,
       }),
-    [projects, notes, collections]
+    [projects, notes, collections, papers]
   );
 
   const grouped = useMemo(() => {
