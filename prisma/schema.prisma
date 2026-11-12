@@ -1,0 +1,812 @@
+// Folio — academic research workspace
+// PostgreSQL schema for authentication, libraries, collaboration and reviews.
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+enum AcademicRole {
+  undergraduate
+  graduate
+  scholar
+  professor
+  independent
+  other
+}
+
+enum WorkspaceRole {
+  Owner
+  Admin
+  Member
+}
+
+enum PublicationType {
+  journal
+  conference
+  preprint
+  book_chapter
+}
+
+enum ReadingStatus {
+  unread
+  reading
+  completed
+}
+
+enum CollectionColor {
+  forest
+  terracotta
+  sand
+  sage
+  ink
+}
+
+enum ProjectStatus {
+  active
+  planning
+  completed
+  archived
+}
+
+enum ProjectAccent {
+  forest
+  terracotta
+  sand
+  sage
+}
+
+enum MemberStatus {
+  active
+  invited
+}
+
+enum TaskStatus {
+  todo
+  in_progress
+  in_review
+  completed
+}
+
+enum TaskPriority {
+  low
+  medium
+  high
+  critical
+}
+
+enum MilestoneStatus {
+  upcoming
+  in_progress
+  at_risk
+  completed
+}
+
+enum NotificationType {
+  invitation
+  assignment
+  deadline
+  milestone
+  mention
+  system
+}
+
+enum ActivityKind {
+  paper
+  note
+  task
+  milestone
+  comment
+  project
+  member
+}
+
+enum CitationStyle {
+  apa
+  mla
+  ieee
+  chicago
+}
+
+enum PaperSource {
+  crossref
+  openalex
+  user
+}
+
+enum IdentifierType {
+  doi
+  openalex
+  crossref
+  issn
+  isbn
+  pmid
+  arxiv
+  url
+}
+
+model User {
+  id              String       @id @default(cuid())
+  name            String
+  email           String       @unique
+  passwordHash    String
+  emailVerifiedAt DateTime?
+  settings        Json         @default("{}")
+  createdAt       DateTime     @default(now())
+  updatedAt       DateTime     @updatedAt
+  lastSignInAt    DateTime?
+
+  profile       UserProfile?
+  sessions      Session[]
+  verificationTokens EmailVerificationToken[]
+  resetTokens   PasswordResetToken[]
+  tags          Tag[]
+  collections   Collection[]
+  library       LibraryEntry[]
+  notes         Note[]
+  ownedProjects Project[]
+  memberships   ProjectMember[]
+  tasksCreated  Task[]           @relation("TaskCreatedBy")
+  tasksAssigned Task[]           @relation("TaskAssignee")
+  comments      TaskComment[]
+  reviews       LiteratureReview[]
+  citations     Citation[]
+  activities    Activity[]       @relation("ActivityActor")
+  notifications Notification[]   @relation("NotificationRecipient")
+  notificationsSent Notification[] @relation("NotificationActor")
+
+  papersCreated Paper[]          @relation("PaperCreatedBy")
+  invitations   ProjectInvitation[] @relation("InvitationCreatedBy")
+  researchTopics ResearchTopic[]
+  gapAnalyses   GapAnalysis[]
+
+  @@index([createdAt])
+}
+
+model UserProfile {
+  id               String       @id @default(cuid())
+  userId           String       @unique
+  institution      String?
+  role             AcademicRole?
+  department       String?
+  researchInterests String[]    @default([])
+  orcid            String?
+  avatarUrl        String?
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([institution])
+}
+
+model Session {
+  id         String    @id @default(cuid())
+  userId     String
+  tokenHash  String    @unique
+  expiresAt  DateTime
+  lastUsedAt DateTime  @default(now())
+  createdAt  DateTime  @default(now())
+  revokedAt  DateTime?
+  userAgent  String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, expiresAt])
+  @@index([expiresAt])
+}
+
+model EmailVerificationToken {
+  id        String    @id @default(cuid())
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, expiresAt])
+  @@index([expiresAt])
+}
+
+model PasswordResetToken {
+  id        String    @id @default(cuid())
+  userId    String
+  tokenHash String    @unique
+  expiresAt DateTime
+  usedAt    DateTime?
+  createdAt DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId, expiresAt])
+  @@index([expiresAt])
+}
+
+model Paper {
+  id              String          @id @default(cuid())
+  title           String
+  abstract        String?
+  year            Int?
+  venue           String?
+  venueShort      String?
+  publicationType PublicationType @default(journal)
+  citationCount   Int             @default(0)
+  keywords        String[]        @default([])
+  pdfAvailable    Boolean         @default(false)
+  sourceUrl       String?
+  volume          String?
+  issue           String?
+  pages           String?
+  publisher       String?
+  openAccess      Boolean         @default(false)
+  source          PaperSource     @default(user)
+  createdById     String?
+  createdAt       DateTime        @default(now())
+  updatedAt       DateTime        @updatedAt
+
+  createdBy   User?              @relation("PaperCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+  authors     PaperAuthor[]
+  identifiers PaperIdentifier[]
+  library     LibraryEntry[]
+  collections CollectionPaper[]
+  notes       NotePaper[]
+  projects    ProjectPaper[]
+  tasks       TaskPaper[]
+  reviews     LiteratureReviewPaper[]
+  sections    LiteratureReviewSectionPaper[]
+  evidence    LiteratureReviewEvidence[]
+  citations   Citation[]
+  topics      ResearchTopicPaper[]
+  gapPapers   GapAnalysisPaper[]
+
+  @@index([year])
+  @@index([source])
+  @@index([createdById])
+  @@index([title])
+}
+
+model PaperAuthor {
+  id          String  @id @default(cuid())
+  paperId     String
+  name        String
+  affiliation String?
+  orcid       String?
+  position    Int     @default(0)
+
+  paper Paper @relation(fields: [paperId], references: [id], onDelete: Cascade)
+
+  @@index([paperId, position])
+  @@index([name])
+}
+
+model PaperIdentifier {
+  id        String         @id @default(cuid())
+  paperId   String
+  type      IdentifierType
+  value     String
+  createdAt DateTime       @default(now())
+
+  paper Paper @relation(fields: [paperId], references: [id], onDelete: Cascade)
+
+  @@unique([type, value])
+  @@index([paperId])
+}
+
+model LibraryEntry {
+  id               String        @id @default(cuid())
+  userId           String
+  paperId          String
+  status           ReadingStatus @default(unread)
+  readingProgress  Int           @default(0)
+  addedAt          DateTime      @default(now())
+  lastOpenedAt     DateTime?
+  updatedAt        DateTime      @updatedAt
+
+  user     User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  paper    Paper      @relation(fields: [paperId], references: [id], onDelete: Cascade)
+  tags     PaperTag[]
+  noteLinks NotePaper[]
+
+  @@unique([userId, paperId])
+  @@index([userId, addedAt])
+  @@index([paperId])
+}
+
+model Collection {
+  id          String          @id @default(cuid())
+  userId      String
+  name        String
+  description String          @default("")
+  color       CollectionColor @default(forest)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  user   User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  papers CollectionPaper[]
+
+  @@unique([userId, name])
+  @@index([userId, createdAt])
+}
+
+model CollectionPaper {
+  id           String   @id @default(cuid())
+  collectionId String
+  paperId      String
+  addedAt      DateTime @default(now())
+
+  collection Collection @relation(fields: [collectionId], references: [id], onDelete: Cascade)
+  paper      Paper      @relation(fields: [paperId], references: [id], onDelete: Cascade)
+
+  @@unique([collectionId, paperId])
+  @@index([paperId])
+}
+
+model Tag {
+  id        String   @id @default(cuid())
+  userId    String
+  name      String
+  color     String?
+  createdAt DateTime @default(now())
+
+  user  User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  papers PaperTag[]
+  notes NoteTag[]
+
+  @@unique([userId, name])
+  @@index([userId])
+}
+
+model PaperTag {
+  id             String @id @default(cuid())
+  libraryEntryId String
+  tagId          String
+
+  libraryEntry LibraryEntry @relation(fields: [libraryEntryId], references: [id], onDelete: Cascade)
+  tag          Tag          @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@unique([libraryEntryId, tagId])
+  @@index([tagId])
+}
+
+model Note {
+  id        String   @id @default(cuid())
+  userId    String
+  title     String
+  content   String   @default("")
+  pinned    Boolean  @default(false)
+  projectId String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  user    User       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  project Project?   @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  papers  NotePaper[]
+  tags    NoteTag[]
+  reviewLinks LiteratureReviewNote[]
+  reviewEvidence LiteratureReviewEvidence[]
+
+  @@index([userId, updatedAt])
+  @@index([projectId])
+}
+
+model NotePaper {
+  id             String @id @default(cuid())
+  noteId         String
+  paperId        String
+  libraryEntryId String?
+
+  note         Note          @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  paper        Paper         @relation(fields: [paperId], references: [id], onDelete: Cascade)
+  libraryEntry LibraryEntry? @relation(fields: [libraryEntryId], references: [id], onDelete: SetNull)
+
+  @@unique([noteId, paperId])
+  @@index([paperId])
+  @@index([libraryEntryId])
+}
+
+model NoteTag {
+  noteId String
+  tagId  String
+
+  note Note @relation(fields: [noteId], references: [id], onDelete: Cascade)
+  tag  Tag  @relation(fields: [tagId], references: [id], onDelete: Cascade)
+
+  @@id([noteId, tagId])
+  @@index([tagId])
+}
+
+model Project {
+  id          String        @id @default(cuid())
+  title       String
+  description String        @default("")
+  status      ProjectStatus @default(planning)
+  ownerId     String
+  progress    Int           @default(0)
+  deadline    DateTime?
+  tag         String        @default("General")
+  accent      ProjectAccent @default(forest)
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+
+  owner       User                @relation(fields: [ownerId], references: [id], onDelete: Cascade)
+  members     ProjectMember[]
+  invitations ProjectInvitation[]
+  tasks       Task[]
+  milestones  Milestone[]
+  papers      ProjectPaper[]
+  notes       Note[]
+  reviews     LiteratureReview[]
+  activities  Activity[]
+  notifications Notification[]
+
+  @@index([ownerId])
+  @@index([updatedAt])
+}
+
+model ProjectMember {
+  id           String       @id @default(cuid())
+  projectId    String
+  userId       String?
+  role         WorkspaceRole @default(Member)
+  status       MemberStatus  @default(active)
+  invitedEmail String?
+  invitedName  String?
+  joinedAt     DateTime     @default(now())
+  updatedAt    DateTime     @updatedAt
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  user    User?   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([projectId, userId])
+  @@index([userId])
+  @@index([projectId])
+}
+
+model ProjectInvitation {
+  id          String        @id @default(cuid())
+  projectId   String
+  email       String
+  name        String?
+  role        WorkspaceRole @default(Member)
+  tokenHash   String        @unique
+  invitedById String
+  expiresAt   DateTime
+  acceptedAt  DateTime?
+  createdAt   DateTime      @default(now())
+
+  project   Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  invitedBy User    @relation("InvitationCreatedBy", fields: [invitedById], references: [id], onDelete: Cascade)
+
+  @@index([projectId, email])
+  @@index([email])
+}
+
+model Task {
+  id          String       @id @default(cuid())
+  projectId   String
+  title       String
+  description String       @default("")
+  status      TaskStatus   @default(todo)
+  priority    TaskPriority @default(medium)
+  assigneeId  String?
+  dueDate     DateTime?
+  createdById String?
+  createdAt   DateTime     @default(now())
+  updatedAt   DateTime     @updatedAt
+
+  project    Project        @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  assignee   User?          @relation("TaskAssignee", fields: [assigneeId], references: [id], onDelete: SetNull)
+  createdBy  User?          @relation("TaskCreatedBy", fields: [createdById], references: [id], onDelete: SetNull)
+  papers     TaskPaper[]
+  comments   TaskComment[]
+  milestone  MilestoneTask?
+
+  @@index([projectId, status])
+  @@index([assigneeId])
+  @@index([dueDate])
+}
+
+model TaskComment {
+  id        String   @id @default(cuid())
+  taskId    String
+  authorId  String
+  body      String
+  createdAt DateTime @default(now())
+
+  task   Task @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  author User @relation(fields: [authorId], references: [id], onDelete: Cascade)
+
+  @@index([taskId, createdAt])
+}
+
+model TaskPaper {
+  taskId  String
+  paperId String
+
+  task  Task  @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  paper Paper @relation(fields: [paperId], references: [id], onDelete: Cascade)
+
+  @@id([taskId, paperId])
+  @@index([paperId])
+}
+
+model Milestone {
+  id          String          @id @default(cuid())
+  projectId   String
+  title       String
+  description String          @default("")
+  dueDate     DateTime?
+  status      MilestoneStatus @default(upcoming)
+  progress    Int             @default(0)
+  createdAt   DateTime        @default(now())
+  updatedAt   DateTime        @updatedAt
+
+  project  Project           @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  tasks    MilestoneTask[]
+  assignees MilestoneAssignee[]
+
+  @@index([projectId, dueDate])
+}
+
+model MilestoneTask {
+  id          String @id @default(cuid())
+  milestoneId String
+  taskId      String @unique
+
+  milestone Milestone @relation(fields: [milestoneId], references: [id], onDelete: Cascade)
+  task      Task      @relation(fields: [taskId], references: [id], onDelete: Cascade)
+
+  @@index([milestoneId])
+}
+
+model MilestoneAssignee {
+  milestoneId String
+  userId      String
+
+  milestone Milestone @relation(fields: [milestoneId], references: [id], onDelete: Cascade)
+
+  @@id([milestoneId, userId])
+  @@index([userId])
+}
+
+model ProjectPaper {
+  projectId String
+  paperId   String
+  addedAt   DateTime @default(now())
+
+  project Project @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  paper   Paper   @relation(fields: [paperId], references: [id], onDelete: Cascade)
+
+  @@id([projectId, paperId])
+  @@index([paperId])
+}
+
+model LiteratureReview {
+  id              String   @id @default(cuid())
+  userId          String
+  projectId       String?
+  title           String
+  researchQuestion String  @default("")
+  progress        Int      @default(0)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  user     User                       @relation(fields: [userId], references: [id], onDelete: Cascade)
+  project  Project?                   @relation(fields: [projectId], references: [id], onDelete: SetNull)
+  sections LiteratureReviewSection[]
+  papers   LiteratureReviewPaper[]
+  notes    LiteratureReviewNote[]
+  evidence LiteratureReviewEvidence[]
+
+  @@index([userId, updatedAt])
+  @@index([projectId])
+}
+
+model LiteratureReviewSection {
+  id        String   @id @default(cuid())
+  reviewId  String
+  parentId  String?
+  title     String
+  content   String   @default("")
+  position  Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  review   LiteratureReview @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  parent   LiteratureReviewSection? @relation("SectionTree", fields: [parentId], references: [id], onDelete: Cascade)
+  children LiteratureReviewSection[] @relation("SectionTree")
+  papers   LiteratureReviewSectionPaper[]
+  evidence LiteratureReviewEvidence[]
+
+  @@index([reviewId, position])
+  @@index([parentId])
+}
+
+model LiteratureReviewPaper {
+  reviewId String
+  paperId  String
+
+  review LiteratureReview @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  paper  Paper            @relation(fields: [paperId], references: [id], onDelete: Cascade)
+
+  @@id([reviewId, paperId])
+  @@index([paperId])
+}
+
+model LiteratureReviewNote {
+  reviewId String
+  noteId   String
+
+  review LiteratureReview @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  note   Note             @relation(fields: [noteId], references: [id], onDelete: Cascade)
+
+  @@id([reviewId, noteId])
+  @@index([noteId])
+}
+
+model LiteratureReviewSectionPaper {
+  sectionId String
+  paperId   String
+
+  section LiteratureReviewSection @relation(fields: [sectionId], references: [id], onDelete: Cascade)
+  paper   Paper                   @relation(fields: [paperId], references: [id], onDelete: Cascade)
+
+  @@id([sectionId, paperId])
+  @@index([paperId])
+}
+
+model LiteratureReviewEvidence {
+  id        String   @id @default(cuid())
+  reviewId  String
+  sectionId String?
+  paperId   String?
+  noteId    String?
+  content   String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  review  LiteratureReview         @relation(fields: [reviewId], references: [id], onDelete: Cascade)
+  section LiteratureReviewSection? @relation(fields: [sectionId], references: [id], onDelete: SetNull)
+  paper   Paper?                   @relation(fields: [paperId], references: [id], onDelete: SetNull)
+  note    Note?                    @relation(fields: [noteId], references: [id], onDelete: SetNull)
+
+  @@index([reviewId])
+  @@index([paperId])
+}
+
+model ResearchTopic {
+  id          String   @id @default(cuid())
+  userId      String
+  name        String
+  cluster     String   @default("General")
+  description String   @default("")
+  keywords    String[] @default([])
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  user     User                @relation(fields: [userId], references: [id], onDelete: Cascade)
+  papers   ResearchTopicPaper[]
+  analyses GapAnalysis[]
+
+  @@unique([userId, name])
+  @@index([userId])
+}
+
+model ResearchTopicPaper {
+  topicId String
+  paperId String
+
+  topic ResearchTopic @relation(fields: [topicId], references: [id], onDelete: Cascade)
+  paper Paper         @relation(fields: [paperId], references: [id], onDelete: Cascade)
+
+  @@id([topicId, paperId])
+  @@index([paperId])
+}
+
+model GapAnalysis {
+  id         String   @id @default(cuid())
+  userId     String
+  topicId    String?
+  name       String
+  corpusSize Int      @default(0)
+  result     Json
+  createdAt  DateTime @default(now())
+
+  user   User           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  topic  ResearchTopic? @relation(fields: [topicId], references: [id], onDelete: SetNull)
+  papers GapAnalysisPaper[]
+
+  @@index([userId, createdAt])
+  @@index([topicId])
+}
+
+model GapAnalysisPaper {
+  analysisId String
+  paperId    String
+  role       String?
+
+  analysis GapAnalysis @relation(fields: [analysisId], references: [id], onDelete: Cascade)
+  paper    Paper       @relation(fields: [paperId], references: [id], onDelete: Cascade)
+
+  @@id([analysisId, paperId])
+  @@index([paperId])
+}
+
+model Citation {
+  id          String        @id @default(cuid())
+  userId      String
+  paperId     String
+  style       CitationStyle
+  text        String
+  generatedAt DateTime      @default(now())
+  createdAt   DateTime      @default(now())
+
+  user  User  @relation(fields: [userId], references: [id], onDelete: Cascade)
+  paper Paper @relation(fields: [paperId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, paperId, style])
+  @@index([userId, createdAt])
+}
+
+model Activity {
+  id        String       @id @default(cuid())
+  actorId   String
+  action    String
+  target    String
+  href      String?
+  kind      ActivityKind
+  projectId String?
+  createdAt DateTime     @default(now())
+
+  actor   User     @relation("ActivityActor", fields: [actorId], references: [id], onDelete: Cascade)
+  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([createdAt])
+  @@index([projectId, createdAt])
+  @@index([actorId])
+}
+
+model Notification {
+  id        String           @id @default(cuid())
+  userId    String
+  type      NotificationType
+  title     String
+  body      String           @default("")
+  read      Boolean          @default(false)
+  href      String?
+  actorId   String?
+  projectId String?
+  createdAt DateTime         @default(now())
+
+  user    User     @relation("NotificationRecipient", fields: [userId], references: [id], onDelete: Cascade)
+  actor   User?    @relation("NotificationActor", fields: [actorId], references: [id], onDelete: SetNull)
+  project Project? @relation(fields: [projectId], references: [id], onDelete: Cascade)
+
+  @@index([userId, read, createdAt])
+  @@index([createdAt])
+}
+
+model ApiCache {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  payload   Json
+  expiresAt DateTime
+  createdAt DateTime @default(now())
+
+  @@index([expiresAt])
+}
+
+model RateLimitBucket {
+  id        String   @id @default(cuid())
+  key       String   @unique
+  count     Int      @default(0)
+  expiresAt DateTime
+  updatedAt DateTime @updatedAt
+
+  @@index([expiresAt])
+}

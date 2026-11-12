@@ -1,0 +1,349 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 48 24% 96%;
+    --foreground: 144 7% 14%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 144 7% 14%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 144 7% 14%;
+
+    --primary: 157 18% 25%;
+    --primary-foreground: 48 24% 96%;
+
+    --secondary: 44 20% 89%;
+    --secondary-foreground: 144 7% 18%;
+
+    --muted: 44 20% 92%;
+    --muted-foreground: 111 2% 45%;
+
+    --accent: 17 42% 51%;
+    --accent-foreground: 40 30% 97%;
+
+    --destructive: 5 44% 45%;
+    --destructive-foreground: 0 0% 100%;
+
+    --success: 140 21% 35%;
+    --success-foreground: 0 0% 100%;
+
+    --warning: 36 52% 43%;
+    --warning-foreground: 0 0% 100%;
+
+    --border: 48 13% 85%;
+    --input: 48 13% 82%;
+    --ring: 157 18% 25%;
+
+    --surface-2: 44 20% 89%;
+    --sidebar: 48 22% 94%;
+    --sidebar-foreground: 144 7% 14%;
+
+    --radius: 0.375rem;
+  }
+
+  .dark {
+    --background: 140 6% 8%;
+    --foreground: 46 14% 92%;
+
+    --card: 140 5% 11%;
+    --card-foreground: 46 14% 92%;
+
+    --popover: 140 5% 12%;
+    --popover-foreground: 46 14% 92%;
+
+    --primary: 148 21% 62%;
+    --primary-foreground: 140 10% 9%;
+
+    --secondary: 130 5% 15%;
+    --secondary-foreground: 46 14% 90%;
+
+    --muted: 130 5% 16%;
+    --muted-foreground: 130 4% 62%;
+
+    --accent: 18 46% 62%;
+    --accent-foreground: 18 20% 10%;
+
+    --destructive: 5 52% 58%;
+    --destructive-foreground: 0 0% 10%;
+
+    --success: 140 28% 56%;
+    --success-foreground: 140 10% 9%;
+
+    --warning: 38 52% 60%;
+    --warning-foreground: 36 20% 10%;
+
+    --border: 130 5% 20%;
+    --input: 130 5% 24%;
+    --ring: 148 21% 62%;
+
+    --surface-2: 130 5% 15%;
+    --sidebar: 140 6% 6.5%;
+    --sidebar-foreground: 46 14% 92%;
+
+    --radius: 0.375rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+    scrollbar-gutter: stable;
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.16);
+    color: hsl(var(--foreground));
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-display tracking-[-0.02em];
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 999px;
+    border: 3px solid hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground) / 0.5);
+  }
+}
+
+@layer components {
+  .page-title {
+    @apply font-display text-[1.75rem] font-semibold leading-tight tracking-[-0.03em] sm:text-[2rem];
+  }
+
+  .section-title {
+    @apply font-display text-base font-semibold tracking-[-0.015em];
+  }
+
+  .eyebrow {
+    @apply font-mono text-[10px] uppercase leading-none tracking-[0.16em] text-muted-foreground;
+  }
+
+  .paper-title {
+    @apply font-serif text-[1.0625rem] font-medium leading-snug tracking-[-0.01em];
+  }
+
+  .meta-label {
+    @apply font-mono text-[11px] uppercase tracking-[0.08em] text-muted-foreground;
+  }
+
+  .hairline {
+    @apply border-border;
+  }
+
+  .rule-grid {
+    background-image: linear-gradient(to right, hsl(var(--border) / 0.55) 1px, transparent 1px);
+    background-size: 100% 100%;
+  }
+
+  .dot-grid {
+    background-image: radial-gradient(hsl(var(--border)) 0.8px, transparent 0.8px);
+    background-size: 16px 16px;
+  }
+
+  .article-prose {
+    @apply text-[15px] leading-[1.75] text-foreground/90;
+  }
+  .article-prose p {
+    @apply mb-4;
+  }
+  .article-prose h2 {
+    @apply mb-3 mt-8 font-display text-lg font-semibold text-foreground;
+  }
+  .article-prose h3 {
+    @apply mb-2 mt-6 font-display text-base font-semibold text-foreground;
+  }
+  .article-prose ul {
+    @apply mb-4 list-disc space-y-1 pl-5;
+  }
+  .article-prose ol {
+    @apply mb-4 list-decimal space-y-1 pl-5;
+  }
+  .article-prose blockquote {
+    @apply my-5 border-l-2 border-accent/60 pl-4 font-serif text-[16px] italic text-foreground/80;
+  }
+  .article-prose a {
+    @apply text-primary underline decoration-primary/30 underline-offset-2 hover:decoration-primary;
+  }
+  .article-prose code {
+    @apply rounded bg-secondary px-1.5 py-0.5 font-mono text-[12px] text-foreground;
+  }
+  .article-prose strong {
+    @apply font-semibold text-foreground;
+  }
+
+  .editor-surface {
+    @apply min-h-[420px] w-full bg-transparent text-[15px] leading-[1.8] outline-none;
+  }
+  .editor-surface:empty:before {
+    content: attr(data-placeholder);
+    @apply font-serif text-[15px] italic text-muted-foreground/70;
+    pointer-events: none;
+  }
+  .editor-surface h2 {
+    @apply mb-2 mt-6 font-display text-lg font-semibold;
+  }
+  .editor-surface ul {
+    @apply my-3 list-disc pl-5;
+  }
+  .editor-surface ol {
+    @apply my-3 list-decimal pl-5;
+  }
+  .editor-surface a {
+    @apply text-primary underline decoration-primary/30 underline-offset-2;
+  }
+  .editor-surface blockquote {
+    @apply my-4 border-l-2 border-accent/60 pl-4 font-serif italic text-muted-foreground;
+  }
+
+  .shimmer {
+    position: relative;
+    overflow: hidden;
+  }
+  .shimmer::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    transform: translateX(-100%);
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--foreground) / 0.04),
+      transparent
+    );
+    animation: shimmer 1.6s infinite;
+  }
+
+  .paper-grain {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.045) 0.6px, transparent 0.6px);
+    background-size: 5px 5px;
+  }
+
+  .nav-active-mark {
+    @apply relative;
+  }
+  .nav-active-mark::before {
+    content: "";
+    @apply absolute -left-3 top-1/2 h-4 w-[2px] -translate-y-1/2 rounded-full bg-primary;
+  }
+
+  /* ---- Public site (Phase 0) ------------------------------------------ */
+
+  .marketing-container {
+    @apply mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10;
+  }
+
+  .editorial-grid {
+    background-image:
+      linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
+      linear-gradient(to bottom, hsl(var(--border) / 0.35) 1px, transparent 1px);
+    background-size: 64px 64px;
+  }
+
+  .editorial-rule {
+    @apply border-t border-border;
+  }
+
+  .display-xl {
+    @apply font-display text-[2.6rem] font-semibold leading-[1.02] tracking-[-0.045em] sm:text-[3.4rem] lg:text-[4.15rem];
+  }
+
+  .display-lg {
+    @apply font-display text-[2rem] font-semibold leading-[1.06] tracking-[-0.04em] sm:text-[2.6rem] lg:text-[3rem];
+  }
+
+  .display-md {
+    @apply font-display text-[1.55rem] font-semibold leading-[1.12] tracking-[-0.03em] sm:text-[1.9rem];
+  }
+
+  .editorial-lede {
+    @apply text-[15px] leading-[1.65] text-muted-foreground sm:text-[16px];
+  }
+
+  .paper-grain-strong {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.055) 0.65px, transparent 0.65px);
+    background-size: 4px 4px;
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Compact tables preference (Settings → Appearance). */
+[data-compact="true"] table th {
+  height: 1.85rem;
+}
+
+[data-compact="true"] table td {
+  padding-top: 0.4rem;
+  padding-bottom: 0.4rem;
+}
+
+/* Explicit in-app reduced motion preference. */
+[data-reduced-motion="true"] *,
+[data-reduced-motion="true"] *::before,
+[data-reduced-motion="true"] *::after {
+  animation-duration: 0.01ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.01ms !important;
+  scroll-behavior: auto !important;
+}
