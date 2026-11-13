@@ -83,7 +83,7 @@ export function FinalCta() {
 
             <div className="relative border-t border-primary-foreground/15 px-6 py-3 sm:px-10 lg:px-12">
               <p className="font-mono text-[7.5px] uppercase leading-relaxed tracking-[0.13em] text-primary-foreground/45 dark:text-primary-foreground/75">
-                Frontend demonstration · Mock scholarship · No live services, emails, or production
+                Live product · Real scholarly search · Secure authentication
                 security
               </p>
             </div>

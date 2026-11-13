@@ -93,7 +93,7 @@ export function HowItWorks() {
             <div className="flex flex-col gap-3 rounded border border-dashed border-border bg-background/70 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
               <p className="max-w-[620px] text-[12px] leading-relaxed text-muted-foreground">
                 <span className="font-medium text-foreground/85">No migration required.</span>{" "}
-                The demonstration workspace is preloaded with a realistic project so you can see the
+                The workspace includes sample data so you can see the
                 whole arc before entering anything of your own.
               </p>
               <Link

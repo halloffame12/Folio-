@@ -9,17 +9,17 @@ const faqs = [
   {
     question: "Is Folio a real, launched product?",
     answer:
-      "No. Folio is a frontend demonstration built as a capstone project. The interface, authentication states, and workspace are real code, but there is no production backend, no live scholarly index, and no real email delivery. Every paper, author, project, and note is fictional.",
+      "Folio is a capstone project with a real backend. It includes secure authentication, a PostgreSQL database, real scholarly search via Crossref and OpenAlex, and live email delivery. User data is stored in a real database and is not shared between accounts.",
   },
   {
-    question: "Do I need an account to explore the workspace?",
+    question: "Do I need an account to use Folio?",
     answer:
-      "No. The demonstration workspace at /dashboard is open and preloaded with a complete research project. Creating an account walks through the interface states for registration, verification, and sign-in, but it is not required to see the product.",
+      "Yes. Create an account to access your personal research workspace. Your library, notes, projects, and settings are tied to your account and stored securely.",
   },
   {
-    question: "Does Folio send email or verify real addresses?",
+    question: "Does Folio send real email?",
     answer:
-      "No. Registration, password reset, and email verification are simulated in the browser. The verification screen lets you preview pending, verified, and expired-link states. No message leaves the page, and no token is validated by a server.",
+      "Yes. Registration sends a verification email, and password reset sends a reset link. Email delivery uses a real provider (Resend).",
   },
   {
     question: "Does Folio use AI to write reviews or discover gaps?",
@@ -34,12 +34,12 @@ const faqs = [
   {
     question: "Where is my data stored?",
     answer:
-      "Any account you create in the demonstration is kept in this browser's local storage, and the workspace state is also local. Nothing is transmitted to a server. Because this is not a production system, please do not enter sensitive or unpublished material.",
+      "Your data is stored in a PostgreSQL database hosted on Neon. Each user's data is isolated and accessible only through authenticated sessions.",
   },
   {
     question: "Can I use Folio with a research team?",
     answer:
-      "The demonstration includes collaborators, shared collections, tasks, and milestones so you can see how team coordination is modelled. Those collaborators are fictional. Real multi-user access, permissions, and sync would require a backend that this phase does not include.",
+      "Yes. Create a project and invite members by email. Members can be assigned roles (Owner, Admin, Member) with appropriate permissions. Tasks and milestones can be assigned to team members.",
   },
 ];
 

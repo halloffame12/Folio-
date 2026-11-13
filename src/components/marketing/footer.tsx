@@ -50,9 +50,9 @@ export function Footer() {
               research forward with your team.
             </p>
             <p className="mt-6 font-mono text-[8px] uppercase leading-relaxed tracking-[0.14em] text-muted-foreground/60">
-              Frontend demonstration
+              Academic research workspace
               <br />
-              All scholarship shown is fictional
+              Real data and real accounts
             </p>
           </div>
 
@@ -81,7 +81,7 @@ export function Footer() {
 
         <div className="mt-12 flex flex-col gap-3 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-mono text-[8.5px] uppercase tracking-[0.12em] text-muted-foreground/60">
-            © 2026 Folio · Built as a frontend demonstration
+            © 2026 Folio · Academic research workspace
           </p>
           <p className="font-mono text-[8px] uppercase tracking-[0.12em] text-muted-foreground/50">
             Set in Manrope, Newsreader, Inter &amp; IBM Plex Mono
