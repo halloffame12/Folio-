@@ -94,33 +94,12 @@ export function VerifyEmailPanel() {
           research workspace. You can now sign in and continue your work.
         </p>
 
-        <AuthNotice tone="success" title="Simulated verification" className="mt-5">
-          No real token was checked. This screen demonstrates the successful verification state.
-        </AuthNotice>
-
         <div className="mt-6 space-y-2">
           <Button asChild size="lg" className="h-10 w-full">
             <Link href="/signin">
               Continue to sign in <ArrowRight />
             </Link>
           </Button>
-          <Button asChild variant="outline" size="lg" className="h-10 w-full">
-            <Link href="/dashboard">Open demo workspace</Link>
-          </Button>
-        </div>
-
-        <div className="mt-6 rounded border border-dashed border-border bg-surface/40 p-3">
-          <p className="font-mono text-[8px] uppercase tracking-[0.14em] text-muted-foreground/70">
-            Preview another state
-          </p>
-          <div className="mt-2 flex flex-wrap gap-2">
-            <Button type="button" variant="ghost" size="xs" onClick={() => setView("pending")}>
-              Pending
-            </Button>
-            <Button type="button" variant="ghost" size="xs" onClick={() => setView("expired")}>
-              Expired link
-            </Button>
-          </div>
         </div>
       </div>
     );
@@ -179,20 +158,6 @@ export function VerifyEmailPanel() {
             </Link>
           </Button>
         </div>
-
-        <div className="mt-6 rounded border border-dashed border-border bg-surface/40 p-3">
-          <p className="font-mono text-[8px] uppercase tracking-[0.14em] text-muted-foreground/70">
-            Preview another state
-          </p>
-          <div className="mt-2 flex flex-wrap gap-2">
-            <Button type="button" variant="ghost" size="xs" onClick={() => setView("pending")}>
-              Pending
-            </Button>
-            <Button type="button" variant="ghost" size="xs" onClick={() => setView("verified")}>
-              Verified
-            </Button>
-          </div>
-        </div>
       </div>
     );
   }
@@ -205,7 +170,7 @@ export function VerifyEmailPanel() {
       <p className="eyebrow mt-5">One more step</p>
       <h1 className="mt-3 display-md text-foreground">Verify your email.</h1>
       <p className="mt-3 text-[13px] leading-[1.7] text-muted-foreground">
-        We’ve prepared a verification link for{" "}
+        We’ve sent a verification link to{" "}
         <span className="font-medium text-foreground">{email}</span>. Open it to confirm the
         address and activate your workspace.
       </p>
@@ -220,11 +185,6 @@ export function VerifyEmailPanel() {
           {error}
         </AuthNotice>
       ) : null}
-
-      <AuthNotice tone="info" title="Simulated email" className="mt-5">
-        No message was sent. Use “I’ve verified my email” to step through the success state, or
-        preview the expired-link state below.
-      </AuthNotice>
 
       <div className="mt-6 space-y-2">
         <Button
@@ -254,7 +214,7 @@ export function VerifyEmailPanel() {
         >
           {resending ? (
             <>
-              <Loader2 className="animate-spin" /> Preparing a new link…
+              <Loader2 className="animate-spin" /> Sending a new link…
             </>
           ) : cooldown > 0 ? (
             <>
@@ -268,24 +228,13 @@ export function VerifyEmailPanel() {
         </Button>
       </div>
 
-      <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-border pt-4">
+      <div className="mt-6 border-t border-border pt-4">
         <Link
           href="/signin"
           className="inline-flex items-center gap-1.5 text-[11px] text-muted-foreground transition-colors hover:text-foreground"
         >
           <ArrowLeft className="size-3" /> Return to sign in
         </Link>
-        <div className="flex items-center gap-2">
-          <span className="font-mono text-[8px] uppercase tracking-[0.12em] text-muted-foreground/60">
-            Demo states
-          </span>
-          <Button type="button" variant="ghost" size="xs" onClick={() => setView("verified")}>
-            Verified
-          </Button>
-          <Button type="button" variant="ghost" size="xs" onClick={() => setView("expired")}>
-            Expired
-          </Button>
-        </div>
       </div>
     </div>
   );

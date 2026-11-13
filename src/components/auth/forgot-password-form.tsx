@@ -58,13 +58,15 @@ export function ForgotPasswordForm() {
         <h1 className="mt-3 display-md text-foreground">Check your inbox.</h1>
         <p className="mt-3 text-[13px] leading-[1.7] text-muted-foreground">
           If an account exists for{" "}
-          <span className="font-medium text-foreground">{sentTo}</span>, instructions to reset
-          your password would arrive shortly.
+          <span className="font-medium text-foreground">{sentTo}</span>, a password reset link is
+          on its way.
         </p>
 
-        <AuthNotice tone="info" title="No email is sent in this demonstration" className="mt-5">
-          {message}
-        </AuthNotice>
+        {message ? (
+          <AuthNotice tone="info" className="mt-5">
+            {message}
+          </AuthNotice>
+        ) : null}
 
         <div className="mt-6 space-y-2">
           <Button
@@ -77,7 +79,7 @@ export function ForgotPasswordForm() {
           >
             {resending ? (
               <>
-                <Loader2 className="animate-spin" /> Preparing instructions…
+                <Loader2 className="animate-spin" /> Sending a new link…
               </>
             ) : (
               <>
@@ -165,8 +167,8 @@ export function ForgotPasswordForm() {
       </form>
 
       <AuthNotice tone="info" className="mt-6">
-        This demonstration does not send email. The confirmation screen explains what would
-        happen in a connected build.
+        For security, we don’t reveal whether an email address is registered. If it is, a reset
+        link will arrive shortly.
       </AuthNotice>
 
       <p className="mt-6 border-t border-border pt-4 text-center text-[11.5px] text-muted-foreground">

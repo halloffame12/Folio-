@@ -81,7 +81,7 @@ export function DashboardPreview({ className }: { className?: string }) {
             </div>
           </div>
 
-          <p className="mt-3 px-1 font-mono text-[5px] uppercase tracking-[0.16em] text-muted-foreground/60">
+          <p className="mt-3 px-1 font-mono text-[5px] uppercase tracking-[0.16em] text-muted-foreground">
             Workspace
           </p>
           <ul className="mt-1 space-y-px">
@@ -104,7 +104,7 @@ export function DashboardPreview({ className }: { className?: string }) {
               );
             })}
           </ul>
-          <p className="mt-3 px-1 font-mono text-[5px] uppercase tracking-[0.16em] text-muted-foreground/60">
+          <p className="mt-3 px-1 font-mono text-[5px] uppercase tracking-[0.16em] text-muted-foreground">
             Research
           </p>
           <ul className="mt-1 space-y-px">
@@ -195,7 +195,7 @@ export function DashboardPreview({ className }: { className?: string }) {
                       const entry = library.find((item) => item.paperId === paper.id);
                       return (
                         <li key={paper.id} className="flex items-start gap-1.5 px-2 py-1.5">
-                          <span className="mt-px font-mono text-[4.5px] tabular-nums text-muted-foreground/60">
+                          <span className="mt-px font-mono text-[4.5px] tabular-nums text-muted-foreground">
                             {paper.year}
                           </span>
                           <span className="min-w-0 flex-1">
@@ -237,7 +237,7 @@ export function DashboardPreview({ className }: { className?: string }) {
                       />
                     ))}
                   </div>
-                  <div className="mt-1 flex justify-between font-mono text-[4px] uppercase text-muted-foreground/60">
+                  <div className="mt-1 flex justify-between font-mono text-[4px] uppercase text-muted-foreground">
                     <span>Sep</span>
                     <span>Oct</span>
                     <span>Nov</span>
@@ -321,7 +321,7 @@ export function DiscoveryPreview({ className }: { className?: string }) {
             <PreviewLabel>Discovery</PreviewLabel>
             <h3 className="mt-0.5 font-display text-[10px] font-semibold sm:text-[12px]">Discover papers</h3>
             <p className="mt-0.5 text-[5.5px] text-muted-foreground sm:text-[6.5px]">
-              Search the demonstration catalogue of scholarly records.
+              Search Crossref and OpenAlex for scholarly records.
             </p>
           </div>
           <MiniTag tone="forest">20 records</MiniTag>
@@ -397,12 +397,12 @@ export function DiscoveryPreview({ className }: { className?: string }) {
                 if (!paper) return null;
                 return (
                   <li key={paper.id} className="flex items-start gap-2 py-1.5">
-                    <span className="mt-0.5 font-mono text-[4.5px] tabular-nums text-muted-foreground/50">
+                    <span className="mt-0.5 font-mono text-[4.5px] tabular-nums text-muted-foreground">
                       0{index + 1}
                     </span>
                     <div className="min-w-0 flex-1">
                       <div className="flex flex-wrap items-center gap-1 font-mono text-[4.5px] uppercase tracking-[0.06em] text-muted-foreground">
-                        <span className="text-foreground/60">{paper.publicationType}</span>
+                        <span className="text-foreground/75">{paper.publicationType}</span>
                         <span>/</span>
                         <span>{paper.year}</span>
                         <span>/</span>
@@ -420,7 +420,7 @@ export function DiscoveryPreview({ className }: { className?: string }) {
                       <p className="mt-0.5 truncate text-[5px] text-muted-foreground sm:text-[5.5px]">
                         {paper.authors.map((author) => author.name).join(", ")}
                       </p>
-                      <p className="mt-0.5 line-clamp-1 text-[4.8px] leading-relaxed text-muted-foreground/80 sm:text-[5.5px]">
+                      <p className="mt-0.5 line-clamp-1 text-[4.8px] leading-relaxed text-muted-foreground sm:text-[5.5px]">
                         {paper.abstract}
                       </p>
                     </div>
@@ -511,7 +511,7 @@ export function LibraryPreview({ className }: { className?: string }) {
             if (!paper) return null;
             return (
               <li key={entry.id} className="flex items-start gap-2 py-1.5">
-                <span className="mt-0.5 w-5 shrink-0 font-mono text-[4.5px] tabular-nums text-muted-foreground/50">
+                <span className="mt-0.5 w-5 shrink-0 font-mono text-[4.5px] tabular-nums text-muted-foreground">
                   {paper.year}
                 </span>
                 <div className="min-w-0 flex-1">
@@ -547,7 +547,7 @@ export function LibraryPreview({ className }: { className?: string }) {
                       </span>
                     </span>
                   ) : (
-                    <span className="font-mono text-[4px] uppercase text-muted-foreground/60">
+                    <span className="font-mono text-[4px] uppercase text-muted-foreground">
                       Not opened
                     </span>
                   )}
@@ -594,7 +594,7 @@ export function NotesPreview({ className }: { className?: string }) {
                   <span className="line-clamp-2 text-[5px] font-medium leading-tight sm:text-[6px]">
                     {item.title}
                   </span>
-                  <span className="mt-0.5 block font-mono text-[4px] uppercase tracking-wide text-muted-foreground/60">
+                  <span className="mt-0.5 block font-mono text-[4px] uppercase tracking-wide text-muted-foreground">
                     {index === 0 ? "2h ago" : "6h ago"}
                   </span>
                 </span>
@@ -781,7 +781,7 @@ export function ProjectsPreview({ className }: { className?: string }) {
                       {milestone.progress}%
                     </span>
                   </div>
-                  <p className="mt-0.5 font-mono text-[4px] uppercase text-muted-foreground/60">
+                  <p className="mt-0.5 font-mono text-[4px] uppercase text-muted-foreground">
                     Due in {milestone.due}
                   </p>
                 </li>
@@ -830,7 +830,7 @@ export function LiteraturePreview({ className }: { className?: string }) {
                       : "border-transparent text-muted-foreground"
                   )}
                 >
-                  <span className="font-mono text-[4px] tabular-nums text-muted-foreground/60">
+                  <span className="font-mono text-[4px] tabular-nums text-muted-foreground">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <span className="line-clamp-2">{section.title}</span>
@@ -943,10 +943,10 @@ export function GapPreview({ className }: { className?: string }) {
               Research gap explorer
             </h3>
             <p className="mt-0.5 text-[5.5px] text-muted-foreground sm:text-[6.5px]">
-              Topic density and momentum from the demonstration index.
+              Topic density and momentum across your saved corpus.
             </p>
           </div>
-          <MiniTag tone="warning">Demo analysis</MiniTag>
+          <MiniTag tone="forest">Corpus analysis</MiniTag>
         </div>
 
         <div className="mt-2 grid gap-2 sm:grid-cols-[minmax(0,1fr)_150px]">

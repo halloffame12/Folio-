@@ -7,11 +7,11 @@ import { openGraphImage } from "@/lib/metadata";
 export const metadata: Metadata = {
   title: "Documentation",
   description:
-    "How to use the Folio demonstration: sign in, explore discovery, organise your library, write notes, run a literature review, format citations, and understand local data storage.",
+    "How to use Folio: create an account, search Crossref and OpenAlex, organise your library, write research notes, build literature reviews, and manage projects.",
   alternates: { canonical: "/docs" },
   openGraph: {
     title: "Folio documentation",
-    description: "A working guide to the Folio research workspace demonstration.",
+    description: "A working guide to the Folio research workspace.",
     url: "/docs",
     type: "article",
     images: [openGraphImage],
@@ -40,10 +40,10 @@ export default function DocsPage() {
       title={
         <>
           A working guide to the{" "}
-          <span className="font-serif font-normal italic text-primary">demonstration</span>.
+          <span className="font-serif font-normal italic text-primary">research workspace</span>.
         </>
       }
-      lede="Everything below describes behaviour that exists in this build. Where a feature is mocked, planned, or unavailable, the guide says so directly."
+      lede="Everything below describes behaviour that exists in this build. Where a feature has limits, the guide states them directly."
       meta="Last reviewed · November 2026"
       aside={
         <nav aria-label="On this page">
@@ -65,16 +65,13 @@ export default function DocsPage() {
     >
       <ProseSection id="getting-started" title="Getting started">
         <p>
-          The fastest way to see the product is the preloaded workspace at{" "}
-          <Link href="/dashboard">/dashboard</Link>. It contains twenty scholarly records, a library
-          of sixteen saved papers, five collections, nine notes, six projects, and two literature
-          reviews. All of it is fictional demonstration data.
+          Create an account at <Link href="/signup">/signup</Link>. Folio sends a verification
+          email, then opens a personal workspace backed by a PostgreSQL database. Every account sees
+          only its own library, notes, projects, and reviews.
         </p>
         <p>
-          To see the authentication screens, open <Link href="/signin">/signin</Link>. The
-          demonstration account is prefilled by the “Use demo” button. Creating an account at{" "}
-          <Link href="/signup">/signup</Link> stores the new record in this browser only and leads to
-          a simulated email-verification screen.
+          To return later, sign in at <Link href="/signin">/signin</Link>. Sessions are carried in
+          HTTP-only cookies, so signing out ends the session on that browser.
         </p>
       </ProseSection>
 
@@ -88,17 +85,17 @@ export default function DocsPage() {
         <p>
           Press <kbd className="rounded border border-border bg-surface px-1 py-0.5 font-mono text-[10px]">⌘K</kbd>{" "}
           or <kbd className="rounded border border-border bg-surface px-1 py-0.5 font-mono text-[10px]">Ctrl K</kbd>{" "}
-          to open the command palette. It searches pages, papers, and actions in the local
+          to open the command palette. It searches your pages, papers, and actions in the
           workspace.
         </p>
       </ProseSection>
 
       <ProseSection id="discovery" title="Discovery">
         <p>
-          Discovery searches the demonstration catalogue by title, author, abstract, venue, and
-          keyword. Filters cover publication type, publication year, and open access. Each result
-          shows its authors, venue, year, citation count, and keywords, with actions to open the
-          record or save it to the library.
+          Discovery searches Crossref and OpenAlex by title, author, abstract, venue, and
+          keyword. Filters cover publication type, publication year, venue, and open access. Each
+          result shows its authors, venue, year, citation count, and keywords, with actions to open
+          the record or save it to the library.
         </p>
         <p>
           Saving a paper adds a library entry with an unread status and a reading progress of zero.
@@ -114,8 +111,7 @@ export default function DocsPage() {
           group papers around a theme or project and appear in the sidebar when opened.
         </p>
         <p>
-          Reading progress is a manual field in this demonstration. It is not inferred from
-          scrolling or time spent.
+          Reading progress is set manually. It is not inferred from scrolling or time spent.
         </p>
       </ProseSection>
 
@@ -123,11 +119,11 @@ export default function DocsPage() {
         <p>
           Notes are written in a lightweight editor with paragraph, heading, list, and quote
           formatting. Each note can be linked to one or more papers and tagged for retrieval. The
-          note list supports search, and the editor saves changes to the local workspace state.
+          note list supports search, and the editor saves changes to your workspace.
         </p>
         <p>
-          Notes are plain demo content, not a synchronised document. There is no collaborative
-          editing, version history, or server-side backup.
+          Notes belong to your account. Collaborative editing and version history are not
+          available.
         </p>
       </ProseSection>
 
@@ -138,8 +134,8 @@ export default function DocsPage() {
           Milestones track a larger checkpoint with its own progress and assignees.
         </p>
         <p>
-          Status changes and task updates are stored locally. Because the members are fictional,
-          notifications about their activity are also part of the demonstration.
+          Status changes and task updates are stored in the workspace database. Notifications are
+          generated from activity within your projects.
         </p>
       </ProseSection>
 
@@ -147,7 +143,7 @@ export default function DocsPage() {
         <p>
           A review has a title, research question, method, findings, and an ordered set of sections.
           Each section can reference the papers that support it. Progress reflects the drafting
-          state of the review in the demonstration.
+          state of the review.
         </p>
         <p>
           The review does not generate prose. It provides a structure in which you write, with
@@ -162,16 +158,15 @@ export default function DocsPage() {
           Copy the result into your manuscript.
         </p>
         <p>
-          Styles are implemented across the four formats the demonstration claims. Unusual source
-          types may need manual adjustment; the generator does not claim complete style-manual
-          coverage.
+          Styles are implemented across the four formats. Unusual source types may need manual
+          adjustment; the generator does not claim complete style-manual coverage.
         </p>
       </ProseSection>
 
       <ProseSection id="signals" title="Research signals & the gap explorer">
         <p>
-          The gap explorer visualises topic output, recent activity, and momentum from the
-          demonstration index. Selecting a topic shows the papers behind the count and a short
+          The gap explorer visualises topic output, recent activity, and momentum across the papers
+          you have saved. Selecting a topic shows the papers behind the count and a short
           interpretation.
         </p>
         <p>
@@ -184,14 +179,12 @@ export default function DocsPage() {
 
       <ProseSection id="data" title="Data & storage">
         <p>
-          Workspace state is stored in this browser. Theme preference, demo accounts, and the mock
-          session use local or session storage depending on the “keep me signed in” choice. There is
-          no server, database, or analytics pipeline in this build.
+          Your research records are stored in PostgreSQL, hosted on Neon, and are isolated by
+          account. Sessions use HTTP-only cookies. Theme preference is stored in your browser.
         </p>
         <p>
-          Clearing site data for this origin resets the workspace to its shipped demonstration
-          state. Created accounts are removed with it. Do not enter sensitive or unpublished
-          material.
+          Clearing site data resets local preferences; it does not delete records held in your
+          account. Do not enter material you are not permitted to store.
         </p>
       </ProseSection>
 
@@ -204,8 +197,7 @@ export default function DocsPage() {
         </p>
         <p>
           The interface is designed to work without horizontal scrolling from small phone widths
-          upward. If you encounter a barrier, the help page lists the known limits of the
-          demonstration.
+          upward. If you encounter a barrier, the help page lists the known limits.
         </p>
       </ProseSection>
 

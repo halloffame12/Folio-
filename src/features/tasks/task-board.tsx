@@ -655,7 +655,7 @@ function TaskDeleteDialog({
         <AlertDialogHeader>
           <AlertDialogTitle>Delete “{task?.title}”?</AlertDialogTitle>
           <AlertDialogDescription>
-            The task and its comments will be removed from this demonstration workspace.
+            The task and its comments will be removed from this workspace.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>

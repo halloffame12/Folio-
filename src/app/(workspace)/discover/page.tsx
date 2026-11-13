@@ -335,7 +335,7 @@ export default function DiscoverPage() {
           <div className="flex items-baseline gap-2">
             <h2 className="font-display text-[15px] font-semibold">Results</h2>
             <span className="font-mono text-[9.5px] uppercase tracking-wide text-muted-foreground" aria-live="polite">
-              {loading ? "Searching mock index" : `${results.length} records`}
+              {loading ? "Searching Crossref and OpenAlex" : `${results.length} records`}
             </span>
           </div>
           {sort !== "relevance" && (
@@ -354,7 +354,7 @@ export default function DiscoverPage() {
             <EmptyState
               icon={SearchX}
               title="No papers match this search"
-              description="Try a broader keyword, remove the author filter, or widen the publication year range. This demonstration index contains 20 records."
+              description="Try a broader keyword, remove the author filter, or widen the publication year range."
               action={<Button onClick={clearAll}>Reset search</Button>}
             />
           </div>

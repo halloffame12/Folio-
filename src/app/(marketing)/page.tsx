@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import { Hero } from "@/components/marketing/hero";
-import { Positioning } from "@/components/marketing/positioning";
+import { CredibilityStrip } from "@/components/marketing/credibility-strip";
 import { ProblemSection } from "@/components/marketing/problem-section";
 import { FeatureShowcase } from "@/components/marketing/feature-showcase";
 import { HowItWorks } from "@/components/marketing/how-it-works";
-import { Showcase } from "@/components/marketing/showcase";
 import { AudienceSection } from "@/components/marketing/audience-section";
 import { Faq } from "@/components/marketing/faq";
 import { FinalCta } from "@/components/marketing/final-cta";
@@ -15,7 +14,7 @@ export const metadata: Metadata = {
     absolute: "Folio — Academic Research Workspace",
   },
   description:
-    "Discover scholarly papers, organise your library, write connected research notes, build literature reviews, and coordinate projects in one considered academic workspace.",
+    "Discover scholarly papers through Crossref and OpenAlex, organise your library, write connected research notes, build literature reviews, and coordinate projects in one academic workspace.",
   alternates: { canonical: "/" },
   openGraph: {
     title: "Folio — Academic Research Workspace",
@@ -31,11 +30,10 @@ export default function HomePage() {
   return (
     <>
       <Hero />
-      <Positioning />
+      <CredibilityStrip />
       <ProblemSection />
       <FeatureShowcase />
       <HowItWorks />
-      <Showcase />
       <AudienceSection />
       <Faq />
       <FinalCta />

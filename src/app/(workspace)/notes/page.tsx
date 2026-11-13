@@ -550,7 +550,7 @@ export default function NotesPage() {
 
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
         <p className="font-mono text-[9px] uppercase tracking-[0.1em] text-muted-foreground/60">
-          Autosave simulation · drafts stored in this browser
+          Autosave · saved to your account
         </p>
         <div className="flex items-center gap-3 font-mono text-[9px] uppercase tracking-wide text-muted-foreground/60">
           <span>⌘S to save</span>

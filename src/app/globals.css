@@ -20,10 +20,13 @@
     --secondary-foreground: 218 15% 15%;
 
     --muted: 42 19% 90%;
-    --muted-foreground: 213 5% 54%;
+    --muted-foreground: 212 9% 40%;
 
-    --accent: 8 52% 47%;
+    --accent: 8 52% 44%;
     --accent-foreground: 45 40% 98%;
+
+    --inverse: 209 38% 24%;
+    --inverse-foreground: 45 40% 98%;
 
     --destructive: 5 44% 45%;
     --destructive-foreground: 45 40% 98%;
@@ -31,7 +34,7 @@
     --success: 152 24% 34%;
     --success-foreground: 45 40% 98%;
 
-    --warning: 35 51% 44%;
+    --warning: 34 61% 34%;
     --warning-foreground: 45 40% 98%;
 
     --info: 204 33% 40%;
@@ -65,10 +68,13 @@
     --secondary-foreground: 45 22% 93%;
 
     --muted: 210 27% 20%;
-    --muted-foreground: 209 11% 58%;
+    --muted-foreground: 209 12% 64%;
 
     --accent: 11 68% 63%;
     --accent-foreground: 213 19% 11%;
+
+    --inverse: 210 27% 20%;
+    --inverse-foreground: 45 22% 93%;
 
     --destructive: 6 61% 70%;
     --destructive-foreground: 213 19% 11%;
@@ -281,7 +287,64 @@
   /* ---- Public site (Phase 0) ------------------------------------------ */
 
   .marketing-container {
-    @apply mx-auto w-full max-w-[1240px] px-5 sm:px-8 lg:px-10;
+    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-10 xl:px-14;
+  }
+
+  .marketing-eyebrow {
+    @apply font-mono text-[10px] uppercase leading-none tracking-[0.2em] text-muted-foreground;
+  }
+
+  .hero-title {
+    @apply font-display font-semibold;
+    font-size: clamp(2.7rem, 6.4vw, 6.1rem);
+    line-height: 0.94;
+    letter-spacing: -0.05em;
+  }
+
+  .section-display {
+    @apply font-display font-semibold;
+    font-size: clamp(1.85rem, 3.2vw, 2.9rem);
+    line-height: 1.03;
+    letter-spacing: -0.042em;
+  }
+
+  .feature-display {
+    @apply font-display font-semibold;
+    font-size: clamp(1.55rem, 2.5vw, 2.15rem);
+    line-height: 1.08;
+    letter-spacing: -0.038em;
+  }
+
+  .editorial-number {
+    @apply font-serif leading-none text-primary/[0.08];
+    font-size: clamp(4.5rem, 9vw, 8rem);
+    letter-spacing: -0.06em;
+  }
+
+  .href-arrow {
+    @apply inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] transition-colors;
+  }
+
+  .reveal-armed {
+    opacity: 0;
+    transform: translateY(var(--reveal-y, 18px));
+  }
+
+  .reveal-shown {
+    opacity: 1;
+    transform: translateY(0);
+    transition:
+      opacity 550ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 550ms cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal-armed,
+    .reveal-shown {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
   }
 
   .editorial-grid {

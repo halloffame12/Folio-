@@ -369,7 +369,7 @@ export default function ProjectsPage() {
       )}
 
       <p className="mt-4 font-mono text-[9px] uppercase tracking-[0.1em] text-muted-foreground/60">
-        {filtered.length} of {projects.length} projects · Mock programme data
+        {filtered.length} of {projects.length} projects · project records
       </p>
 
       <ProjectFormDialog

@@ -48,7 +48,7 @@ import {
   AlertDialogTitle,
 } from "@/components/ui/alert-dialog";
 import { useWorkspaceStore } from "@/stores/workspace-store";
-import { papers, papersById } from "@/mocks/data";
+import { papers, papersById } from "@/lib/client-registry";
 import { readingStatusConfig } from "@/lib/labels";
 import { relativeTime, cn } from "@/lib/utils";
 import type { Collection, Paper } from "@/types";
@@ -365,7 +365,7 @@ export default function CollectionDetailPage() {
       )}
 
       <p className="mt-4 flex items-center gap-1.5 font-mono text-[9px] uppercase tracking-[0.1em] text-muted-foreground/60">
-        <FileText className="size-3" /> Created {relativeTime(collection.createdAt)} · local mock collection
+        <FileText className="size-3" /> Created {relativeTime(collection.createdAt)} · collection
       </p>
 
       {/* Add papers dialog */}
@@ -383,7 +383,7 @@ export default function CollectionDetailPage() {
           <DialogHeader>
             <DialogTitle>Add papers to “{collection.name}”</DialogTitle>
             <DialogDescription>
-              Choose from your library or the demonstration index. Papers not yet saved will be added
+              Choose from your library or current search results. Papers not yet saved will be added
               to your library automatically.
             </DialogDescription>
           </DialogHeader>

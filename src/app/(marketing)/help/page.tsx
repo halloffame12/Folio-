@@ -16,11 +16,11 @@ import { openGraphImage } from "@/lib/metadata";
 export const metadata: Metadata = {
   title: "Help center",
   description:
-    "Answers to common questions about the Folio demonstration: demo access, accounts, verification, resetting local data, themes, and browser support.",
+    "Answers to common questions about Folio: creating an account, email verification, password reset, data storage, themes, and browser support.",
   alternates: { canonical: "/help" },
   openGraph: {
     title: "Folio help center",
-    description: "Practical answers for the Folio research workspace demonstration.",
+    description: "Practical answers for the Folio research workspace.",
     url: "/help",
     type: "article",
     images: [openGraphImage],
@@ -30,29 +30,29 @@ export const metadata: Metadata = {
 const topics = [
   {
     icon: KeyRound,
-    title: "Getting into the demo",
-    body: "Open /dashboard directly — no account is needed. To see the sign-in state, use the demonstration credentials shown on the sign-in page.",
-    href: "/signin",
-    link: "Open sign in",
+    title: "Create an account",
+    body: "Sign up with your name, email, and a password. Folio sends a verification email; once the address is confirmed, you can sign in to your own workspace.",
+    href: "/signup",
+    link: "Create an account",
   },
   {
     icon: Mail,
-    title: "Verification states",
-    body: "The verification screen can display pending, verified, and expired-link states. Use the demo state buttons to move between them. No email is sent.",
+    title: "Email verification",
+    body: "Registration sends a verification link. If it has expired, request a new one from the verification page. Check your spam folder if it does not arrive.",
     href: "/verify-email",
     link: "Open verification",
   },
   {
     icon: RotateCcw,
     title: "Reset a forgotten password",
-    body: "The reset flow validates the email and shows the confirmation a connected build would display. It does not send a message or change a password.",
+    body: "Enter your email on the reset page. If an account exists, Folio sends a reset link. The confirmation does not reveal whether an address is registered.",
     href: "/forgot-password",
     link: "Open reset flow",
   },
   {
     icon: Database,
-    title: "Clear local demonstration data",
-    body: "Workspace state and demo accounts live in this browser. Clear site data for this origin to restore the shipped demonstration state.",
+    title: "Where your data lives",
+    body: "Records are stored in PostgreSQL and isolated by account. Clearing site data resets local preferences such as the theme, not the research held in your account.",
     href: "/docs#data",
     link: "Read about storage",
   },
@@ -66,7 +66,7 @@ const topics = [
   {
     icon: MonitorSmartphone,
     title: "Browser support",
-    body: "The demonstration targets current versions of Chrome, Edge, Firefox, and Safari. It is responsive from small phone widths upward.",
+    body: "Folio targets current versions of Chrome, Edge, Firefox, and Safari. It is responsive from small phone widths upward.",
     href: "/docs",
     link: "Read documentation",
   },
@@ -80,11 +80,11 @@ export default function HelpPage() {
       title={
         <>
           Practical answers for the{" "}
-          <span className="font-serif font-normal italic text-primary">demonstration</span>.
+          <span className="font-serif font-normal italic text-primary">research workspace</span>.
         </>
       }
-      lede="This build has no staffed support desk, so the help center is deliberately self-service. If an answer is not here, the documentation covers each workspace surface in more detail."
-      meta="Frontend demonstration · No support desk"
+      lede="The help center is self-service. If an answer is not here, the documentation covers each workspace surface in more detail."
+      meta="Self-service support · Last reviewed November 2026"
       aside={
         <div className="flex flex-wrap gap-2 lg:flex-col lg:items-start">
           <Link
@@ -127,37 +127,36 @@ export default function HelpPage() {
         })}
       </div>
 
-      <ProseSection title="Why can't I sign in with a new account?">
+      <ProseSection title="Why can't I sign in after registering?">
         <p>
-          Accounts created through the sign-up form only exist in the browser where they were
-          created. If you clear site data, use a different browser, or open a private window, the
-          account will not be found. The demonstration account always works.
+          Registration does not sign you in until the email address is verified. Open the
+          verification link sent to your inbox, then return to sign in. If the link has expired,
+          request a new one.
         </p>
         <p>
-          The email <strong className="font-semibold text-foreground">mira.srinivasan@northbridge.edu</strong>{" "}
-          is reserved for the demo and cannot be used to register a second account.
+          Make sure you are using the same email address and password that you registered with.
+          Password reset is available from the sign-in screen.
         </p>
       </ProseSection>
 
-      <ProseSection title="Why does the app say it is a demonstration?">
+      <ProseSection title="Who can see my workspace?">
         <p>
-          Because it is one. Labels are shown wherever a real product would imply a server, a live
-          integration, or a security guarantee. Those labels are not legal boilerplate; they mark the
-          boundary between interface demonstration and production service.
+          A workspace belongs to one account. Library records, notes, reviews, and projects are
+          returned only for the authenticated user; other accounts cannot browse them. Projects you
+          create can include invited members, who then see the material attached to that project.
         </p>
       </ProseSection>
 
       <ProseSection title="Something looks broken. What now?">
         <p>
-          First, reload the page. If the workspace appears empty, clear the site data and reload to
-          restore the seeded demonstration state. If a page still fails, the error boundary offers a
-          reset; the demonstration does not report errors to a remote service.
+          First, reload the page. If a page still fails, the error boundary offers a reset. Check
+          that you are signed in and that your connection can reach the application.
         </p>
         <p className="flex items-start gap-2 rounded border border-dashed border-border bg-surface/40 p-3.5 text-[11.5px]">
           <CircleHelp className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
           <span>
-            There is no monitored inbox or support queue for this project. The help page is the
-            complete support surface.
+            There is no monitored inbox or support queue for this project. The help page and
+            documentation are the support surface.
           </span>
         </p>
       </ProseSection>

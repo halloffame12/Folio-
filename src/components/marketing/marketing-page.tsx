@@ -43,7 +43,7 @@ export function MarketingPage({
               <h1 className="display-lg max-w-[760px] text-balance">{title}</h1>
               {lede ? <p className="editorial-lede mt-4 max-w-[620px]">{lede}</p> : null}
               {meta ? (
-                <p className="mt-5 font-mono text-[8px] uppercase tracking-[0.14em] text-muted-foreground/60">
+                <p className="mt-5 font-mono text-[8px] uppercase tracking-[0.14em] text-muted-foreground">
                   {meta}
                 </p>
               ) : null}
@@ -57,10 +57,10 @@ export function MarketingPage({
           {aside ?? (
             <div className="flex flex-wrap gap-2 lg:flex-col lg:items-start">
               <Link
-                href="/dashboard"
+                href="/features"
                 className="inline-flex items-center gap-1 rounded border border-border bg-card px-2.5 py-1.5 font-mono text-[8px] uppercase tracking-[0.13em] text-foreground/75 transition-colors hover:border-primary/30 hover:text-primary"
               >
-                Open demo <ArrowUpRight className="size-2.5" aria-hidden />
+                Explore features <ArrowUpRight className="size-2.5" aria-hidden />
               </Link>
               <Link
                 href="/signup"

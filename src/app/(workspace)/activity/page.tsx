@@ -227,7 +227,7 @@ export default function ActivityPage() {
             <EmptyState
               icon={query || kind !== "all" || projectId !== "all" || actorId !== "all" ? SearchX : ActivityIcon}
               title="No activity matches this view"
-              description="Try a wider date, person, or project selection. The activity feed is seeded with demonstration events."
+              description="Try a wider date, person, or project selection."
               action={
                 <Button
                   variant="outline"
@@ -383,7 +383,7 @@ export default function ActivityPage() {
       </div>
 
       <p className="mt-4 font-mono text-[9px] uppercase tracking-[0.08em] text-muted-foreground/60">
-        {filtered.length} of {activity.length} events · seeded demonstration activity · changes save locally
+        {filtered.length} of {activity.length} events · activity log
       </p>
     </div>
   );

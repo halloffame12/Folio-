@@ -35,7 +35,7 @@ const features = [
     index: "01",
     icon: Compass,
     title: "Paper discovery",
-    body: "Search a demonstration catalogue by title, author, abstract, venue, and keyword. Filter by publication type, year, and open access, then save a result directly into a collection.",
+    body: "Search Crossref and OpenAlex by title, author, abstract, venue, and keyword. Filter by publication type, year, and open access, then save a result directly into a collection.",
     points: ["Full-text style search across records", "Publication type and year filters", "Open-access filter", "Save to library"],
     href: "/discover",
   },
@@ -52,7 +52,7 @@ const features = [
     icon: NotebookPen,
     title: "Research notes",
     body: "Write reading memos, quotes, and open questions next to the sources they came from. Notes remain linked to one or more papers and can be tagged for later retrieval.",
-    points: ["Notes linked to papers", "Quotes and blockquotes", "Tag-based retrieval", "Autosave in the workspace"],
+    points: ["Notes linked to papers", "Quotes and blockquotes", "Tag-based retrieval", "Autosave to your account"],
     href: "/notes",
   },
   {
@@ -75,7 +75,7 @@ const features = [
     index: "06",
     icon: ScanSearch,
     title: "Research signals",
-    body: "Inspect topic density and recent momentum from the demonstration index. Signals are framed as potential opportunities, with the supporting evidence and the limits of the reading made explicit.",
+    body: "Inspect topic density and recent momentum across the papers you have saved. Signals are framed as potential opportunities, with the supporting evidence and the limits of the reading made explicit.",
     points: ["Topic output and recency", "Momentum indicators", "Evidence lists", "Explicit caution against over-reading"],
     href: "/research-gaps",
   },
@@ -95,16 +95,16 @@ const absent = [
     body: "There is no generated prose, summarisation, or automated synthesis in this build. The researcher writes the argument.",
   },
   {
-    title: "No live scholarly index",
-    body: "Discovery searches live scholarly databases including Crossref and OpenAlex. Results use real metadata from external sources.",
+    title: "No proprietary index",
+    body: "Discovery queries Crossref and OpenAlex rather than an in-house catalogue. Coverage and availability depend on those external services.",
   },
   {
-    title: "No real email or backend",
-    body: "Registration, verification, and password reset are simulated in the browser. Nothing is transmitted to a server.",
+    title: "No file storage",
+    body: "Folio keeps bibliographic metadata, links, and your notes. It does not accept uploaded PDFs or store full-text files.",
   },
   {
-    title: "No claimed integrations",
-    body: "There are no partnerships or connectors. Planned work is labelled as planned, and nothing is presented as live.",
+    title: "No institutional tie-ins",
+    body: "There are no university partnerships, SSO connectors, or publisher agreements. Nothing on the site implies endorsement by an institution.",
   },
 ];
 
@@ -120,14 +120,14 @@ export default function FeaturesPage() {
         </>
       }
       lede="Folio is a set of seven surfaces that share the same sources, notes, and project context. Each one is useful alone; together they preserve the thread between evidence and argument."
-      meta="Frontend demonstration · All records fictional"
+      meta="Research workspace · Seven connected surfaces"
       aside={
         <div className="flex flex-wrap gap-2 lg:flex-col lg:items-start">
           <Link
-            href="/dashboard"
+            href="/signup"
             className="inline-flex items-center gap-1 rounded border border-border bg-card px-2.5 py-1.5 font-mono text-[8px] uppercase tracking-[0.13em] text-foreground/75 transition-colors hover:border-primary/30 hover:text-primary"
           >
-            Open the demo <ArrowUpRight className="size-2.5" aria-hidden />
+            Create an account <ArrowUpRight className="size-2.5" aria-hidden />
           </Link>
           <Link
             href="/docs"
@@ -168,7 +168,7 @@ export default function FeaturesPage() {
                   href={feature.href}
                   className="mt-auto inline-flex items-center gap-1.5 pt-4 font-mono text-[8px] uppercase tracking-[0.13em] text-primary transition-colors hover:text-primary/75"
                 >
-                  Open in demo <ArrowUpRight className="size-2.5" aria-hidden />
+                  Open workspace <ArrowUpRight className="size-2.5" aria-hidden />
                 </Link>
               </article>
             </Reveal>
@@ -179,8 +179,8 @@ export default function FeaturesPage() {
       <ProseSection title="What this build deliberately leaves out">
         <p>
           A feature list is only honest if it also states its boundaries. These capabilities are not
-          present in the demonstration, and nothing in the interface should be read as a promise
-          that they are.
+          present in this build, and nothing in the interface should be read as a promise that they
+          are.
         </p>
         <div className="not-prose mt-4 grid gap-3 sm:grid-cols-2">
           {absent.map((item) => (

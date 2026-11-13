@@ -702,7 +702,7 @@ export default function LibraryPage() {
       )}
 
       <p className="mt-4 font-mono text-[9px] uppercase tracking-[0.1em] text-muted-foreground/60">
-        {filtered.length} records shown · {rows.length} saved · mock library
+        {filtered.length} records shown · {rows.length} saved · library
       </p>
     </div>
   );

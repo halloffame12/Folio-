@@ -20,7 +20,7 @@ export function PreviewFrame({
 }) {
   return (
     <figure className={cn("m-0 min-w-0", className)}>
-      <div aria-hidden className="overflow-hidden rounded-md border border-border bg-card shadow-float">
+      <div aria-hidden className="overflow-hidden border border-border bg-card">
         <div className="flex h-8 items-center gap-2 border-b border-border bg-surface/70 px-2.5 sm:px-3">
           <span className="flex items-center gap-1.5">
             <LogoMark className="size-4" />

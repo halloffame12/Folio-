@@ -14,8 +14,8 @@ export function LogoMark({
   title?: string;
   inverse?: boolean;
 }) {
-  const panel = inverse ? "hsl(var(--primary-foreground))" : "hsl(var(--primary))";
-  const ink = inverse ? "hsl(var(--primary))" : "hsl(var(--primary-foreground))";
+  const panel = inverse ? "hsl(var(--inverse-foreground))" : "hsl(var(--primary))";
+  const ink = inverse ? "hsl(var(--inverse))" : "hsl(var(--primary-foreground))";
   return (
     <svg
       viewBox="0 0 32 32"
@@ -72,7 +72,7 @@ export function Wordmark({
       <span
         className={cn(
           "font-display text-[17px] font-semibold tracking-[-0.04em]",
-          inverse && "text-primary-foreground"
+          inverse && "text-inverse-foreground"
         )}
       >
         Folio
@@ -81,7 +81,7 @@ export function Wordmark({
         <span
           className={cn(
             "mt-1 truncate font-mono text-[8px] uppercase tracking-[0.18em] text-muted-foreground",
-            inverse && "text-primary-foreground/55"
+            inverse && "text-inverse-foreground/70"
           )}
         >
           {subtitle}

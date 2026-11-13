@@ -1,20 +1,14 @@
 import Link from "next/link";
 import { ArrowUpRight, BookOpen, FlaskConical, Library } from "lucide-react";
 import { Reveal } from "@/components/marketing/reveal";
-import { SectionIntro } from "@/components/marketing/section-intro";
 
 const groups = [
   {
     index: "01",
     icon: BookOpen,
-    kicker: "For the individual researcher",
+    kicker: "Individual researchers",
     title: "A place for the reading and the thinking.",
-    body: "Whether you are writing a dissertation chapter or an independent paper, the work depends on holding a large body of reading in a usable form. Folio keeps the library, the notes, and the review together.",
-    list: [
-      "A library organised by project, not just by author",
-      "Reading memos attached to the source",
-      "Citation output in four common styles",
-    ],
+    body: "For a dissertation chapter or an independent paper, the work depends on holding a large body of reading in a usable form. Folio keeps the library, the notes, and the review together.",
     links: [
       { href: "/library", label: "Library" },
       { href: "/notes", label: "Notes" },
@@ -23,30 +17,20 @@ const groups = [
   {
     index: "02",
     icon: FlaskConical,
-    kicker: "For the research team",
+    kicker: "Research teams",
     title: "Shared context, without shared chaos.",
-    body: "A team needs more than a shared drive. It needs to know which evidence is in play, who is responsible for the next step, and how close the project is to its next milestone.",
-    list: [
-      "Projects with members, tasks, and milestones",
-      "Collections that the whole team can read",
-      "Review progress visible to co-authors",
-    ],
+    body: "A team needs to know which evidence is in play, who owns the next step, and how close the project is to its next milestone. Projects, tasks, and reviews keep that visible.",
     links: [
       { href: "/projects", label: "Projects" },
-      { href: "/literature", label: "Literature reviews" },
+      { href: "/literature", label: "Reviews" },
     ],
   },
   {
     index: "03",
     icon: Library,
-    kicker: "For departments & research support",
+    kicker: "Departments & research support",
     title: "Make research practice legible.",
-    body: "Supervisors, subject librarians, and research support staff are often asked to help without a view of the work itself. A structured workspace gives support a concrete place to begin.",
-    list: [
-      "Reusable reading lists for cohorts",
-      "Transparent research signals with caveats",
-      "A consistent structure across projects",
-    ],
+    body: "Supervisors and subject librarians are often asked to help without a view of the work itself. A structured workspace gives support a concrete place to begin.",
     links: [
       { href: "/features", label: "Features" },
       { href: "/about", label: "About Folio" },
@@ -56,71 +40,65 @@ const groups = [
 
 export function AudienceSection() {
   return (
-    <section
-      id="audiences"
-      aria-labelledby="audiences-heading"
-      className="border-b border-border bg-surface/30"
-    >
+    <section id="audiences" aria-labelledby="audiences-heading" className="border-b border-border">
       <div className="marketing-container py-16 sm:py-20 lg:py-24">
         <Reveal>
-          <SectionIntro
-            index="07"
-            label="Audience"
-            title={
-              <span id="audiences-heading">
-                One product, three{" "}
-                <span className="font-serif font-normal italic text-accent">working</span> contexts.
+          <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
+            <div className="flex items-start gap-2.5 lg:col-span-3 lg:flex-col lg:gap-2">
+              <span className="font-mono text-[10px] tabular-nums tracking-[0.18em] text-accent">
+                08
               </span>
-            }
-            lede="The same workspace serves a solo dissertation, a funded lab, and a department reading group. What changes is the scale of coordination, not the underlying structure of the work."
-          />
+              <span className="marketing-eyebrow">Who it is for</span>
+            </div>
+            <div className="lg:col-span-9">
+              <h2 id="audiences-heading" className="section-display max-w-[820px]">
+                One product, three{" "}
+                <span className="font-serif font-normal italic text-primary">working</span> contexts.
+              </h2>
+              <p className="mt-5 max-w-[560px] text-[14px] leading-[1.75] text-muted-foreground">
+                The same workspace serves a solo dissertation, a funded lab, and a department
+                reading group. What changes is the scale of coordination, not the structure of the
+                work.
+              </p>
+            </div>
+          </div>
         </Reveal>
 
-        <div className="mt-12 divide-y divide-border border-y border-border">
+        <div className="mt-12 border-t-2 border-foreground/80">
           {groups.map((group, index) => {
             const Icon = group.icon;
             return (
-              <Reveal key={group.index} delay={index * 0.05}>
-                <article className="grid gap-5 py-8 lg:grid-cols-[180px_minmax(0,1fr)_240px] lg:gap-10 lg:py-10">
-                  <div className="flex items-start gap-3 lg:flex-col lg:gap-3">
-                    <span className="flex size-8 shrink-0 items-center justify-center rounded-[3px] border border-border bg-card text-primary">
+              <Reveal key={group.index} delay={index * 0.04}>
+                <article className="grid gap-5 border-b border-border py-7 lg:grid-cols-12 lg:items-start lg:gap-8 lg:py-8">
+                  <div className="flex items-baseline gap-3 lg:col-span-3">
+                    <span className="font-mono text-[9px] tabular-nums tracking-[0.16em] text-accent">
+                      {group.index}
+                    </span>
+                    <span className="flex size-8 items-center justify-center border border-border bg-surface/50 text-primary">
                       <Icon className="size-4" aria-hidden />
                     </span>
-                    <div>
-                      <p className="font-mono text-[8.5px] tabular-nums tracking-[0.16em] text-accent">
-                        {group.index}
-                      </p>
-                      <p className="mt-1 font-mono text-[8px] uppercase leading-relaxed tracking-[0.13em] text-muted-foreground">
-                        {group.kicker}
-                      </p>
-                    </div>
+                    <span className="font-mono text-[8.5px] uppercase leading-relaxed tracking-[0.13em] text-muted-foreground">
+                      {group.kicker}
+                    </span>
                   </div>
 
-                  <div>
-                    <h3 className="font-display text-[21px] font-semibold leading-tight tracking-[-0.025em] sm:text-[23px]">
+                  <div className="lg:col-span-6">
+                    <h3 className="font-display text-[20px] font-semibold leading-tight tracking-[-0.03em] sm:text-[22px]">
                       {group.title}
                     </h3>
-                    <p className="mt-2 max-w-[540px] text-[12.5px] leading-[1.75] text-muted-foreground">
+                    <p className="mt-2 max-w-[560px] text-[12.5px] leading-[1.75] text-muted-foreground">
                       {group.body}
                     </p>
-                    <ul className="mt-4 flex flex-wrap gap-x-5 gap-y-1.5">
-                      {group.list.map((item) => (
-                        <li key={item} className="flex items-center gap-2 text-[11px] text-foreground/70">
-                          <span className="block size-1 bg-accent" aria-hidden />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
                   </div>
 
-                  <div className="flex flex-wrap items-start gap-2 lg:justify-end">
+                  <div className="flex flex-wrap items-start gap-2 lg:col-span-3 lg:justify-end">
                     {group.links.map((link) => (
                       <Link
                         key={link.href}
                         href={link.href}
-                        className="inline-flex items-center gap-1 rounded border border-border bg-card px-2.5 py-1.5 font-mono text-[8px] uppercase tracking-[0.13em] text-foreground/75 transition-colors hover:border-primary/30 hover:text-primary"
+                        className="inline-flex items-center gap-1.5 border-b border-foreground/20 py-1 text-[11px] font-medium text-foreground/75 transition-colors hover:border-foreground hover:text-foreground"
                       >
-                        {link.label} <ArrowUpRight className="size-2.5" aria-hidden />
+                        {link.label} <ArrowUpRight className="size-3" aria-hidden />
                       </Link>
                     ))}
                   </div>

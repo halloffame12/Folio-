@@ -26,7 +26,7 @@ import {
 import { toast } from "sonner";
 import type { ProjectMember, WorkspaceRole } from "@/types";
 import { useWorkspaceStore } from "@/stores/workspace-store";
-import { papersById, usersById } from "@/mocks/data";
+import { papersById, usersById } from "@/lib/client-registry";
 import { memberProfile } from "@/lib/members";
 import { milestoneStatusConfig, projectStatusConfig } from "@/lib/labels";
 import { daysUntil, formatDate, relativeTime, wordCount, cn } from "@/lib/utils";
@@ -163,7 +163,7 @@ export default function ProjectDetailPage() {
           backLabel="All projects"
           eyebrow="Not found"
           title="This project is unavailable"
-          description="It may have been removed from this demonstration workspace, or the link is incomplete."
+          description="It may have been removed from this workspace, or the link is incomplete."
         />
         <EmptyState
           icon={FolderKanban}
@@ -885,7 +885,7 @@ export default function ProjectDetailPage() {
           </div>
 
           <p className="mt-2 font-mono text-[9px] uppercase tracking-[0.08em] text-muted-foreground/60">
-            Invitation emails are simulated · roles apply immediately in this browser
+            Invitation emails are sent to the address provided.
           </p>
         </TabsContent>
 

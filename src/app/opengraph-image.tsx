@@ -29,7 +29,7 @@ export default function OpenGraphImage() {
             inset: 0,
             display: "flex",
             backgroundImage:
-              "linear-gradient(to right, rgba(53,76,67,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(53,76,67,0.06) 1px, transparent 1px)",
+              "linear-gradient(to right, rgba(38,62,84,0.08) 1px, transparent 1px), linear-gradient(to bottom, rgba(38,62,84,0.06) 1px, transparent 1px)",
             backgroundSize: "72px 72px",
           }}
         />
@@ -57,7 +57,7 @@ export default function OpenGraphImage() {
                 fontSize: 11,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                color: "#858A90",
+                color: "#5D6670",
               }}
             >
               Research workspace
@@ -97,7 +97,7 @@ export default function OpenGraphImage() {
               marginTop: 24,
               fontSize: 22,
               lineHeight: 1.5,
-              color: "#5F665F",
+              color: "#5D6670",
               display: "flex",
             }}
           >
@@ -112,7 +112,7 @@ export default function OpenGraphImage() {
             alignItems: "center",
             borderTop: "1px solid #D9D8D2",
             paddingTop: 20,
-            color: "#858A90",
+            color: "#5D6670",
             fontSize: 12,
             letterSpacing: "0.16em",
             textTransform: "uppercase",
@@ -120,7 +120,7 @@ export default function OpenGraphImage() {
           }}
         >
           <span>Discover · Organise · Collaborate · Understand</span>
-          <span>Frontend demonstration</span>
+          <span>Academic research workspace</span>
         </div>
       </div>
     ),

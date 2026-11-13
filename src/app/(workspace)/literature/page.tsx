@@ -334,7 +334,7 @@ export default function LiteraturePage() {
                 <Plus /> Manage sources
               </Button>
               <p className="mt-2 font-mono text-[8px] uppercase leading-relaxed tracking-wide text-muted-foreground/60">
-                Demo review · writing saves locally
+                Draft review · saves to your account
               </p>
             </div>
           </aside>
@@ -544,7 +544,7 @@ export default function LiteraturePage() {
       </div>
 
       <div className="mt-3 flex flex-wrap items-center justify-between gap-2 font-mono text-[9px] uppercase tracking-[0.08em] text-muted-foreground/60">
-        <span>Demo review · autosave writes to this browser only</span>
+        <span>Draft review · autosave saves to your account</span>
         <span>{outline.length} sections · {completedSections} substantially drafted</span>
       </div>
 

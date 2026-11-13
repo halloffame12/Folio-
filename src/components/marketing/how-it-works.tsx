@@ -1,110 +1,113 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { Reveal } from "@/components/marketing/reveal";
-import { SectionIntro } from "@/components/marketing/section-intro";
+import { cn } from "@/lib/utils";
 
 const steps = [
   {
     index: "01",
     label: "Discover",
-    title: "Start with the literature.",
-    body: "Search the catalogue, read abstracts, and save the records that belong in the project. Filters keep the search honest rather than merely broad.",
-    detail: "Discovery → Library",
+    title: "Find relevant literature.",
+    body: "Search Crossref and OpenAlex, read abstracts, and save the records that belong in the project. Filters keep the search honest rather than merely broad.",
   },
   {
     index: "02",
-    label: "Organise",
-    title: "Give the sources a structure.",
-    body: "Group papers into collections, attach reading notes, and mark what is still unread. The library becomes a map of the reading, not a growing pile.",
-    detail: "Collections → Notes",
+    label: "Collect",
+    title: "Save and organise your library.",
+    body: "Group papers into collections, add tags, track reading state, and write notes against the source. The library becomes a map of the reading.",
   },
   {
     index: "03",
-    label: "Synthesise",
-    title: "Draft the review around evidence.",
-    body: "Build a review outline, link sections to the papers they depend on, and keep method and findings beside the prose. Claims stay traceable while you write.",
-    detail: "Literature → Citations",
+    label: "Connect",
+    title: "Build the argument.",
+    body: "Organise evidence into review sections. Each claim keeps a path back to the paper and note it came from.",
   },
   {
     index: "04",
-    label: "Coordinate",
-    title: "Move the project with your team.",
-    body: "Assign tasks, track milestones, and share the same context. Progress is visible in the workspace instead of reconstructed in conversation.",
-    detail: "Projects → Milestones",
+    label: "Progress",
+    title: "Move the project forward.",
+    body: "Assign tasks, track milestones, and share the same context with collaborators. Progress is visible in the workspace.",
   },
 ];
 
 export function HowItWorks() {
   return (
     <section
-      id="how-it-works"
-      aria-labelledby="how-it-works-heading"
-      className="relative border-b border-border bg-surface/30"
+      id="workflow"
+      aria-labelledby="workflow-heading"
+      className="relative overflow-hidden border-b border-border"
     >
-      <div className="marketing-container py-16 sm:py-20 lg:py-24">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute right-6 top-2 hidden select-none lg:block xl:right-10 xl:top-3"
+      >
+        <span className="editorial-number block pt-4">04</span>
+      </div>
+
+      <div className="marketing-container relative py-16 sm:py-20 lg:py-24">
         <Reveal>
-          <SectionIntro
-            index="05"
-            label="How it works"
-            title={
-              <span id="how-it-works-heading">
-                Four movements, one{" "}
-                <span className="font-serif font-normal italic text-accent">continuous</span> project.
+          <div className="grid gap-6 lg:grid-cols-12 lg:gap-10">
+            <div className="flex items-start gap-2.5 lg:col-span-3 lg:flex-col lg:gap-2">
+              <span className="font-mono text-[10px] tabular-nums tracking-[0.18em] text-accent">
+                07
               </span>
-            }
-            lede="Folio follows the arc of a research project rather than the shape of a filing system. You can enter at any stage; the workspace keeps the earlier work in view."
-          />
+              <span className="marketing-eyebrow">Workflow</span>
+            </div>
+            <div className="lg:col-span-9">
+              <h2 id="workflow-heading" className="section-display max-w-[820px]">
+                Four movements.{" "}
+                <span className="font-serif font-normal italic text-primary">
+                  One continuous project.
+                </span>
+              </h2>
+              <p className="mt-5 max-w-[560px] text-[14px] leading-[1.75] text-muted-foreground">
+                Folio follows the arc of a research project rather than the shape of a filing
+                system. Enter at any stage; the earlier work stays in view.
+              </p>
+            </div>
+          </div>
         </Reveal>
 
-        <div className="mt-12">
-          <div className="grid gap-px overflow-hidden rounded-md border border-border bg-border md:grid-cols-2 xl:grid-cols-4">
+        <Reveal delay={0.05}>
+          <ol className="mt-12 grid border-t-2 border-foreground/80 sm:grid-cols-2 xl:grid-cols-4">
             {steps.map((step, index) => (
-              <Reveal key={step.index} delay={index * 0.06} className="h-full">
-                <div className="relative flex h-full flex-col bg-background p-6 lg:p-7">
-                  <span
-                    aria-hidden
-                    className="pointer-events-none absolute right-4 top-3 font-serif text-[54px] leading-none tracking-[-0.06em] text-primary/[0.07]"
-                  >
+              <li
+                key={step.index}
+                className={cn(
+                  "relative border-b border-border py-7 xl:border-b-0 xl:border-r xl:px-6 xl:py-8",
+                  index % 2 === 1 && "xl:pt-14",
+                  index === steps.length - 1 && "xl:border-r-0 xl:pr-0"
+                )}
+              >
+                <div className="flex items-baseline justify-between gap-3">
+                  <span className="font-serif text-[clamp(3.5rem,5vw,5.25rem)] leading-none tracking-[-0.06em] text-foreground">
                     {step.index}
                   </span>
-                  <div className="flex items-center gap-2">
-                    <span className="flex size-6 items-center justify-center rounded-[3px] border border-primary/20 bg-primary/[0.06] font-mono text-[8.5px] tabular-nums text-primary">
-                      {step.index}
-                    </span>
-                    <span className="font-mono text-[8.5px] uppercase tracking-[0.16em] text-muted-foreground">
-                      {step.label}
-                    </span>
-                  </div>
-                  <h3 className="mt-4 font-display text-[17px] font-semibold leading-snug tracking-[-0.02em]">
-                    {step.title}
-                  </h3>
-                  <p className="mt-2 flex-1 text-[12px] leading-[1.7] text-muted-foreground">
-                    {step.body}
-                  </p>
-                  <p className="mt-5 border-t border-border pt-3 font-mono text-[7.5px] uppercase tracking-[0.13em] text-muted-foreground/60">
-                    {step.detail}
-                  </p>
+                  <span className="h-px flex-1 bg-border" aria-hidden />
                 </div>
-              </Reveal>
+                <p className="mt-4 font-mono text-[9px] uppercase tracking-[0.18em] text-accent">
+                  {step.label}
+                </p>
+                <h3 className="mt-2 font-display text-[16px] font-semibold leading-snug tracking-[-0.02em]">
+                  {step.title}
+                </h3>
+                <p className="mt-2 text-[12px] leading-[1.7] text-muted-foreground">{step.body}</p>
+              </li>
             ))}
-          </div>
+          </ol>
+        </Reveal>
 
-          <Reveal className="mt-8">
-            <div className="flex flex-col gap-3 rounded border border-dashed border-border bg-background/70 px-5 py-4 sm:flex-row sm:items-center sm:justify-between">
-              <p className="max-w-[620px] text-[12px] leading-relaxed text-muted-foreground">
-                <span className="font-medium text-foreground/85">No migration required.</span>{" "}
-                The workspace includes sample data so you can see the
-                whole arc before entering anything of your own.
-              </p>
-              <Link
-                href="/dashboard"
-                className="inline-flex shrink-0 items-center gap-1.5 font-mono text-[8.5px] uppercase tracking-[0.14em] text-primary transition-colors hover:text-primary/75"
-              >
-                Walk through the demo <ArrowRight className="size-3" aria-hidden />
-              </Link>
-            </div>
-          </Reveal>
-        </div>
+        <Reveal delay={0.08}>
+          <div className="mt-8 flex flex-col gap-3 border-t border-border pt-5 sm:flex-row sm:items-center sm:justify-between">
+            <p className="max-w-[620px] text-[12px] leading-relaxed text-muted-foreground">
+              <span className="font-medium text-foreground/85">No migration required.</span> Start
+              with an empty workspace, or add papers as your reading develops.
+            </p>
+            <Link href="/signup" className="href-arrow shrink-0 text-primary hover:text-primary/75">
+              Create your workspace <ArrowRight className="size-3.5" aria-hidden />
+            </Link>
+          </div>
+        </Reveal>
       </div>
     </section>
   );

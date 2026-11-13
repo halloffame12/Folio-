@@ -34,7 +34,7 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
         </main>
 
         <footer className="border-t border-border/70 px-5 py-4 sm:px-8 lg:px-12">
-          <div className="mx-auto flex max-w-[452px] flex-wrap items-center justify-between gap-2 font-mono text-[8.5px] uppercase tracking-[0.12em] text-muted-foreground/70">
+          <div className="mx-auto flex max-w-[452px] flex-wrap items-center justify-between gap-2 font-mono text-[8.5px] uppercase tracking-[0.12em] text-muted-foreground">
             <span>Folio · Research workspace</span>
             <span className="flex items-center gap-3">
               <Link href="/privacy" className="transition-colors hover:text-foreground">
@@ -48,13 +48,13 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
         </footer>
       </div>
 
-      <aside className="relative hidden min-h-dvh overflow-hidden border-l border-primary/20 bg-primary text-primary-foreground lg:sticky lg:top-0 lg:flex lg:h-dvh lg:flex-col lg:justify-between lg:px-11 lg:py-10 xl:px-14">
+      <aside className="relative hidden min-h-dvh overflow-hidden border-l border-inverse/20 bg-inverse text-inverse-foreground lg:sticky lg:top-0 lg:flex lg:h-dvh lg:flex-col lg:justify-between lg:px-11 lg:py-10 xl:px-14">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 opacity-[0.13]"
           style={{
             backgroundImage:
-              "linear-gradient(to right, hsl(var(--primary-foreground)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--primary-foreground)) 1px, transparent 1px)",
+              "linear-gradient(to right, hsl(var(--inverse-foreground)) 1px, transparent 1px), linear-gradient(to bottom, hsl(var(--inverse-foreground)) 1px, transparent 1px)",
             backgroundSize: "56px 56px",
           }}
         />
@@ -62,7 +62,7 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
         <svg
           aria-hidden
           viewBox="0 0 220 220"
-          className="pointer-events-none absolute -right-16 -top-16 size-[300px] text-primary-foreground/20"
+          className="pointer-events-none absolute -right-16 -top-16 size-[300px] text-inverse-foreground/20"
         >
           <circle cx="110" cy="110" r="108" fill="none" stroke="currentColor" strokeWidth="0.8" />
           <circle cx="110" cy="110" r="74" fill="none" stroke="currentColor" strokeWidth="0.8" />
@@ -75,50 +75,50 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
         />
 
         <div className="relative flex items-center justify-between">
-          <span className="font-mono text-[8.5px] uppercase tracking-[0.2em] text-primary-foreground/55 dark:text-primary-foreground/80">
+          <span className="font-mono text-[8.5px] uppercase tracking-[0.2em] text-inverse-foreground/80">
             Vol. 01 · Research workspace
           </span>
           <LogoMark inverse className="size-8" />
         </div>
 
         <div className="relative max-w-[430px] py-12">
-          <p className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] text-accent dark:text-[hsl(18_58%_22%)]">
+          <p className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.2em] text-inverse-foreground/80">
             <span className="inline-block size-1.5 bg-accent" aria-hidden />
             The shape of research work
           </p>
           <p className="mt-6 font-serif text-[36px] leading-[1.05] tracking-[-0.02em] xl:text-[42px]">
             A quieter place for{" "}
-            <em className="italic text-accent dark:text-[hsl(18_58%_22%)]">serious</em> research.
+            <em className="italic text-inverse-foreground/85">serious</em> research.
           </p>
-          <p className="mt-6 max-w-[360px] text-[13px] leading-[1.75] text-primary-foreground/70 dark:text-primary-foreground/85">
+          <p className="mt-6 max-w-[360px] text-[13px] leading-[1.75] text-inverse-foreground/85">
             Papers, notes, projects, and literature reviews — held together in one
             considered workspace, so the work itself gets more room.
           </p>
         </div>
 
         <div className="relative">
-          <ol className="border-y border-primary-foreground/15">
+          <ol className="border-y border-inverse-foreground/15">
             {capabilities.map((item) => (
               <li
                 key={item.index}
-                className="grid grid-cols-[32px_minmax(0,1fr)_auto] items-baseline gap-3 border-b border-primary-foreground/10 py-3 last:border-0"
+                className="grid grid-cols-[32px_minmax(0,1fr)_auto] items-baseline gap-3 border-b border-inverse-foreground/10 py-3 last:border-0"
               >
-                <span className="font-mono text-[9px] tabular-nums text-primary-foreground/40 dark:text-primary-foreground/70">
+                <span className="font-mono text-[9px] tabular-nums text-inverse-foreground/80">
                   {item.index}
                 </span>
                 <span className="font-display text-[13px] font-medium tracking-[-0.01em]">
                   {item.label}
                 </span>
-                <span className="hidden text-right text-[10.5px] text-primary-foreground/50 dark:text-primary-foreground/75 xl:block">
+                <span className="hidden text-right text-[10.5px] text-inverse-foreground/85 xl:block">
                   {item.detail}
                 </span>
               </li>
             ))}
           </ol>
-          <p className="mt-5 font-mono text-[8px] uppercase leading-relaxed tracking-[0.16em] text-primary-foreground/40 dark:text-primary-foreground/75">
-            Frontend demonstration · Mock scholarship
+          <p className="mt-5 font-mono text-[8px] uppercase leading-relaxed tracking-[0.16em] text-inverse-foreground/80">
+            Live product · Real scholarly search
             <br />
-            No live services or emails
+            Secure session authentication
           </p>
         </div>
       </aside>

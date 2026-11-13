@@ -149,7 +149,7 @@ export default function CitationsPage() {
     const text = [
       `Folio bibliography — ${citationStyleLabels[style]}`,
       `Generated ${formatDate(new Date(), { month: "long", day: "numeric", year: "numeric" })}`,
-      "Demonstration data — verify all references before submission.",
+      "Verify all references against the source before submission.",
       "",
       ...bibliography.map((item) => item.text),
     ].join("\n\n");
@@ -172,7 +172,7 @@ export default function CitationsPage() {
       <PageHeader
         eyebrow="Personal"
         title="Citation generator"
-        description="Format references from the demonstration index in four common styles. Copy one reference, a full bibliography, or export a text file."
+        description="Format references from the papers in your workspace in four common styles. Copy one reference, a full bibliography, or export a text file."
         actions={
           <>
             <Badge variant="outline" className="h-7 px-2.5">
@@ -192,7 +192,7 @@ export default function CitationsPage() {
         <FileText className="mt-0.5 size-3.5 shrink-0 text-muted-foreground" aria-hidden />
         <p className="text-[11px] leading-relaxed text-muted-foreground">
           <strong className="font-medium text-foreground/80">Metadata.</strong> Citations are generated
-          from fictional but realistic records. Fields marked incomplete should be checked against the source before
+          from the metadata stored for each paper. Fields marked incomplete should be checked against the source before
           use in a real submission.
         </p>
       </div>
@@ -273,7 +273,7 @@ export default function CitationsPage() {
                       : "text-muted-foreground hover:text-foreground")
                   }
                 >
-                  Demo index ({papers.length})
+                  Workspace papers ({papers.length})
                 </button>
                 {selected.length > 0 && (
                   <button
@@ -507,7 +507,7 @@ export default function CitationsPage() {
                   </ol>
                 )}
                 <div className="border-t border-border bg-surface/30 px-4 py-2 font-mono text-[8.5px] uppercase tracking-wide text-muted-foreground/70">
-                  Exported file includes a verification note · demo metadata
+                  Exported file includes a verification note · indexed metadata
                 </div>
               </section>
 
@@ -527,9 +527,9 @@ export default function CitationsPage() {
                   </TabsTrigger>
                 </TabsList>
                 <TabsContent value="note" className="mt-2 text-[10.5px] leading-relaxed text-muted-foreground">
-                  This demo implements a compact subset of each style. {citationStyleLabels[style]} expects
+                  This build implements a compact subset of each style. {citationStyleLabels[style]} expects
                   author–date formatting, sentence-case article titles, and a DOI where available. Books, datasets, and
-                  non-English sources may need fields not present in this index.
+                  non-English sources may need fields not present in the stored metadata.
                 </TabsContent>
                 <TabsContent value="checklist" className="mt-2">
                   <ul className="space-y-1 text-[10.5px] text-muted-foreground">

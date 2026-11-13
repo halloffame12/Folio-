@@ -57,45 +57,18 @@ export function SigninForm() {
         exactly where you stopped.
       </p>
 
-      <button
-        type="button"
-        disabled
-        aria-describedby="google-planned-signin"
-        className="mt-6 flex h-10 w-full items-center justify-center gap-2.5 rounded border border-border bg-card text-[12.5px] font-medium text-muted-foreground/70"
-      >
-        <span
-          aria-hidden
-          className="flex size-4 items-center justify-center rounded-[2px] border border-border font-mono text-[9px] font-semibold"
-        >
-          G
-        </span>
-        Continue with Google
-        <span className="rounded-[3px] border border-border bg-secondary px-1.5 py-0.5 font-mono text-[8px] uppercase tracking-[0.1em]">
-          Planned
-        </span>
-      </button>
-      <p
-        id="google-planned-signin"
-        className="mt-1.5 text-center font-mono text-[8.5px] uppercase tracking-[0.12em] text-muted-foreground/60"
-      >
-        Google sign-in is a planned integration · Email only in this demo
-      </p>
-
-      <div className="my-6 flex items-center gap-3" aria-hidden>
-        <span className="h-px flex-1 bg-border" />
-        <span className="font-mono text-[8px] uppercase tracking-[0.16em] text-muted-foreground/60">
-          or sign in with email
-        </span>
-        <span className="h-px flex-1 bg-border" />
-      </div>
-
       {serverError ? (
         <AuthNotice tone="error" title="Sign-in unsuccessful" className="mb-5">
           {serverError}
         </AuthNotice>
       ) : null}
 
-      <form onSubmit={form.handleSubmit(onSubmit)} noValidate aria-busy={form.formState.isSubmitting}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        noValidate
+        aria-busy={form.formState.isSubmitting}
+        className="mt-6"
+      >
         <div className="space-y-4">
           <Field label="Email address" htmlFor="signin-email" error={form.formState.errors.email?.message}>
             <Input

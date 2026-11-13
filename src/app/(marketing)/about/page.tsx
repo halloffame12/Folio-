@@ -7,7 +7,7 @@ import { openGraphImage } from "@/lib/metadata";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Why Folio exists, the design principles behind it, and what this frontend demonstration is and is not.",
+    "Why Folio exists, the design principles behind it, and what this academic research workspace is and is not.",
   alternates: { canonical: "/about" },
   openGraph: {
     title: "About Folio",
@@ -38,7 +38,7 @@ const principles = [
   {
     index: "04",
     title: "Honest about limits",
-    body: "The product states what it does not do. Potential opportunities are labelled as such, planned work is marked planned, and mock data is never presented as evidence.",
+    body: "The product states what it does not do. Potential opportunities are labelled as such, and illustrative interface previews are never presented as evidence.",
   },
 ];
 
@@ -54,7 +54,7 @@ export default function AboutPage() {
         </>
       }
       lede="Folio began from a simple observation: the tools around research are numerous, but the relationships between them are not represented anywhere. This project asks what a workspace would look like if those relationships were the organising principle."
-      meta="A capstone project · Frontend demonstration"
+      meta="A capstone project · Academic research workspace"
       aside={
         <div className="flex flex-wrap gap-2 lg:flex-col lg:items-start">
           <Link
@@ -64,10 +64,10 @@ export default function AboutPage() {
             Explore features <ArrowUpRight className="size-2.5" aria-hidden />
           </Link>
           <Link
-            href="/dashboard"
+            href="/signup"
             className="inline-flex items-center gap-1 rounded border border-border bg-card px-2.5 py-1.5 font-mono text-[8px] uppercase tracking-[0.13em] text-foreground/75 transition-colors hover:border-primary/30 hover:text-primary"
           >
-            Open the demo <ArrowUpRight className="size-2.5" aria-hidden />
+            Create an account <ArrowUpRight className="size-2.5" aria-hidden />
           </Link>
         </div>
       }
@@ -106,29 +106,30 @@ export default function AboutPage() {
 
       <ProseSection title="What this build is">
         <p>
-          The project is a working frontend: a complete marketing site, a set of authentication
-          screens, and a preloaded research workspace. It is built with Next.js, React, TypeScript,
-          Tailwind CSS, Radix primitives, Framer Motion, and a local mock data layer. The design
-          system uses Manrope, Newsreader, Inter, and IBM Plex Mono, with a forest-and-paper palette
-          and a working dark theme.
+          Folio is a working full-stack application: a public website, account authentication, and a
+          personal research workspace backed by PostgreSQL. It is built with Next.js, React,
+          TypeScript, Tailwind CSS, Radix primitives, and Prisma. Discovery queries Crossref and
+          OpenAlex. The design system uses Manrope, Newsreader, Inter, and IBM Plex Mono, with a
+          paper-and-ink palette and a working dark theme.
         </p>
         <p>
-          Authentication is implemented with secure sessions, password hashing, and database-backed
-          user accounts. You can explore the workspace after creating an account at{" "}
-          <Link href="/signup">/signup</Link>.
+          Authentication is implemented with database-backed accounts, bcrypt password hashing,
+          HTTP-only session cookies, and email verification. You can create an account at{" "}
+          <Link href="/signup">/signup</Link> and work in your own isolated workspace.
         </p>
       </ProseSection>
 
       <ProseSection title="What this build is not">
         <p>
           Folio is a capstone project. Scholarly metadata comes from Crossref and OpenAlex. User data
-          is stored in a real PostgreSQL database. There are no fake testimonials or fabricated
-          statistics.
+          is stored in a real PostgreSQL database. There are no fake testimonials, customer logos,
+          university partnerships, or fabricated statistics.
         </p>
         <p>
           The gap explorer is a good example of the project&apos;s stance. It can show where output
-          on a topic is thin, but it labels those readings as potential opportunities, not verified
-          gaps, because absence of evidence is not evidence of absence.
+          on a topic is thin across the papers you have saved, but it labels those readings as
+          potential opportunities, not verified gaps, because absence of evidence is not evidence of
+          absence.
         </p>
       </ProseSection>
 

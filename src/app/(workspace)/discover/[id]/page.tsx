@@ -90,7 +90,7 @@ export default function PaperDetailPage() {
         <PageHeader
           eyebrow="Discover papers"
           title="Paper not found"
-          description="This record does not exist in the demonstration index."
+          description="This record is not available in the current session."
           backHref="/discover"
           backLabel="Back to discovery"
         />
@@ -498,7 +498,7 @@ export default function PaperDetailPage() {
             </div>
             <p className="mt-2.5 text-[10.5px] leading-relaxed text-muted-foreground">
               {paper.pdfAvailable
-                ? "A full-text PDF is indexed for this record in the demonstration dataset. PDF preview is not implemented in Phase 1."
+                ? "An open-access link is recorded for this paper. PDF preview is not implemented in this build."
                 : "No open full text is indexed. Access may be available through your institution's subscriptions."}
             </p>
             {paper.pdfAvailable && (
@@ -510,8 +510,8 @@ export default function PaperDetailPage() {
 
           <div className="rounded-md border border-dashed border-border bg-surface/40 px-3 py-2.5">
             <p className="text-[9.5px] leading-relaxed text-muted-foreground">
-              Fictional record for interface demonstration. Citation counts and availability are mock
-              values and should not be used for research.
+              Metadata is provided by the indexing source. Citation counts and availability may be
+              incomplete and should be verified against the publisher before use.
             </p>
           </div>
         </aside>

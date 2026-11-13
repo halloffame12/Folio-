@@ -21,7 +21,6 @@ import {
   Palette,
   PencilLine,
   Quote,
-  RotateCcw,
   Save,
   Settings2,
   Sun,
@@ -38,7 +37,6 @@ import {
 } from "@/lib/citations";
 import { copyToClipboard, formatDate, initials as toInitials, cn } from "@/lib/utils";
 import { PageHeader } from "@/components/shared/page-header";
-import { ConfirmationDialog } from "@/components/shared/confirmation-dialog";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
@@ -170,7 +168,6 @@ export default function SettingsPage() {
   const data = useWorkspaceStore((s) => s.data);
   const updateProfile = useWorkspaceStore((s) => s.updateProfile);
   const updateSettings = useWorkspaceStore((s) => s.updateSettings);
-  const resetWorkspace = useWorkspaceStore((s) => s.resetWorkspace);
 
   const { theme, setTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -250,7 +247,7 @@ export default function SettingsPage() {
       initials: toInitials(values.name),
     });
     toast.success("Profile updated", {
-      description: "Your changes are stored locally in this demo workspace.",
+      description: "Your changes are saved to your account.",
     });
   };
 
@@ -274,7 +271,7 @@ export default function SettingsPage() {
     anchor.remove();
     URL.revokeObjectURL(url);
     toast.success("Workspace exported", {
-      description: "A JSON snapshot of the demo data was downloaded.",
+      description: "A JSON snapshot of your workspace was downloaded.",
     });
   };
 
@@ -292,7 +289,7 @@ export default function SettingsPage() {
         description="Your profile, reading preferences, and interface defaults."
         actions={
           <Badge variant="outline" className="h-7 gap-1.5 px-2.5">
-            <Fingerprint className="size-3" /> Local demo identity
+            <Fingerprint className="size-3" /> Account profile
           </Badge>
         }
       />
@@ -455,7 +452,7 @@ export default function SettingsPage() {
                     {...form.register("interests")}
                   />
                   <p className="text-[10.5px] text-muted-foreground">
-                    Separate interests with commas. These feed discovery suggestions in the demo.
+                    Separate interests with commas. They appear on your profile.
                   </p>
                   {formState.errors.interests && (
                     <p className="text-[10.5px] text-destructive" role="alert">
@@ -766,7 +763,7 @@ export default function SettingsPage() {
                 </h2>
                 <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">
                   Folio opens in light mode by design. Dark mode is tuned for evening reading and
-                  persists per browser; it is not stored in the demo workspace data.
+                  is remembered in this browser; it is not stored with your account.
                 </p>
               </section>
             </aside>
@@ -986,7 +983,7 @@ export default function SettingsPage() {
                   <FileJson className="size-3.5 text-muted-foreground" /> Citation data
                 </h2>
                 <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">
-                  Styles are formatted locally from mock metadata. Missing fields are flagged in
+                  Styles are formatted locally from paper metadata. Missing fields are flagged in
                   the citation generator rather than invented.
                 </p>
                 <Button asChild variant="outline" size="sm" className="mt-3 w-full">
@@ -1003,8 +1000,8 @@ export default function SettingsPage() {
             <div className="space-y-4">
               <SectionCard
                 eyebrow="05 · Data"
-                title="Demo workspace"
-                description="Your workspace data is stored securely and tied to your account."
+                title="Workspace data"
+                description="Your workspace data is stored in PostgreSQL and scoped to your account."
               >
                 <div className="grid grid-cols-2 gap-px bg-border sm:grid-cols-4">
                   {counts.map((item) => (
@@ -1023,42 +1020,24 @@ export default function SettingsPage() {
                     <Download /> Export JSON
                   </Button>
                   <span className="text-[10.5px] text-muted-foreground">
-                    Download a snapshot of the current browser state.
+                    Download a snapshot of your workspace records.
                   </span>
                 </div>
               </SectionCard>
 
               <section className="rounded border border-border bg-card p-4">
                 <div className="flex items-start gap-3">
-                  <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-destructive/10 text-destructive">
-                    <RotateCcw className="size-4" />
+                  <span className="mt-0.5 flex size-8 shrink-0 items-center justify-center rounded-full bg-primary/10 text-primary">
+                    <Database className="size-4" />
                   </span>
                   <div className="min-w-0 flex-1">
-                    <h2 className="font-display text-[14px] font-semibold">Reset demo data</h2>
+                    <h2 className="font-display text-[14px] font-semibold">Data ownership</h2>
                     <p className="mt-1 max-w-lg text-[11px] leading-relaxed text-muted-foreground">
-                      Restore the original seed papers, collections, notes, projects, tasks,
-                      milestones, reviews, and notifications. Your profile and interface
-                      preferences are reset too. This cannot be undone.
+                      Saved papers, collections, notes, projects, tasks, milestones, reviews, and
+                      notifications are stored against your account. Other accounts cannot read
+                      them. Self-service workspace reset and account deletion are not available in
+                      this build.
                     </p>
-                    <div className="mt-3">
-                      <ConfirmationDialog
-                        trigger={
-                          <Button variant="destructive" size="sm">
-                            <RotateCcw /> Reset workspace
-                          </Button>
-                        }
-                        title="Reset all demo data?"
-                        description="Every change you have made in this browser — saved papers, collections, notes, tasks, and profile edits — will be replaced with the original seed data."
-                        confirmLabel="Reset everything"
-                        destructive
-                        onConfirm={() => {
-                          resetWorkspace();
-                          toast.success("Demo workspace restored", {
-                            description: "All seed records and default settings are back.",
-                          });
-                        }}
-                      />
-                    </div>
                   </div>
                 </div>
               </section>
@@ -1072,30 +1051,30 @@ export default function SettingsPage() {
                 <dl className="mt-2.5 space-y-2 text-[11px]">
                   <div className="flex items-center justify-between gap-2">
                     <dt className="text-muted-foreground">Persistence</dt>
-                    <dd className="font-mono text-[10px] text-foreground/80">localStorage</dd>
+                    <dd className="font-mono text-[10px] text-foreground/80">PostgreSQL</dd>
                   </div>
                   <div className="flex items-center justify-between gap-2">
-                    <dt className="text-muted-foreground">Key</dt>
-                    <dd className="font-mono text-[10px] text-foreground/80">folio-workspace-v1</dd>
+                    <dt className="text-muted-foreground">Scope</dt>
+                    <dd className="font-mono text-[10px] text-foreground/80">per account</dd>
                   </div>
                   <div className="flex items-center justify-between gap-2">
-                    <dt className="text-muted-foreground">Backend</dt>
-                    <dd className="font-mono text-[10px] text-warning">none · demo</dd>
+                    <dt className="text-muted-foreground">Session</dt>
+                    <dd className="font-mono text-[10px] text-foreground/80">HTTP-only cookie</dd>
                   </div>
                 </dl>
                 <p className="mt-3 border-t border-border/70 pt-2.5 text-[10.5px] leading-relaxed text-muted-foreground">
-                  Clearing site data in your browser has the same effect as resetting from here.
+                  The theme preference is stored in this browser. Clearing site data resets it, but
+                  workspace records remain in your account.
                 </p>
               </section>
 
               <section className="rounded border border-dashed border-border bg-surface/30 p-4">
                 <p className="font-mono text-[8.5px] uppercase tracking-[0.1em] text-muted-foreground">
-                  Replaceable by design
+                  Account-scoped
                 </p>
                 <p className="mt-1.5 text-[11px] leading-relaxed text-muted-foreground">
-                  Writes pass through async service functions in{" "}
-                  <span className="font-mono text-[10px]">mock-services.ts</span>, so a real API can
-                  replace them without changing the screens.
+                  Workspace requests are authenticated against your session and return only records
+                  belonging to your account.
                 </p>
               </section>
             </aside>

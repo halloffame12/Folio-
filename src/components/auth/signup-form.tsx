@@ -24,7 +24,6 @@ import { AuthNotice } from "@/components/auth/auth-notice";
 import {
   academicRoleOptions,
   signupSchema,
-  splitInterests,
   type SignupValues,
 } from "@/lib/validations/auth";
 import { apiMutate } from "@/lib/api-client";
@@ -85,18 +84,13 @@ export function SignupForm() {
         <span className="flex size-11 items-center justify-center rounded-full border border-success/25 bg-success/10 text-success">
           <MailCheck className="size-5" aria-hidden />
         </span>
-        <p className="eyebrow mt-5">Account prepared</p>
+        <p className="eyebrow mt-5">Account created</p>
         <h1 className="mt-3 display-md text-foreground">Check your academic inbox.</h1>
         <p className="mt-3 text-[13px] leading-[1.7] text-muted-foreground">
-          We’ve prepared a verification link for{" "}
+          We’ve sent a verification link to{" "}
           <span className="font-medium text-foreground">{created.email}</span>. Verify the
           address to finish setting up your workspace.
         </p>
-
-        <AuthNotice tone="info" title="This is a frontend demonstration" className="mt-5">
-          No email is sent. The verification screen lets you step through pending, verified, and
-          expired-link states without a backend.
-        </AuthNotice>
 
         <div className="mt-6 space-y-2">
           <Button asChild size="lg" className="h-10 w-full">
@@ -134,42 +128,18 @@ export function SignupForm() {
         .
       </p>
 
-      <button
-        type="button"
-        disabled
-        aria-describedby="google-planned"
-        className="mt-6 flex h-10 w-full items-center justify-center gap-2.5 rounded border border-border bg-card text-[12.5px] font-medium text-muted-foreground/70"
-      >
-        <span
-          aria-hidden
-          className="flex size-4 items-center justify-center rounded-[2px] border border-border font-mono text-[9px] font-semibold"
-        >
-          G
-        </span>
-        Continue with Google
-        <span className="rounded-[3px] border border-border bg-secondary px-1.5 py-0.5 font-mono text-[8px] uppercase tracking-[0.1em]">
-          Planned
-        </span>
-      </button>
-      <p id="google-planned" className="mt-1.5 text-center font-mono text-[8.5px] uppercase tracking-[0.12em] text-muted-foreground/60">
-        Google sign-in is a planned integration · Email only in this demo
-      </p>
-
-      <div className="my-6 flex items-center gap-3" aria-hidden>
-        <span className="h-px flex-1 bg-border" />
-        <span className="font-mono text-[8px] uppercase tracking-[0.16em] text-muted-foreground/60">
-          or register with email
-        </span>
-        <span className="h-px flex-1 bg-border" />
-      </div>
-
       {serverError ? (
         <AuthNotice tone="error" title="We couldn’t create the account" className="mb-5">
           {serverError}
         </AuthNotice>
       ) : null}
 
-      <form onSubmit={form.handleSubmit(onSubmit)} noValidate aria-busy={form.formState.isSubmitting}>
+      <form
+        onSubmit={form.handleSubmit(onSubmit)}
+        noValidate
+        aria-busy={form.formState.isSubmitting}
+        className="mt-6"
+      >
         <div className="space-y-4">
           <Field
             label="Full name"
@@ -336,8 +306,7 @@ export function SignupForm() {
               >
                 I acknowledge the{" "}
                 <InlineLink href="/terms">Terms of Service</InlineLink> and{" "}
-                <InlineLink href="/privacy">Privacy Notice</InlineLink>, and understand that this is a
-                frontend demonstration.
+                <InlineLink href="/privacy">Privacy Notice</InlineLink>.
               </label>
             </div>
             {form.formState.errors.acceptedTerms ? (
@@ -366,9 +335,9 @@ export function SignupForm() {
         </Button>
 
         <p className="mt-3 text-center font-mono text-[8px] uppercase leading-relaxed tracking-[0.12em] text-muted-foreground/60">
-          Demonstration only · Account records stay in this browser
+          Account records are stored in the workspace database
           <br />
-          No password is sent to a server
+          Passwords are hashed before storage
         </p>
       </form>
 
