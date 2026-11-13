@@ -60,6 +60,7 @@ export function StoreGate({ children }: { children: React.ReactNode }) {
   const [checking, setChecking] = useState(true);
 
   useEffect(() => {
+
     let cancelled = false;
     (async () => {
       try {
@@ -70,7 +71,8 @@ export function StoreGate({ children }: { children: React.ReactNode }) {
           return;
         }
         await useWorkspaceStore.getState().hydrate();
-      } catch {
+      } catch (e) {
+        console.error("HYDRATE FAILED", e);
         if (!cancelled) router.replace("/signin");
       } finally {
         if (!cancelled) setChecking(false);

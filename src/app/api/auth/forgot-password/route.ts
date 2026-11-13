@@ -28,12 +28,16 @@ export async function POST(request: NextRequest) {
         data: { userId: user.id, tokenHash: hash, expiresAt: new Date(Date.now() + 60 * 60 * 1000) },
       });
       const rUrl = resetUrl(raw, email);
-      await sendEmail({
-        to: email,
-        subject: "Reset your Folio password",
-        text: `Reset your password: ${rUrl}`,
-        html: `<p>Reset your password: <a href="${rUrl}">${rUrl}</a></p>`,
-      });
+      try {
+        await sendEmail({
+          to: email,
+          subject: "Reset your Folio password",
+          text: `Reset your password: ${rUrl}`,
+          html: `<p>Reset your password: <a href="${rUrl}">${rUrl}</a></p>`,
+        });
+      } catch (e) {
+        console.error("Reset email failed to send:", e);
+      }
       if (process.env.AUTH_DEV_EXPOSE_LINKS === "true") {
         console.log(`[AUTH_DEV] reset url: ${rUrl}`);
       }

@@ -1,0 +1,126 @@
+
+> folio-academic-workspace@1.0.0 dev
+> next dev
+
+   ▲ Next.js 15.5.29
+   - Local:        http://localhost:3000
+   - Network:      http://192.168.56.1:3000
+   - Environments: .env
+
+ ✓ Starting...
+ ✓ Ready in 1686ms
+ ○ Compiling /api/auth/signup ...
+ ✓ Compiled /api/auth/signup in 828ms (345 modules)
+ POST /api/auth/signup 201 in 7919ms
+ ○ Compiling /api/papers ...
+ ✓ Compiled /api/papers in 697ms (348 modules)
+ GET /api/papers?q=machine+learning 200 in 53457ms
+ ✓ Compiled /api/library in 248ms (350 modules)
+ POST /api/library 201 in 3962ms
+ ○ Compiling /research-gaps ...
+ ✓ Compiled /research-gaps in 3.9s (1783 modules)
+ ✓ Compiled in 478ms (777 modules)
+ GET /research-gaps 200 in 4428ms
+ ✓ Compiled /api/auth/session in 381ms (1771 modules)
+ GET /api/auth/session 200 in 1713ms
+ ✓ Compiled /api/workspace in 203ms (1774 modules)
+ GET /api/workspace 200 in 1299ms
+ ✓ Compiled /api/auth/signup in 120ms (1015 modules)
+ POST /api/auth/signup 201 in 5626ms
+ ✓ Compiled /api/papers in 115ms (1018 modules)
+ GET /api/papers?q=machine+learning 200 in 4289ms
+ POST /api/library 201 in 3418ms
+ GET /api/auth/session 200 in 1329ms
+ GET /research-gaps 200 in 123ms
+ GET /api/auth/session 200 in 1191ms
+ GET /api/workspace 200 in 3816ms
+ POST /api/auth/signup 201 in 5044ms
+ GET /api/papers?q=machine+learning 200 in 4722ms
+ POST /api/library 201 in 3756ms
+ GET /api/auth/session 200 in 1221ms
+ GET /research-gaps 200 in 33ms
+ GET /api/auth/session 200 in 1271ms
+ GET /api/workspace 200 in 3807ms
+ ✓ Compiled in 484ms (1795 modules)
+ ✓ Compiled in 352ms (1795 modules)
+ POST /api/auth/signup 201 in 6867ms
+ GET /api/papers?q=machine+learning 200 in 4874ms
+ POST /api/library 201 in 3758ms
+ GET /api/auth/session 200 in 1565ms
+ GET /research-gaps 200 in 119ms
+ GET /api/auth/session 200 in 1451ms
+ GET /api/workspace 200 in 3644ms
+ POST /api/auth/signup 201 in 4637ms
+ GET /api/papers?q=machine+learning 200 in 2202ms
+ POST /api/library 201 in 3454ms
+ GET /api/auth/session 200 in 1478ms
+ GET /research-gaps 200 in 79ms
+ GET /api/auth/session 200 in 1323ms
+ GET /api/workspace 200 in 3758ms
+ ✓ Compiled in 366ms (1795 modules)
+ POST /api/auth/signup 429 in 293ms
+ GET /api/papers?q=machine+learning 401 in 27ms
+ GET /api/auth/session 200 in 30ms
+ GET /research-gaps 200 in 79ms
+ GET /api/auth/session 200 in 10ms
+ ○ Compiling /signin ...
+ ✓ Compiled /signin in 606ms (1845 modules)
+ GET /signin 200 in 703ms
+ GET /research-gaps 200 in 77ms
+ POST /api/auth/signup 429 in 2033ms
+ GET /api/papers?q=machine+learning 401 in 18ms
+ GET /api/auth/session 200 in 27ms
+ GET /research-gaps 200 in 59ms
+ GET /api/auth/session 200 in 25ms
+ GET /signin 200 in 28ms
+ POST /api/auth/signup 201 in 6460ms
+ GET /api/papers?q=machine+learning 200 in 4134ms
+ POST /api/library 201 in 3796ms
+ GET /api/auth/session 200 in 1237ms
+ GET /research-gaps 200 in 59ms
+ GET /api/auth/session 200 in 1083ms
+ GET /api/workspace 200 in 3958ms
+ POST /api/auth/signup 201 in 5455ms
+ GET /api/papers?q=machine+learning 200 in 4182ms
+ POST /api/library 201 in 3573ms
+ GET /api/auth/session 200 in 1119ms
+ GET /research-gaps 200 in 48ms
+ GET /api/auth/session 200 in 1123ms
+ GET /api/workspace 200 in 6926ms
+ ✓ Compiled in 574ms (1845 modules)
+ ✓ Compiled in 304ms (1845 modules)
+ POST /api/auth/signup 201 in 6613ms
+ GET /api/papers?q=machine+learning 200 in 4309ms
+ POST /api/library 201 in 3512ms
+ GET /api/auth/session 200 in 1221ms
+ GET /research-gaps 200 in 131ms
+ GET /api/auth/session 200 in 1311ms
+ GET /api/workspace 200 in 6726ms
+ POST /api/auth/signup 201 in 5285ms
+ GET /api/papers?q=machine+learning 200 in 4570ms
+ POST /api/library 201 in 3400ms
+ GET /api/auth/session 200 in 1131ms
+ GET /research-gaps 200 in 37ms
+ GET /api/auth/session 200 in 1255ms
+ GET /api/workspace 200 in 13773ms
+prisma:error 
+Invalid `prisma.user.findMany()` invocation:
+
+
+Server has closed the connection.
+ POST /api/auth/signup 201 in 7838ms
+ GET /api/papers?q=machine+learning 200 in 5498ms
+ POST /api/library 201 in 3410ms
+ GET /api/auth/session 200 in 1355ms
+ GET /research-gaps 200 in 68ms
+ GET /api/auth/session 200 in 1256ms
+ GET /api/workspace 200 in 9985ms
+ ✓ Compiled /api/tags in 475ms (1847 modules)
+ GET /api/tags 200 in 2090ms
+ GET /api/workspace 200 in 5952ms
+ ✓ Compiled /api/research-gaps/analyze in 288ms (1850 modules)
+ POST /api/research-gaps/analyze 200 in 5021ms
+ ✓ Compiled in 603ms (1850 modules)
+ ✓ Compiled in 925ms (1845 modules)
+ ✓ Compiled in 301ms (1831 modules)
+ ✓ Compiled in 210ms (1831 modules)

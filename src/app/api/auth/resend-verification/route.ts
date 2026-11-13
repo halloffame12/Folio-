@@ -28,7 +28,11 @@ export async function POST(request: NextRequest) {
         data: { userId: user.id, tokenHash: hash, expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000) },
       });
       const vUrl = verificationUrl(raw, email);
-      await sendEmail({ to: email, subject: "Verify your Folio email", text: `Verify: ${vUrl}`, html: `<a href="${vUrl}">${vUrl}</a>` });
+      try {
+        await sendEmail({ to: email, subject: "Verify your Folio email", text: `Verify: ${vUrl}`, html: `<a href="${vUrl}">${vUrl}</a>` });
+      } catch (e) {
+        console.error("Verification email failed to send:", e);
+      }
       if (process.env.AUTH_DEV_EXPOSE_LINKS === "true") console.log(`[AUTH_DEV] verification url: ${vUrl}`);
     }
     return new Response(JSON.stringify({ success: true, data: { message: "If an account exists, a new verification link has been sent." } }), { status: 200, headers: { "Content-Type": "application/json" } });

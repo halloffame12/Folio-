@@ -50,12 +50,16 @@ export async function POST(request: NextRequest) {
       data: { userId: user.id, tokenHash: hash, expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000) },
     });
     const vUrl = verificationUrl(rawToken, normalizedEmail);
-    await sendEmail({
-      to: normalizedEmail,
-      subject: "Verify your Folio email address",
-      text: `Verify your email: ${vUrl}`,
-      html: `<p>Verify your email: <a href="${vUrl}">${vUrl}</a></p>`,
-    });
+    try {
+      await sendEmail({
+        to: normalizedEmail,
+        subject: "Verify your Folio email address",
+        text: `Verify your email: ${vUrl}`,
+        html: `<p>Verify your email: <a href="${vUrl}">${vUrl}</a></p>`,
+      });
+    } catch (e) {
+      console.error("Verification email failed to send:", e);
+    }
 
     const session = await createSession(user.id, true, request.headers.get("user-agent") ?? undefined);
     const headers = new Headers();
