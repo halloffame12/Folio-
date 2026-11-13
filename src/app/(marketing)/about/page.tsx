@@ -113,19 +113,17 @@ export default function AboutPage() {
           and a working dark theme.
         </p>
         <p>
-          Authentication is demonstrated rather than implemented. Accounts created in this browser
-          are stored locally with a salted digest, not a plain-text password, but the system is
-          explicitly not production security. You can explore the workspace without an account at{" "}
-          <Link href="/dashboard">/dashboard</Link>.
+          Authentication is implemented with secure sessions, password hashing, and database-backed
+          user accounts. You can explore the workspace after creating an account at{" "}
+          <Link href="/signup">/signup</Link>.
         </p>
       </ProseSection>
 
       <ProseSection title="What this build is not">
         <p>
-          It is not a commercial service, a live literature index, a collaboration backend, or a
-          claim of institutional endorsement. It has no real users, partners, customers, or
-          testimonials — and it does not invent any. All papers, authors, institutions, projects,
-          and notes in the demonstration are fictional.
+          Folio is a capstone project. Scholarly metadata comes from Crossref and OpenAlex. User data
+          is stored in a real PostgreSQL database. There are no fake testimonials or fabricated
+          statistics.
         </p>
         <p>
           The gap explorer is a good example of the project&apos;s stance. It can show where output

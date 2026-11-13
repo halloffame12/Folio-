@@ -35,7 +35,7 @@ export function AuthShell({ children }: { children: React.ReactNode }) {
 
         <footer className="border-t border-border/70 px-5 py-4 sm:px-8 lg:px-12">
           <div className="mx-auto flex max-w-[452px] flex-wrap items-center justify-between gap-2 font-mono text-[8.5px] uppercase tracking-[0.12em] text-muted-foreground/70">
-            <span>Folio · Frontend demonstration</span>
+            <span>Folio · Research workspace</span>
             <span className="flex items-center gap-3">
               <Link href="/privacy" className="transition-colors hover:text-foreground">
                 Privacy

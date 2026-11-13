@@ -96,7 +96,7 @@ const absent = [
   },
   {
     title: "No live scholarly index",
-    body: "The catalogue is a fictional dataset created for the demonstration. It is not connected to Crossref, PubMed, or any external database.",
+    body: "Discovery searches live scholarly databases including Crossref and OpenAlex. Results use real metadata from external sources.",
   },
   {
     title: "No real email or backend",

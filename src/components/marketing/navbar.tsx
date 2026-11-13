@@ -170,11 +170,10 @@ export function Navbar() {
 
                 <div className="mt-6 rounded border border-dashed border-border bg-surface/40 p-3.5">
                   <p className="font-mono text-[8px] uppercase tracking-[0.14em] text-muted-foreground">
-                    Demonstration workspace
+                    Try Folio
                   </p>
                   <p className="mt-1 text-[11px] leading-relaxed text-muted-foreground">
-                    Explore the product without creating an account. All scholarship shown is mock
-                    data.
+                    Create an account to explore the research workspace with real data.
                   </p>
                   <Link
                     href="/dashboard"
