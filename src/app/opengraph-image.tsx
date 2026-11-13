@@ -16,8 +16,8 @@ export default function OpenGraphImage() {
           display: "flex",
           flexDirection: "column",
           justifyContent: "space-between",
-          background: "#F7F6F2",
-          color: "#202522",
+          background: "#F5F3EE",
+          color: "#20242B",
           padding: "64px 72px",
           fontFamily: "ui-sans-serif, system-ui, sans-serif",
           position: "relative",
@@ -39,11 +39,11 @@ export default function OpenGraphImage() {
               width: 52,
               height: 52,
               borderRadius: 5,
-              background: "#354C43",
+              background: "#263E55",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              color: "#F7F6F2",
+              color: "#F5F3EE",
               fontSize: 24,
               fontWeight: 700,
             }}
@@ -57,7 +57,7 @@ export default function OpenGraphImage() {
                 fontSize: 11,
                 letterSpacing: "0.2em",
                 textTransform: "uppercase",
-                color: "#70766F",
+                color: "#858A90",
               }}
             >
               Research workspace
@@ -71,13 +71,13 @@ export default function OpenGraphImage() {
               display: "flex",
               alignItems: "center",
               gap: 10,
-              color: "#B66B4D",
+              color: "#B84A3A",
               fontSize: 12,
               letterSpacing: "0.2em",
               textTransform: "uppercase",
             }}
           >
-            <div style={{ width: 7, height: 7, background: "#B66B4D", display: "flex" }} />
+            <div style={{ width: 7, height: 7, background: "#B84A3A", display: "flex" }} />
             Academic research workspace
           </div>
           <div
@@ -110,9 +110,9 @@ export default function OpenGraphImage() {
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
-            borderTop: "1px solid #DEDCD4",
+            borderTop: "1px solid #D9D8D2",
             paddingTop: 20,
-            color: "#70766F",
+            color: "#858A90",
             fontSize: 12,
             letterSpacing: "0.16em",
             textTransform: "uppercase",

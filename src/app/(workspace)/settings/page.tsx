@@ -84,11 +84,11 @@ const styleNotes: Record<CitationStyle, string> = {
 function themePreview(theme: "light" | "dark") {
   return theme === "light"
     ? {
-        shell: "#F7F6F2",
-        panel: "#FFFFFF",
-        edge: "#DEDCD4",
-        ink: "#354C43",
-        soft: "#E9E6DE",
+        shell: "#F5F3EE",
+        panel: "#FCFBF8",
+        edge: "#D9D8D2",
+        ink: "#263E55",
+        soft: "#EAE7E0",
       }
     : {
         shell: "#141715",
