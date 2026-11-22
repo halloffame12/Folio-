@@ -75,7 +75,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
         </main>
         <footer className="border-t border-border/70 px-6 py-4">
           <div className="mx-auto flex max-w-[1440px] flex-col gap-1 text-[10px] text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-            <span className="font-mono uppercase tracking-[0.12em]">
+            <span className="text-[11px] text-muted-foreground">
               Folio · Academic research workspace
             </span>
             <span>Connected to live data</span>

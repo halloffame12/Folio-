@@ -68,7 +68,7 @@ export function DataTable<TData>({
                   <TableHead key={header.id} style={{ width: header.getSize() }}>
                     {header.isPlaceholder ? null : canSort ? (
                       <button
-                        className="-ml-1 inline-flex items-center gap-1 rounded px-1 py-1 uppercase tracking-[0.08em] transition-colors hover:text-foreground"
+                        className="-ml-1 inline-flex items-center gap-1 rounded px-1 py-1 text-[11.5px] font-medium transition-colors hover:text-foreground"
                         onClick={header.column.getToggleSortingHandler()}
                       >
                         {flexRender(header.column.columnDef.header, header.getContext())}

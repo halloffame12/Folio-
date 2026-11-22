@@ -35,25 +35,19 @@ const sections = [
 export default function DocsPage() {
   return (
     <MarketingPage
-      index="03"
       label="Documentation"
-      title={
-        <>
-          A working guide to the{" "}
-          <span className="font-serif font-normal italic text-primary">research workspace</span>.
-        </>
-      }
-      lede="Everything below describes behaviour that exists in this build. Where a feature has limits, the guide states them directly."
-      meta="Last reviewed · November 2026"
+      title="How to use Folio"
+      lede="Everything below describes how the application behaves. Where something has a limit, the guide says so."
+      meta="Last reviewed November 2026"
       aside={
         <nav aria-label="On this page">
-          <p className="eyebrow">On this page</p>
-          <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1.5 lg:flex-col lg:gap-y-1.5">
+          <p className="text-[13px] font-medium text-foreground">On this page</p>
+          <ul className="mt-3 flex flex-wrap gap-x-3 gap-y-2 lg:flex-col lg:gap-y-2">
             {sections.map((section) => (
               <li key={section.id}>
                 <a
                   href={`#${section.id}`}
-                  className="text-[10.5px] leading-snug text-muted-foreground underline-offset-4 transition-colors hover:text-foreground hover:underline"
+                  className="text-[13px] leading-snug text-muted-foreground transition-colors hover:text-foreground"
                 >
                   {section.label}
                 </a>
@@ -83,7 +77,7 @@ export default function DocsPage() {
           the theme toggle, and the account menu.
         </p>
         <p>
-          Press <kbd className="rounded border border-border bg-surface px-1 py-0.5 font-mono text-[10px]">⌘K</kbd>{" "}
+          Press <kbd className="rounded border border-border bg-surface px-1 py-0.5 font-mono text-[10px]">Cmd K</kbd>{" "}
           or <kbd className="rounded border border-border bg-surface px-1 py-0.5 font-mono text-[10px]">Ctrl K</kbd>{" "}
           to open the command palette. It searches your pages, papers, and actions in the
           workspace.
@@ -100,7 +94,7 @@ export default function DocsPage() {
         <p>
           Saving a paper adds a library entry with an unread status and a reading progress of zero.
           The record and the library entry remain connected: status, tags, and notes taken later
-          appear on both surfaces.
+          appear in both places.
         </p>
       </ProseSection>
 

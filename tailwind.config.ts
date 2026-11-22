@@ -78,19 +78,19 @@ const config: Config = {
       },
       fontFamily: {
         sans: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
-        display: ["var(--font-manrope)", "var(--font-inter)", "sans-serif"],
+        display: ["var(--font-inter)", "ui-sans-serif", "system-ui", "sans-serif"],
         serif: ["var(--font-newsreader)", "Georgia", "serif"],
         mono: ["var(--font-plex-mono)", "ui-monospace", "monospace"],
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        md: "calc(var(--radius) - 1px)",
+        sm: "calc(var(--radius) - 2px)",
       },
       boxShadow: {
-        xs: "0 1px 2px 0 rgb(32 37 34 / 0.04)",
-        card: "0 1px 2px 0 rgb(32 37 34 / 0.03), 0 8px 24px -16px rgb(32 37 34 / 0.18)",
-        float: "0 12px 40px -12px rgb(32 37 34 / 0.22), 0 2px 6px -2px rgb(32 37 34 / 0.06)",
+        xs: "0 1px 2px 0 rgb(26 28 31 / 0.05)",
+        card: "0 1px 2px 0 rgb(26 28 31 / 0.04), 0 10px 30px -24px rgb(26 28 31 / 0.28)",
+        float: "0 18px 50px -22px rgb(26 28 31 / 0.3), 0 2px 6px -2px rgb(26 28 31 / 0.06)",
       },
       keyframes: {
         "fade-in": {

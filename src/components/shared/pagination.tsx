@@ -33,7 +33,7 @@ export function Pagination({
       )}
     >
       {typeof total === "number" && pageSize ? (
-        <p className="font-mono text-[10px] uppercase tracking-[0.08em] text-muted-foreground">
+        <p className="text-[12px] text-muted-foreground">
           Showing {(page - 1) * pageSize + 1}–{Math.min(page * pageSize, total)} of {total}
         </p>
       ) : (

@@ -28,9 +28,7 @@ export function Field({
         <Label htmlFor={htmlFor} className="flex items-baseline gap-1.5">
           {label}
           {optional ? (
-            <span className="font-mono text-[8.5px] font-normal uppercase tracking-[0.12em] text-muted-foreground/70">
-              Optional
-            </span>
+            <span className="text-[11px] font-normal text-muted-foreground/70">Optional</span>
           ) : null}
         </Label>
         {labelAction}

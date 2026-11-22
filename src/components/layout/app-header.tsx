@@ -122,7 +122,7 @@ function NotificationsMenu() {
                 <span className="mt-0.5 block truncate text-[10.5px] text-muted-foreground">
                   {notification.body}
                 </span>
-                <span className="mt-1 block font-mono text-[9px] uppercase tracking-wide text-muted-foreground/70">
+                <span className="mt-1 block text-[10.5px] text-muted-foreground/70">
                   {relativeTime(notification.createdAt)}
                 </span>
               </span>

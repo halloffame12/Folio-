@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
 export const alt =
-  "Folio — an academic research workspace for papers, notes, literature reviews, and projects";
+  "Folio: an academic research workspace for papers, notes, literature reviews, and projects";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

@@ -4,99 +4,99 @@
 
 @layer base {
   :root {
-    --background: 43 26% 95%;
-    --foreground: 218 15% 15%;
+    --background: 40 25% 97%;
+    --foreground: 30 8% 9%;
 
-    --card: 45 40% 98%;
-    --card-foreground: 218 15% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 30 8% 9%;
 
-    --popover: 45 40% 98%;
-    --popover-foreground: 218 15% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 30 8% 9%;
 
-    --primary: 209 38% 24%;
-    --primary-foreground: 45 40% 98%;
+    --primary: 30 8% 11%;
+    --primary-foreground: 40 25% 97%;
 
-    --secondary: 42 19% 90%;
-    --secondary-foreground: 218 15% 15%;
+    --secondary: 38 16% 93%;
+    --secondary-foreground: 30 8% 11%;
 
-    --muted: 42 19% 90%;
-    --muted-foreground: 212 9% 40%;
+    --muted: 38 16% 93%;
+    --muted-foreground: 30 5% 42%;
 
-    --accent: 8 52% 44%;
-    --accent-foreground: 45 40% 98%;
+    --accent: 12 58% 38%;
+    --accent-foreground: 40 25% 97%;
 
-    --inverse: 209 38% 24%;
-    --inverse-foreground: 45 40% 98%;
+    --inverse: 30 8% 9%;
+    --inverse-foreground: 40 22% 94%;
 
-    --destructive: 5 44% 45%;
-    --destructive-foreground: 45 40% 98%;
+    --destructive: 4 62% 42%;
+    --destructive-foreground: 40 25% 97%;
 
-    --success: 152 24% 34%;
-    --success-foreground: 45 40% 98%;
+    --success: 150 32% 30%;
+    --success-foreground: 40 25% 97%;
 
-    --warning: 34 61% 34%;
-    --warning-foreground: 45 40% 98%;
+    --warning: 32 66% 34%;
+    --warning-foreground: 40 25% 97%;
 
-    --info: 204 33% 40%;
-    --info-foreground: 45 40% 98%;
+    --info: 206 40% 34%;
+    --info-foreground: 40 25% 97%;
 
-    --border: 51 8% 84%;
-    --input: 51 8% 84%;
-    --ring: 209 38% 24%;
+    --border: 36 13% 87%;
+    --input: 36 13% 85%;
+    --ring: 30 8% 20%;
 
-    --surface-2: 195 21% 89%;
-    --sidebar: 43 26% 95%;
-    --sidebar-foreground: 218 15% 15%;
+    --surface-2: 38 18% 91%;
+    --sidebar: 40 25% 97%;
+    --sidebar-foreground: 30 8% 9%;
 
-    --radius: 0.375rem;
+    --radius: 0.5rem;
   }
 
   .dark {
-    --background: 213 19% 11%;
-    --foreground: 45 22% 93%;
+    --background: 30 7% 7%;
+    --foreground: 40 18% 92%;
 
-    --card: 212 21% 16%;
-    --card-foreground: 45 22% 93%;
+    --card: 30 6% 10%;
+    --card-foreground: 40 18% 92%;
 
-    --popover: 212 21% 16%;
-    --popover-foreground: 45 22% 93%;
+    --popover: 30 6% 11%;
+    --popover-foreground: 40 18% 92%;
 
-    --primary: 204 29% 73%;
-    --primary-foreground: 213 19% 11%;
+    --primary: 40 20% 95%;
+    --primary-foreground: 30 8% 10%;
 
-    --secondary: 210 27% 20%;
-    --secondary-foreground: 45 22% 93%;
+    --secondary: 30 6% 15%;
+    --secondary-foreground: 40 18% 92%;
 
-    --muted: 210 27% 20%;
-    --muted-foreground: 209 12% 64%;
+    --muted: 30 6% 15%;
+    --muted-foreground: 35 6% 62%;
 
-    --accent: 11 68% 63%;
-    --accent-foreground: 213 19% 11%;
+    --accent: 14 56% 62%;
+    --accent-foreground: 30 8% 8%;
 
-    --inverse: 210 27% 20%;
-    --inverse-foreground: 45 22% 93%;
+    --inverse: 40 20% 95%;
+    --inverse-foreground: 30 8% 9%;
 
-    --destructive: 6 61% 70%;
-    --destructive-foreground: 213 19% 11%;
+    --destructive: 5 58% 64%;
+    --destructive-foreground: 30 8% 8%;
 
-    --success: 143 24% 64%;
-    --success-foreground: 213 19% 11%;
+    --success: 148 28% 60%;
+    --success-foreground: 30 8% 8%;
 
-    --warning: 36 56% 62%;
-    --warning-foreground: 213 19% 11%;
+    --warning: 36 55% 60%;
+    --warning-foreground: 30 8% 8%;
 
-    --info: 205 40% 69%;
-    --info-foreground: 213 19% 11%;
+    --info: 206 40% 66%;
+    --info-foreground: 30 8% 8%;
 
-    --border: 210 16% 27%;
-    --input: 210 16% 27%;
-    --ring: 204 29% 73%;
+    --border: 30 6% 18%;
+    --input: 30 6% 20%;
+    --ring: 40 16% 82%;
 
-    --surface-2: 210 27% 20%;
-    --sidebar: 213 19% 11%;
-    --sidebar-foreground: 45 22% 93%;
+    --surface-2: 30 6% 13%;
+    --sidebar: 30 7% 7%;
+    --sidebar-foreground: 40 18% 92%;
 
-    --radius: 0.375rem;
+    --radius: 0.5rem;
   }
 
   * {
@@ -107,17 +107,17 @@
     -webkit-text-size-adjust: 100%;
     scrollbar-gutter: stable;
     scroll-behavior: smooth;
-    scroll-padding-top: 5.5rem;
+    scroll-padding-top: 5rem;
   }
 
   body {
     @apply bg-background text-foreground antialiased;
-    font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
     text-rendering: optimizeLegibility;
   }
 
   ::selection {
-    background: hsl(var(--primary) / 0.16);
+    background: hsl(var(--accent) / 0.18);
     color: hsl(var(--foreground));
   }
 
@@ -131,7 +131,7 @@
   h4,
   h5,
   h6 {
-    @apply font-display tracking-[-0.02em];
+    @apply font-display;
     text-wrap: balance;
   }
 
@@ -164,39 +164,37 @@
 }
 
 @layer components {
+  /* ---- Interface typography ------------------------------------------- */
+
   .page-title {
-    @apply font-display text-[1.75rem] font-semibold leading-tight tracking-[-0.03em] sm:text-[2rem];
+    @apply font-display text-[1.75rem] font-semibold leading-tight tracking-[-0.02em] sm:text-[2rem];
   }
 
   .section-title {
-    @apply font-display text-base font-semibold tracking-[-0.015em];
+    @apply font-display text-base font-semibold tracking-[-0.01em];
   }
 
   .eyebrow {
-    @apply font-mono text-[10px] uppercase leading-none tracking-[0.16em] text-muted-foreground;
+    @apply text-[11px] font-medium uppercase tracking-[0.08em] text-muted-foreground;
+  }
+
+  .label-mono {
+    @apply text-[11px] font-medium uppercase tracking-[0.08em] text-muted-foreground;
   }
 
   .paper-title {
-    @apply font-serif text-[1.0625rem] font-medium leading-snug tracking-[-0.01em];
+    @apply font-serif text-[1.0625rem] font-medium leading-snug tracking-[-0.005em];
   }
 
   .meta-label {
-    @apply font-mono text-[11px] uppercase tracking-[0.08em] text-muted-foreground;
+    @apply text-[11px] font-medium uppercase tracking-[0.06em] text-muted-foreground;
   }
 
   .hairline {
     @apply border-border;
   }
 
-  .rule-grid {
-    background-image: linear-gradient(to right, hsl(var(--border) / 0.55) 1px, transparent 1px);
-    background-size: 100% 100%;
-  }
-
-  .dot-grid {
-    background-image: radial-gradient(hsl(var(--border)) 0.8px, transparent 0.8px);
-    background-size: 16px 16px;
-  }
+  /* ---- Long-form content ----------------------------------------------- */
 
   .article-prose {
     @apply text-[15px] leading-[1.75] text-foreground/90;
@@ -217,10 +215,10 @@
     @apply mb-4 list-decimal space-y-1 pl-5;
   }
   .article-prose blockquote {
-    @apply my-5 border-l-2 border-accent/60 pl-4 font-serif text-[16px] italic text-foreground/80;
+    @apply my-5 border-l-2 border-border pl-4 font-serif text-[16px] italic text-foreground/75;
   }
   .article-prose a {
-    @apply text-primary underline decoration-primary/30 underline-offset-2 hover:decoration-primary;
+    @apply text-foreground underline decoration-border underline-offset-2 hover:decoration-foreground;
   }
   .article-prose code {
     @apply rounded bg-secondary px-1.5 py-0.5 font-mono text-[12px] text-foreground;
@@ -247,11 +245,13 @@
     @apply my-3 list-decimal pl-5;
   }
   .editor-surface a {
-    @apply text-primary underline decoration-primary/30 underline-offset-2;
+    @apply text-foreground underline decoration-border underline-offset-2;
   }
   .editor-surface blockquote {
-    @apply my-4 border-l-2 border-accent/60 pl-4 font-serif italic text-muted-foreground;
+    @apply my-4 border-l-2 border-border pl-4 font-serif italic text-muted-foreground;
   }
+
+  /* ---- Shared effects --------------------------------------------------- */
 
   .shimmer {
     position: relative;
@@ -276,66 +276,83 @@
     background-size: 5px 5px;
   }
 
+  .paper-grain-strong {
+    background-image: radial-gradient(hsl(var(--foreground) / 0.055) 0.65px, transparent 0.65px);
+    background-size: 4px 4px;
+  }
+
   .nav-active-mark {
     @apply relative;
   }
   .nav-active-mark::before {
     content: "";
-    @apply absolute -left-3 top-1/2 h-4 w-[2px] -translate-y-1/2 rounded-full bg-primary;
+    @apply absolute -left-3 top-1/2 h-4 w-[2px] -translate-y-1/2 rounded-full bg-accent;
   }
 
-  /* ---- Public site (Phase 0) ------------------------------------------ */
+  /* ---- Public site ------------------------------------------------------ */
 
   .marketing-container {
-    @apply mx-auto w-full max-w-[1440px] px-5 sm:px-8 lg:px-10 xl:px-14;
-  }
-
-  .marketing-eyebrow {
-    @apply font-mono text-[10px] uppercase leading-none tracking-[0.2em] text-muted-foreground;
+    @apply mx-auto w-full max-w-[1180px] px-5 sm:px-8 lg:px-10;
   }
 
   .hero-title {
-    @apply font-display font-semibold;
-    font-size: clamp(2.7rem, 6.4vw, 6.1rem);
-    line-height: 0.94;
-    letter-spacing: -0.05em;
+    @apply font-serif font-normal;
+    font-size: clamp(2.5rem, 5.4vw, 4.5rem);
+    line-height: 1.03;
+    letter-spacing: -0.025em;
   }
 
   .section-display {
-    @apply font-display font-semibold;
-    font-size: clamp(1.85rem, 3.2vw, 2.9rem);
-    line-height: 1.03;
-    letter-spacing: -0.042em;
+    @apply font-serif font-normal;
+    font-size: clamp(1.85rem, 3.4vw, 2.75rem);
+    line-height: 1.12;
+    letter-spacing: -0.02em;
   }
 
   .feature-display {
-    @apply font-display font-semibold;
-    font-size: clamp(1.55rem, 2.5vw, 2.15rem);
-    line-height: 1.08;
-    letter-spacing: -0.038em;
+    @apply font-serif font-normal;
+    font-size: clamp(1.45rem, 2.3vw, 1.9rem);
+    line-height: 1.2;
+    letter-spacing: -0.015em;
   }
 
-  .editorial-number {
-    @apply font-serif leading-none text-primary/[0.08];
-    font-size: clamp(4.5rem, 9vw, 8rem);
-    letter-spacing: -0.06em;
+  .display-xl {
+    @apply font-serif font-normal text-[2.4rem] leading-[1.06] tracking-[-0.025em] sm:text-[3rem] lg:text-[3.5rem];
   }
 
-  .href-arrow {
-    @apply inline-flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] transition-colors;
+  .display-lg {
+    @apply font-serif font-normal text-[2rem] leading-[1.08] tracking-[-0.02em] sm:text-[2.5rem];
   }
+
+  .display-md {
+    @apply font-serif font-normal text-[1.65rem] leading-[1.15] tracking-[-0.02em] sm:text-[1.95rem];
+  }
+
+  .editorial-lede {
+    @apply text-[15.5px] leading-[1.7] text-muted-foreground sm:text-[16.5px];
+  }
+
+  .paper-panel {
+    @apply border border-border bg-card;
+  }
+
+  .link-underline {
+    @apply underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground;
+  }
+
+  /* ---- Reveal ----------------------------------------------------------- */
 
   .reveal-armed {
     opacity: 0;
-    transform: translateY(var(--reveal-y, 18px));
+    transform: translateY(var(--reveal-y, 14px));
   }
 
   .reveal-shown {
     opacity: 1;
     transform: translateY(0);
     transition:
-      opacity 550ms cubic-bezier(0.22, 1, 0.36, 1),
-      transform 550ms cubic-bezier(0.22, 1, 0.36, 1);
+      opacity 560ms cubic-bezier(0.22, 1, 0.36, 1),
+      transform 560ms cubic-bezier(0.22, 1, 0.36, 1);
   }
 
   @media (prefers-reduced-motion: reduce) {
@@ -345,38 +362,6 @@
       transform: none;
       transition: none;
     }
-  }
-
-  .editorial-grid {
-    background-image:
-      linear-gradient(to right, hsl(var(--border) / 0.5) 1px, transparent 1px),
-      linear-gradient(to bottom, hsl(var(--border) / 0.35) 1px, transparent 1px);
-    background-size: 64px 64px;
-  }
-
-  .editorial-rule {
-    @apply border-t border-border;
-  }
-
-  .display-xl {
-    @apply font-display text-[2.6rem] font-semibold leading-[1.02] tracking-[-0.045em] sm:text-[3.4rem] lg:text-[4.15rem];
-  }
-
-  .display-lg {
-    @apply font-display text-[2rem] font-semibold leading-[1.06] tracking-[-0.04em] sm:text-[2.6rem] lg:text-[3rem];
-  }
-
-  .display-md {
-    @apply font-display text-[1.55rem] font-semibold leading-[1.12] tracking-[-0.03em] sm:text-[1.9rem];
-  }
-
-  .editorial-lede {
-    @apply text-[15px] leading-[1.65] text-muted-foreground sm:text-[16px];
-  }
-
-  .paper-grain-strong {
-    background-image: radial-gradient(hsl(var(--foreground) / 0.055) 0.65px, transparent 0.65px);
-    background-size: 4px 4px;
   }
 }
 

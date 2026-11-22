@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Mono, Inter, Manrope, Newsreader } from "next/font/google";
+import { IBM_Plex_Mono, Inter, Newsreader } from "next/font/google";
 import "./globals.css";
 import { Providers } from "@/components/providers";
 import { openGraphImage } from "@/lib/metadata";
@@ -7,12 +7,6 @@ import { openGraphImage } from "@/lib/metadata";
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
-  display: "swap",
-});
-
-const manrope = Manrope({
-  subsets: ["latin"],
-  variable: "--font-manrope",
   display: "swap",
 });
 
@@ -35,12 +29,12 @@ const siteUrl = new URL(
 );
 
 const siteDescription =
-  "Discover scholarly papers, organise your library, write connected research notes, build literature reviews, and coordinate projects in one considered academic workspace.";
+  "Discover scholarly papers, organise your library, write connected research notes, build literature reviews, and coordinate projects in one academic workspace.";
 
 export const metadata: Metadata = {
   metadataBase: siteUrl,
   title: {
-    default: "Folio — Academic Research Workspace",
+    default: "Folio | Academic Research Workspace",
     template: "%s · Folio",
   },
   description: siteDescription,
@@ -59,13 +53,13 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "/",
     siteName: "Folio",
-    title: "Folio — Academic Research Workspace",
+    title: "Folio | Academic Research Workspace",
     description: siteDescription,
     images: [openGraphImage],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Folio — Academic Research Workspace",
+    title: "Folio | Academic Research Workspace",
     description: siteDescription,
     images: [openGraphImage.url],
   },
@@ -77,8 +71,8 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#F5F3EE" },
-    { media: "(prefers-color-scheme: dark)", color: "#131715" },
+    { media: "(prefers-color-scheme: light)", color: "#F6F3E9" },
+    { media: "(prefers-color-scheme: dark)", color: "#121417" },
   ],
 };
 
@@ -88,7 +82,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${inter.variable} ${manrope.variable} ${newsreader.variable} ${plexMono.variable} font-sans`}
+        className={`${inter.variable} ${newsreader.variable} ${plexMono.variable} font-sans`}
       >
         <Providers>{children}</Providers>
       </body>

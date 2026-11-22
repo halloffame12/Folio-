@@ -6,7 +6,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { Controller, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { ArrowRight, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -50,15 +50,13 @@ export function SigninForm() {
 
   return (
     <div>
-      <p className="eyebrow">Sign in</p>
-      <h1 className="mt-3 display-md text-foreground">Welcome back.</h1>
-      <p className="mt-3 text-[13px] leading-[1.7] text-muted-foreground">
-        Continue where your research left off. Sign in to pick up papers, notes, and projects
-        exactly where you stopped.
+      <h1 className="display-md text-foreground">Sign in</h1>
+      <p className="mt-2 text-[14px] leading-relaxed text-muted-foreground">
+        Continue to your workspace.
       </p>
 
       {serverError ? (
-        <AuthNotice tone="error" title="Sign-in unsuccessful" className="mb-5">
+        <AuthNotice tone="error" className="mt-5">
           {serverError}
         </AuthNotice>
       ) : null}
@@ -70,7 +68,11 @@ export function SigninForm() {
         className="mt-6"
       >
         <div className="space-y-4">
-          <Field label="Email address" htmlFor="signin-email" error={form.formState.errors.email?.message}>
+          <Field
+            label="Email"
+            htmlFor="signin-email"
+            error={form.formState.errors.email?.message}
+          >
             <Input
               id="signin-email"
               type="email"
@@ -78,7 +80,7 @@ export function SigninForm() {
               autoComplete="email"
               placeholder="name@university.edu"
               aria-invalid={Boolean(form.formState.errors.email) || undefined}
-              className="h-10 text-[13px]"
+              className="h-11 px-3 text-[14px]"
               {...form.register("email")}
             />
           </Field>
@@ -92,14 +94,14 @@ export function SigninForm() {
             <PasswordField
               id="signin-password"
               autoComplete="current-password"
-              placeholder="Enter your password"
-              className="h-10 text-[13px]"
+              placeholder="Your password"
+              className="h-11 px-3 text-[14px]"
               invalid={Boolean(form.formState.errors.password)}
               {...form.register("password")}
             />
           </Field>
 
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2.5">
             <Controller
               control={form.control}
               name="remember"
@@ -111,8 +113,8 @@ export function SigninForm() {
                 />
               )}
             />
-            <label htmlFor="remember" className="text-[11.5px] text-muted-foreground">
-              Keep me signed in on this device
+            <label htmlFor="remember" className="text-[13px] text-muted-foreground">
+              Keep me signed in
             </label>
           </div>
         </div>
@@ -121,25 +123,23 @@ export function SigninForm() {
           type="submit"
           size="lg"
           disabled={form.formState.isSubmitting}
-          className="mt-6 h-10 w-full"
+          className="mt-6 h-11 w-full text-[14px]"
         >
           {form.formState.isSubmitting ? (
             <>
-              <Loader2 className="animate-spin" /> Signing in…
+              <Loader2 className="animate-spin" aria-hidden /> Signing in
             </>
           ) : (
-            <>
-              Sign in <ArrowRight />
-            </>
+            "Sign in"
           )}
         </Button>
       </form>
 
-      <p className="mt-6 border-t border-border pt-4 text-center text-[11.5px] text-muted-foreground">
+      <p className="mt-6 border-t border-border pt-5 text-[13.5px] text-muted-foreground">
         New to Folio?{" "}
         <Link
           href="/signup"
-          className="font-medium text-primary underline decoration-primary/25 underline-offset-4 transition-colors hover:decoration-primary"
+          className="font-medium text-foreground underline decoration-border underline-offset-4 hover:decoration-foreground"
         >
           Create an account
         </Link>

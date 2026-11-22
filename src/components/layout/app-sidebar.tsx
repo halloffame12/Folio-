@@ -89,7 +89,7 @@ export function SidebarNav({
       {navigation.map((group) => (
         <div key={group.label}>
           {!collapsed ? (
-            <p className="mb-1.5 px-2 font-mono text-[9px] font-medium uppercase tracking-[0.16em] text-muted-foreground/80">
+            <p className="mb-1.5 px-2 text-[11px] font-medium text-muted-foreground">
               {group.label}
             </p>
           ) : (

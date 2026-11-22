@@ -9,7 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/signin" },
   openGraph: {
     title: "Sign in to Folio",
-    description: "Continue where your research left off.",
+    description: "Sign in to your workspace.",
     url: "/signin",
     type: "website",
     images: [openGraphImage],

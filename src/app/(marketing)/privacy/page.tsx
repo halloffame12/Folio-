@@ -27,16 +27,10 @@ const storedItems = [
 export default function PrivacyPage() {
   return (
     <MarketingPage
-      index="05"
       label="Privacy notice"
-      title={
-        <>
-          What Folio{" "}
-          <span className="font-serif font-normal italic text-primary">does</span> with data.
-        </>
-      }
-      lede="Folio is a working research workspace with real accounts and a PostgreSQL database. This notice describes what the application stores, where it is stored, and what it does not do."
-      meta="Last updated · November 13, 2026"
+      title="How Folio handles data"
+      lede="This notice describes what the application stores, where it is stored, and what it does not do."
+      meta="Last updated November 13, 2026"
     >
       <ProseSection title="Scope">
         <p>
@@ -49,9 +43,9 @@ export default function PrivacyPage() {
       <ProseSection title="What we collect">
         <p>
           Creating an account stores your name, email address, and password hash. You may also
-          provide an institution, an academic role, and research interests. Workspace content that
-          you create — saved papers, collections, notes, projects, tasks, milestones, literature
-          reviews, and notifications — belongs to your account.
+          provide an institution, an academic role, and research interests. Workspace content you
+          create, such as saved papers, collections, notes, projects, tasks, milestones, literature
+          reviews, and notifications, belongs to your account.
         </p>
         <p>
           Transactional emails are sent to the address on your account for verification and password
@@ -65,18 +59,18 @@ export default function PrivacyPage() {
           hashed with bcrypt; the plain password is never stored. Application sessions are held in
           the database and referenced by an HTTP-only cookie.
         </p>
-        <div className="mt-3 overflow-hidden rounded border border-border">
-          <table className="w-full border-collapse text-left text-[11px]">
+        <div className="mt-3 overflow-hidden rounded-md border border-border">
+          <table className="w-full border-collapse text-left text-[12px]">
             <caption className="sr-only">Browser-side storage used by Folio</caption>
             <thead>
-              <tr className="border-b border-border bg-surface/60">
-                <th scope="col" className="px-3 py-2 font-mono text-[8px] uppercase tracking-[0.12em] text-muted-foreground">
+              <tr className="border-b border-border bg-secondary/50">
+                <th scope="col" className="px-3 py-2 font-medium text-muted-foreground">
                   Name
                 </th>
-                <th scope="col" className="px-3 py-2 font-mono text-[8px] uppercase tracking-[0.12em] text-muted-foreground">
+                <th scope="col" className="px-3 py-2 font-medium text-muted-foreground">
                   Type
                 </th>
-                <th scope="col" className="px-3 py-2 font-mono text-[8px] uppercase tracking-[0.12em] text-muted-foreground">
+                <th scope="col" className="px-3 py-2 font-medium text-muted-foreground">
                   Purpose
                 </th>
               </tr>
@@ -84,7 +78,7 @@ export default function PrivacyPage() {
             <tbody className="divide-y divide-border">
               {storedItems.map((item) => (
                 <tr key={item.key}>
-                  <td className="whitespace-nowrap px-3 py-2 font-mono text-[9.5px] text-foreground/80">
+                  <td className="whitespace-nowrap px-3 py-2 font-mono text-[11.5px] text-foreground/80">
                     {item.key}
                   </td>
                   <td className="whitespace-nowrap px-3 py-2 text-muted-foreground">{item.kind}</td>

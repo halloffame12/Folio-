@@ -12,16 +12,10 @@ export const metadata: Metadata = {
 export default function TermsPage() {
   return (
     <MarketingPage
-      index="06"
       label="Terms of use"
-      title={
-        <>
-          The terms of a{" "}
-          <span className="font-serif font-normal italic text-primary">research workspace</span>.
-        </>
-      }
-      lede="Folio is a working academic research workspace built as a capstone project. These terms describe the basis on which it is provided."
-      meta="Last updated · November 13, 2026"
+      title="Terms of use"
+      lede="Folio is an academic research workspace built as a capstone project. These terms describe the basis on which it is provided."
+      meta="Last updated November 13, 2026"
     >
       <ProseSection title="1. What this service is">
         <p>

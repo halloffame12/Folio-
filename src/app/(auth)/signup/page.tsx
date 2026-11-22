@@ -9,8 +9,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/signup" },
   openGraph: {
     title: "Create your Folio research workspace",
-    description:
-      "Bring papers, notes, literature, and research projects together in one considered workspace.",
+    description: "Bring papers, notes, literature, and research projects together in one workspace.",
     url: "/signup",
     type: "website",
     images: [openGraphImage],

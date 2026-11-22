@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import {
-  ArrowUpRight,
+  ArrowRight,
   CircleHelp,
   Database,
   KeyRound,
@@ -16,11 +16,11 @@ import { openGraphImage } from "@/lib/metadata";
 export const metadata: Metadata = {
   title: "Help center",
   description:
-    "Answers to common questions about Folio: creating an account, email verification, password reset, data storage, themes, and browser support.",
+    "Answers to common questions about accounts, email verification, password reset, data storage, themes, and browser support.",
   alternates: { canonical: "/help" },
   openGraph: {
     title: "Folio help center",
-    description: "Practical answers for the Folio research workspace.",
+    description: "Practical answers about the Folio workspace.",
     url: "/help",
     type: "article",
     images: [openGraphImage],
@@ -31,14 +31,14 @@ const topics = [
   {
     icon: KeyRound,
     title: "Create an account",
-    body: "Sign up with your name, email, and a password. Folio sends a verification email; once the address is confirmed, you can sign in to your own workspace.",
+    body: "Sign up with your name, email, and a password. Folio sends a verification email. Once the address is confirmed, you can sign in.",
     href: "/signup",
     link: "Create an account",
   },
   {
     icon: Mail,
     title: "Email verification",
-    body: "Registration sends a verification link. If it has expired, request a new one from the verification page. Check your spam folder if it does not arrive.",
+    body: "Registration sends a verification link. If it has expired, request another from the verification page. Check your spam folder if it does not arrive.",
     href: "/verify-email",
     link: "Open verification",
   },
@@ -47,12 +47,12 @@ const topics = [
     title: "Reset a forgotten password",
     body: "Enter your email on the reset page. If an account exists, Folio sends a reset link. The confirmation does not reveal whether an address is registered.",
     href: "/forgot-password",
-    link: "Open reset flow",
+    link: "Reset password",
   },
   {
     icon: Database,
     title: "Where your data lives",
-    body: "Records are stored in PostgreSQL and isolated by account. Clearing site data resets local preferences such as the theme, not the research held in your account.",
+    body: "Records are stored in PostgreSQL and kept separate by account. Clearing site data resets local preferences such as the theme, not the research in your account.",
     href: "/docs#data",
     link: "Read about storage",
   },
@@ -66,61 +66,54 @@ const topics = [
   {
     icon: MonitorSmartphone,
     title: "Browser support",
-    body: "Folio targets current versions of Chrome, Edge, Firefox, and Safari. It is responsive from small phone widths upward.",
+    body: "Folio targets current versions of Chrome, Edge, Firefox, and Safari, and works from small phone widths upward.",
     href: "/docs",
-    link: "Read documentation",
+    link: "Read the documentation",
   },
 ];
 
 export default function HelpPage() {
   return (
     <MarketingPage
-      index="04"
       label="Help center"
-      title={
-        <>
-          Practical answers for the{" "}
-          <span className="font-serif font-normal italic text-primary">research workspace</span>.
-        </>
-      }
-      lede="The help center is self-service. If an answer is not here, the documentation covers each workspace surface in more detail."
-      meta="Self-service support · Last reviewed November 2026"
+      title="Common questions"
+      lede="Short answers to the things people ask most. The documentation covers each part of the workspace in more detail."
+      meta="Last reviewed November 2026"
       aside={
-        <div className="flex flex-wrap gap-2 lg:flex-col lg:items-start">
-          <Link
-            href="/docs"
-            className="inline-flex items-center gap-1 rounded border border-border bg-card px-2.5 py-1.5 font-mono text-[8px] uppercase tracking-[0.13em] text-foreground/75 transition-colors hover:border-primary/30 hover:text-primary"
-          >
-            Documentation <ArrowUpRight className="size-2.5" aria-hidden />
-          </Link>
-          <Link
-            href="/#faq"
-            className="inline-flex items-center gap-1 rounded border border-border bg-card px-2.5 py-1.5 font-mono text-[8px] uppercase tracking-[0.13em] text-foreground/75 transition-colors hover:border-primary/30 hover:text-primary"
-          >
-            Read the FAQ <ArrowUpRight className="size-2.5" aria-hidden />
-          </Link>
+        <div className="space-y-3">
+          <p className="text-[13px] font-medium text-foreground">More help</p>
+          <div className="flex flex-col gap-2">
+            <Link
+              href="/docs"
+              className="inline-flex items-center gap-1.5 text-[13.5px] text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Documentation <ArrowRight className="size-3.5" aria-hidden />
+            </Link>
+            <Link
+              href="/#faq"
+              className="inline-flex items-center gap-1.5 text-[13.5px] text-muted-foreground transition-colors hover:text-foreground"
+            >
+              Read the FAQ <ArrowRight className="size-3.5" aria-hidden />
+            </Link>
+          </div>
         </div>
       }
     >
-      <div className="grid gap-px overflow-hidden rounded-md border border-border bg-border sm:grid-cols-2">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
         {topics.map((topic) => {
           const Icon = topic.icon;
           return (
-            <article key={topic.title} className="flex h-full flex-col bg-card p-5">
-              <span className="flex size-8 items-center justify-center rounded-[3px] border border-border bg-background text-primary">
-                <Icon className="size-4" aria-hidden />
-              </span>
-              <h2 className="mt-3.5 font-display text-[14.5px] font-semibold tracking-[-0.015em]">
-                {topic.title}
-              </h2>
-              <p className="mt-1.5 flex-1 text-[11.5px] leading-relaxed text-muted-foreground">
+            <article key={topic.title} className="flex h-full flex-col rounded-lg border border-border bg-card p-5">
+              <Icon className="size-5 text-muted-foreground" aria-hidden />
+              <h2 className="mt-3 text-[15px] font-medium text-foreground">{topic.title}</h2>
+              <p className="mt-1.5 flex-1 text-[13.5px] leading-relaxed text-muted-foreground">
                 {topic.body}
               </p>
               <Link
                 href={topic.href}
-                className="mt-4 inline-flex items-center gap-1.5 font-mono text-[8px] uppercase tracking-[0.13em] text-primary transition-colors hover:text-primary/75"
+                className="mt-4 inline-flex items-center gap-1 text-[13px] text-foreground underline decoration-border underline-offset-4 transition-colors hover:decoration-foreground"
               >
-                {topic.link} <ArrowUpRight className="size-2.5" aria-hidden />
+                {topic.link} <ArrowRight className="size-3" aria-hidden />
               </Link>
             </article>
           );
@@ -142,7 +135,7 @@ export default function HelpPage() {
       <ProseSection title="Who can see my workspace?">
         <p>
           A workspace belongs to one account. Library records, notes, reviews, and projects are
-          returned only for the authenticated user; other accounts cannot browse them. Projects you
+          returned only for the signed-in user, and other accounts cannot browse them. Projects you
           create can include invited members, who then see the material attached to that project.
         </p>
       </ProseSection>
@@ -152,11 +145,11 @@ export default function HelpPage() {
           First, reload the page. If a page still fails, the error boundary offers a reset. Check
           that you are signed in and that your connection can reach the application.
         </p>
-        <p className="flex items-start gap-2 rounded border border-dashed border-border bg-surface/40 p-3.5 text-[11.5px]">
+        <p className="flex items-start gap-2 rounded-md border border-border p-4 text-[13px]">
           <CircleHelp className="mt-0.5 size-4 shrink-0 text-muted-foreground" aria-hidden />
           <span>
-            There is no monitored inbox or support queue for this project. The help page and
-            documentation are the support surface.
+            There is no monitored inbox or support queue for this project. This help page and the
+            documentation are the only support.
           </span>
         </p>
       </ProseSection>

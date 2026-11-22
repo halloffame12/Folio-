@@ -1,9 +1,9 @@
 import { cn } from "@/lib/utils";
 
 /**
- * Folio brand mark: a geometric folio leaf with a folded corner, two index
- * rules, and a reference node. Drawn as SVG so it stays crisp in the sidebar,
- * navigation, authentication screens, and favicon.
+ * Folio brand mark: a thin folio frame, a cut "F", and a single square mark.
+ * Drawn in SVG so it stays sharp in navigation, authentication, and the
+ * workspace sidebar.
  */
 export function LogoMark({
   className,
@@ -14,8 +14,6 @@ export function LogoMark({
   title?: string;
   inverse?: boolean;
 }) {
-  const panel = inverse ? "hsl(var(--inverse-foreground))" : "hsl(var(--primary))";
-  const ink = inverse ? "hsl(var(--inverse))" : "hsl(var(--primary-foreground))";
   return (
     <svg
       viewBox="0 0 32 32"
@@ -25,34 +23,27 @@ export function LogoMark({
       className={cn("size-7 shrink-0", className)}
     >
       {title ? <title>{title}</title> : null}
-      <rect width="32" height="32" rx="4" fill={panel} />
-      <path
-        d="M9 8.5h10.5L24 13v10.5H9V8.5Z"
+      <rect
+        x="1"
+        y="1"
+        width="30"
+        height="30"
+        rx="2"
         fill="none"
-        stroke={ink}
-        strokeWidth="1.6"
-        strokeLinejoin="round"
+        stroke="currentColor"
+        strokeOpacity="0.32"
+        strokeWidth="1"
       />
       <path
-        d="M19.5 8.5V13H24"
-        fill="none"
-        stroke={ink}
-        strokeWidth="1.6"
-        strokeLinejoin="round"
+        d="M9.5 8.25h13.25v3.5h-9.2v4.15h7.35v3.5h-7.35v6.35H9.5V8.25Z"
+        fill="currentColor"
       />
-      <path
-        d="M12 17h8M12 20h5"
-        stroke={ink}
-        strokeWidth="1.6"
-        strokeLinecap="square"
-      />
-      <circle
-        cx="23.5"
-        cy="23.5"
-        r="2.4"
-        fill="hsl(var(--accent))"
-        stroke={panel}
-        strokeWidth="1.6"
+      <rect
+        x="21.25"
+        y="19.25"
+        width="4.5"
+        height="4.5"
+        fill={inverse ? "hsl(var(--accent))" : "hsl(var(--primary))"}
       />
     </svg>
   );
@@ -71,7 +62,7 @@ export function Wordmark({
     <span className={cn("flex min-w-0 flex-col leading-none", className)}>
       <span
         className={cn(
-          "font-display text-[17px] font-semibold tracking-[-0.04em]",
+          "font-serif text-[21px] font-medium leading-none tracking-[-0.025em]",
           inverse && "text-inverse-foreground"
         )}
       >
@@ -80,8 +71,8 @@ export function Wordmark({
       {subtitle ? (
         <span
           className={cn(
-            "mt-1 truncate font-mono text-[8px] uppercase tracking-[0.18em] text-muted-foreground",
-            inverse && "text-inverse-foreground/70"
+            "mt-1.5 truncate font-mono text-[8px] uppercase tracking-[0.22em] text-muted-foreground",
+            inverse && "text-inverse-foreground/60"
           )}
         >
           {subtitle}

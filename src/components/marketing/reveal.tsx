@@ -4,7 +4,7 @@ import { useEffect, useRef, useState, type CSSProperties, type ReactNode } from 
 import { cn } from "@/lib/utils";
 
 /**
- * Progressive reveal for editorial sections.
+ * Progressive reveal for page sections.
  *
  * Content is visible by default (including without JavaScript and for
  * prefers-reduced-motion). Once mounted, elements below the fold are briefly
@@ -69,7 +69,7 @@ export function Reveal({
       ref={ref}
       className={cn(
         className,
-        armed && "reveal-armed",
+        armed && !shown && "reveal-armed",
         shown && "reveal-shown"
       )}
       style={

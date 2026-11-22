@@ -80,7 +80,7 @@ export function CommandPalette({
         </DialogDescription>
         <Command
           loop
-          className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:font-mono [&_[cmdk-group-heading]]:text-[9px] [&_[cmdk-group-heading]]:uppercase [&_[cmdk-group-heading]]:tracking-[0.14em] [&_[cmdk-group-heading]]:text-muted-foreground"
+          className="[&_[cmdk-group-heading]]:px-2 [&_[cmdk-group-heading]]:py-1.5 [&_[cmdk-group-heading]]:text-[11px] [&_[cmdk-group-heading]]:font-medium [&_[cmdk-group-heading]]:text-muted-foreground"
           onKeyDown={(event) => {
             if (event.key === "Escape") onOpenChange(false);
           }}
@@ -163,7 +163,7 @@ export function CommandPalette({
               <kbd className="rounded border border-border bg-card px-1 py-[1px] font-mono text-[9px]">↵</kbd>
               to open
             </span>
-            <span className="ml-auto font-mono tracking-wide">FOLIO / SEARCH</span>
+            <span className="ml-auto text-[10.5px]">Search Folio</span>
           </div>
         </Command>
       </DialogContent>

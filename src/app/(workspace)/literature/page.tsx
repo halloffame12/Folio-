@@ -8,12 +8,12 @@ import {
   Clipboard,
   Download,
   Loader2,
+  Link2,
   NotebookPen,
   Paperclip,
   Plus,
   Quote,
   SearchX,
-  Sparkles,
 } from "lucide-react";
 import { toast } from "sonner";
 import type { CitationStyle, ReviewSection } from "@/types";
@@ -535,7 +535,7 @@ export default function LiteraturePage() {
 
               <div className="border-t border-border p-2.5">
                 <Button variant="subtle" size="sm" className="w-full" onClick={openSources}>
-                  <Sparkles /> Link more sources
+                  <Link2 /> Link more sources
                 </Button>
               </div>
             </Tabs>

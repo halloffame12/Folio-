@@ -32,12 +32,10 @@ export function PasswordStrength({
     <div className="space-y-2.5" aria-live="polite">
       <div>
         <div className="flex items-center justify-between gap-3">
-          <span className="font-mono text-[8.5px] uppercase tracking-[0.14em] text-muted-foreground">
-            Password strength
-          </span>
+          <span className="text-[12px] text-muted-foreground">Password strength</span>
           <span
             className={cn(
-              "font-mono text-[8.5px] uppercase tracking-[0.14em]",
+              "text-[12px] capitalize",
               strength.score > 0 ? labelTone[strength.score] : "text-muted-foreground/60"
             )}
           >
@@ -63,7 +61,7 @@ export function PasswordStrength({
             <li
               key={check.id}
               className={cn(
-                "flex items-center gap-1.5 text-[10.5px] leading-tight transition-colors",
+                "flex items-center gap-1.5 text-[12px] leading-tight transition-colors",
                 check.met ? "text-foreground/75" : "text-muted-foreground"
               )}
             >
