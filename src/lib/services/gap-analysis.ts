@@ -70,3 +70,26 @@ export async function getGapEvidence(userId: string, id: string) {
   if (!a || a.userId !== userId) return null;
   return a.papers.map((p) => toPaper(p.paper));
 }
+
+export async function listGapAnalyses(userId: string) {
+  const analyses = await prisma.gapAnalysis.findMany({
+    where: { userId },
+    orderBy: { createdAt: "desc" },
+    take: 10,
+    include: {
+      papers: {
+        take: 5,
+        include: { paper: { include: { authors: true, identifiers: true } } },
+      },
+    },
+  });
+  return analyses.map((a) => ({
+    id: a.id,
+    name: a.name,
+    corpusSize: a.corpusSize,
+    result: a.result as any,
+    createdAt: a.createdAt.toISOString(),
+    paperCount: a.corpusSize,
+    samplePapers: a.papers.map((p) => toPaper(p.paper)),
+  }));
+}

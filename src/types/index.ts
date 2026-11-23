@@ -222,6 +222,7 @@ export interface WorkspaceSettings {
   weeklyDigest: boolean;
   compactTables: boolean;
   reducedMotion: boolean;
+  onboardingDismissed?: boolean;
 }
 
 export interface WorkspaceData {
