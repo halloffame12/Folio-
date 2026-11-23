@@ -2,7 +2,6 @@ import { NextRequest } from "next/server";
 import { z } from "zod";
 import { prisma } from "@/lib/db";
 import { hashPassword } from "@/lib/auth/password";
-import { createSession, setSessionCookie } from "@/lib/auth/session";
 import { rateLimit } from "@/lib/auth/rate-limit";
 import { sendEmail, verificationUrl, newToken, tokenHash } from "@/lib/auth/email";
 import { assertSameOrigin } from "@/lib/api/same-origin";
@@ -61,16 +60,12 @@ export async function POST(request: NextRequest) {
       console.error("Verification email failed to send:", e);
     }
 
-    const session = await createSession(user.id, true, request.headers.get("user-agent") ?? undefined);
-    const headers = new Headers();
-    setSessionCookie(headers, session.raw, session.expiresAt);
-
     const payload: Record<string, unknown> = { user: toUser(user), verificationSent: true };
     if (process.env.AUTH_DEV_EXPOSE_LINKS === "true") payload.devVerificationUrl = vUrl;
 
     return new Response(JSON.stringify({ success: true, data: payload }), {
       status: 201,
-      headers: { "Content-Type": "application/json", ...Object.fromEntries(headers.entries()) },
+      headers: { "Content-Type": "application/json" },
     });
   } catch (err) {
     return fail(err as Error);

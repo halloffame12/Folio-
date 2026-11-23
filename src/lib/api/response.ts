@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { ZodError } from "zod";
-import { ApiError, badRequest, unauthorized, conflict } from "./errors";
-export { badRequest, unauthorized, conflict };
+import { ApiError, badRequest, unauthorized, conflict, emailUnverified } from "./errors";
+export { badRequest, unauthorized, conflict, emailUnverified };
 
 export type ApiEnvelope<T> =
   | { success: true; data: T; meta?: Record<string, unknown> }

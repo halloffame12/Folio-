@@ -4,7 +4,7 @@ import { verifyPassword } from "@/lib/auth/password";
 import { createSession, setSessionCookie } from "@/lib/auth/session";
 import { rateLimit } from "@/lib/auth/rate-limit";
 import { assertSameOrigin } from "@/lib/api/same-origin";
-import { unauthorized, ok, fail } from "@/lib/api/response";
+import { unauthorized, emailUnverified, ok, fail } from "@/lib/api/response";
 import { signinSchema } from "@/lib/validations/auth";
 import { toUser } from "@/lib/serializers";
 
@@ -24,6 +24,10 @@ export async function POST(request: NextRequest) {
     if (!user) throw unauthorized("We couldn't match that email and password.");
     const okPw = await verifyPassword(password, user.passwordHash);
     if (!okPw) throw unauthorized("We couldn't match that email and password.");
+
+    if (!user.emailVerifiedAt) {
+      throw emailUnverified("Please verify your email address before signing in.");
+    }
 
     const session = await createSession(user.id, remember ?? true, request.headers.get("user-agent") ?? undefined);
     const headers = new Headers();

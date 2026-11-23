@@ -74,7 +74,7 @@ describe("Auth", () => {
     expect(res.status).toBe(422);
   });
 
-  it("signup creates user and session", async () => {
+  it("signup creates user without session until verified", async () => {
     const res = await signup(req("/api/auth/signup", "POST", {
       fullName: "Test User", email: "test@example.edu", password: "Password1", confirmPassword: "Password1", acceptedTerms: true,
     }));
@@ -82,6 +82,7 @@ describe("Auth", () => {
     const json = await res.json();
     expect(json.success).toBe(true);
     expect(json.data.user.email).toBe("test@example.edu");
+    expect(extractCookie(res)).toBe("");
   });
 
   it("duplicate email registration fails", async () => {
@@ -90,8 +91,13 @@ describe("Auth", () => {
     expect(res.status).toBe(409);
   });
 
-  it("signin success and failure", async () => {
+  it("signin requires verification and password check", async () => {
     await signup(req("/api/auth/signup", "POST", { fullName: "User", email: "u@example.edu", password: "Password1", confirmPassword: "Password1", acceptedTerms: true }));
+    const unverifiedRes = await signin(req("/api/auth/signin", "POST", { email: "u@example.edu", password: "Password1", remember: true }));
+    expect(unverifiedRes.status).toBe(403);
+
+    await prisma.user.update({ where: { email: "u@example.edu" }, data: { emailVerifiedAt: new Date() } });
+
     const okRes = await signin(req("/api/auth/signin", "POST", { email: "u@example.edu", password: "Password1", remember: true }));
     expect(okRes.status).toBe(200);
     const failRes = await signin(req("/api/auth/signin", "POST", { email: "u@example.edu", password: "wrong", remember: true }));
@@ -99,8 +105,10 @@ describe("Auth", () => {
   });
 
   it("session requires auth and logout works", async () => {
-    const su = await signup(req("/api/auth/signup", "POST", { fullName: "User", email: "u2@example.edu", password: "Password1", confirmPassword: "Password1", acceptedTerms: true }));
-    const cookie = extractCookie(su);
+    await signup(req("/api/auth/signup", "POST", { fullName: "User", email: "u2@example.edu", password: "Password1", confirmPassword: "Password1", acceptedTerms: true }));
+    await prisma.user.update({ where: { email: "u2@example.edu" }, data: { emailVerifiedAt: new Date() } });
+    const si = await signin(req("/api/auth/signin", "POST", { email: "u2@example.edu", password: "Password1", remember: true }));
+    const cookie = extractCookie(si);
     const s = await sessionRoute(req("/api/auth/session", "GET", undefined, cookie));
     expect(s.status).toBe(200);
     const json = await s.json();
@@ -142,8 +150,10 @@ describe("Auth", () => {
 
 describe("Ownership & CRUD", () => {
   async function setupUser(email = "owner@example.edu") {
-    const su = await signup(req("/api/auth/signup", "POST", { fullName: "Owner", email, password: "Password1", confirmPassword: "Password1", acceptedTerms: true }));
-    const cookie = extractCookie(su);
+    await signup(req("/api/auth/signup", "POST", { fullName: "Owner", email, password: "Password1", confirmPassword: "Password1", acceptedTerms: true }));
+    await prisma.user.update({ where: { email }, data: { emailVerifiedAt: new Date() } });
+    const si = await signin(req("/api/auth/signin", "POST", { email, password: "Password1", remember: true }));
+    const cookie = extractCookie(si);
     return { cookie };
   }
 

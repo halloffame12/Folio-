@@ -20,6 +20,7 @@ import { apiMutate } from "@/lib/api-client";
 export function SigninForm() {
   const router = useRouter();
   const [serverError, setServerError] = useState<string | null>(null);
+  const [unverifiedEmail, setUnverifiedEmail] = useState<string | null>(null);
 
   const form = useForm<SigninValues>({
     resolver: zodResolver(signinSchema),
@@ -33,6 +34,7 @@ export function SigninForm() {
 
   const onSubmit = async (values: SigninValues) => {
     setServerError(null);
+    setUnverifiedEmail(null);
     try {
       const data = await apiMutate<{ user: { name: string } }>("/api/auth/signin", "POST", {
         email: values.email,
@@ -44,6 +46,9 @@ export function SigninForm() {
       });
       router.push("/dashboard");
     } catch (e: any) {
+      if (e?.code === "email_unverified") {
+        setUnverifiedEmail(values.email);
+      }
       setServerError(e?.message || "Sign-in unsuccessful.");
     }
   };
@@ -57,7 +62,17 @@ export function SigninForm() {
 
       {serverError ? (
         <AuthNotice tone="error" className="mt-5">
-          {serverError}
+          <div>{serverError}</div>
+          {unverifiedEmail ? (
+            <div className="mt-2">
+              <Link
+                href={`/verify-email?email=${encodeURIComponent(unverifiedEmail)}`}
+                className="font-medium underline hover:text-foreground"
+              >
+                Go to verification page &rarr;
+              </Link>
+            </div>
+          ) : null}
         </AuthNotice>
       ) : null}
 

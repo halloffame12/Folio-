@@ -53,6 +53,7 @@ export async function getSessionUser(request?: Request) {
 export async function requireUser(request?: Request) {
   const user = await getSessionUser(request);
   if (!user) throw new ApiError("unauthorized", "You must be signed in to continue.", 401);
+  if (!user.emailVerifiedAt) throw new ApiError("email_unverified", "Please verify your email address before continuing.", 403);
   return user;
 }
 
